@@ -9,6 +9,7 @@
 	<spring:url value="/resources/css/animate.css" var="animateCSS" />
 	<spring:url value="/resources/css/style.css" var="styleCSS" />
 	<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
+	
 	<meta charset="utf-8">
 	<title>ApartmentNearUNCC - Sign In</title>
 
