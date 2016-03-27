@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDao {
 	public boolean isValidRegistration(RegistrationBean registratinBean) throws SQLException, InvalidEmailIdException{
 		// TODO Auto-generated method stub
 		System.out.println("------Inside userDao-------");
-		String query = "Select count(1) from students where semail = ?";
+		String query = "Select * from students where semail = ?";
 		PreparedStatement pstmt;
 		try {
 			pstmt = dataSource.getConnection().prepareStatement(query);
@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
 				pstmt.setString(2, registratinBean.getLname());
 				pstmt.setString(3, registratinBean.getEmail());
 				pstmt.setString(4, registratinBean.getPassword());
-				resultSet = pstmt.executeQuery();
+				pstmt.executeUpdate();
 				System.out.println("---------Inserted In DB----------");
 				return true;
 			}

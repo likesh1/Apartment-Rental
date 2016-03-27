@@ -103,7 +103,12 @@ public class HomeController {
 		}
 		catch(InvalidEmailIdException ieie)
 		{
+			LoginBean loginBean=new LoginBean();
+			//RegistrationBean registrationBean = new RegistrationBean();
 			model = new ModelAndView("home");
+			//model.addAttribute("serverTime", formattedDate );
+			request.setAttribute("loginBean", loginBean);
+			
 			request.setAttribute("errorMessage", ieie.getMessage()+registrationBean.getEmail());
 		}
 		catch(Exception e)
