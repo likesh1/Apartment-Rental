@@ -5,6 +5,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+	<bean id="registrationDelegate" class="org.apartments.uncc.delegate.RegistrationDelegate">
+		<property name="userService" ref="userService"></property>
+	</bean>
 		
 	<bean id="loginDelegate" class="org.apartments.uncc.delegate.LoginDelegate">
 		<property name="userService" ref="userService"></property>

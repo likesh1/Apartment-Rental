@@ -53,7 +53,8 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean isValidRegistration(RegistrationBean registratinBean) throws SQLException, InvalidEmailIdException{
 		// TODO Auto-generated method stub
-		String query = "Select count(1) from user_details where semail = ?";
+		System.out.println("------Inside userDao-------");
+		String query = "Select count(1) from students where semail = ?";
 		PreparedStatement pstmt;
 		try {
 			pstmt = dataSource.getConnection().prepareStatement(query);
@@ -62,11 +63,22 @@ public class UserDaoImpl implements UserDao {
 			if (resultSet.next())
 				throw new InvalidEmailIdException("Email Id already exist, Please Use another email id.");
 			else
-					return true;
+			{
+				query="insert into students(firstName,lastName,sEmail,sPassword) values (?,?,?,?)";
+				pstmt = dataSource.getConnection().prepareStatement(query);
+				pstmt.setString(1, registratinBean.getFname());
+				pstmt.setString(2, registratinBean.getLname());
+				pstmt.setString(3, registratinBean.getEmail());
+				pstmt.setString(4, registratinBean.getPassword());
+				resultSet = pstmt.executeQuery();
+				System.out.println("---------Inserted In DB----------");
+				return true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("-----Error While insertion------");
 		return false;
 		
 	}
