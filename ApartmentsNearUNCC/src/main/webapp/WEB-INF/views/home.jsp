@@ -59,7 +59,7 @@
 				<br/>
 				<input type="text" id="username" name="username" path="username"/>
 				<br/>
-				<label for="password" path="password">Password<label>
+				<label for="Lname" path="password">Password<label>
 				<br/>
 				<input type="password" id="password" name="password" path="password"/>
 				<br/>
