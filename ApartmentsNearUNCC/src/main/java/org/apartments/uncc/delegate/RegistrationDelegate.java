@@ -1,18 +1,12 @@
-/**
- * 
- */
 package org.apartments.uncc.delegate;
 
 import java.sql.SQLException;
 
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
 import org.apartments.uncc.service.UserService;
+import org.apartments.uncc.viewBeans.RegistrationBean;
 
-/**
- * @author Pritam
- *
- */
-public class LoginDelegate {
+public class RegistrationDelegate {
 
 	private UserService userService;
 
@@ -24,9 +18,10 @@ public class LoginDelegate {
 		this.userService = userService;
 	}
 	
-	public boolean isValidUser(String username, String password) throws SQLException, InvalidEmailIdException
+	public boolean isValidRegistration(RegistrationBean registrationBean) throws SQLException, InvalidEmailIdException
 	{
-	     return userService.isValidUser(username, password);
+	     return userService.isValidRegistration(registrationBean);
 	}
+
 
 }
