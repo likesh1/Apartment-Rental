@@ -44,7 +44,7 @@
 				<br/>
 				<label >${errorMessage }</label><br/>
 				<button type="submit" id="submit">Sign In</button>
-				<button type="submit" id="submit">Sign Up</button>
+				<input type="button" value="Sign Up" id="signup" onclick=""/>
 				<br/>
 				<a href="#"><p class="small">Forgot your password?</p></a>
 				<a href="#"><p class="small">I'll do it later</p></a>

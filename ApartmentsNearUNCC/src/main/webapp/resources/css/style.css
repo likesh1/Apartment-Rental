@@ -134,6 +134,21 @@ p.small {
 	transition: 0.5s;
 }
 
+.login-box input[type=button] {
+	margin-top: 0px;
+	border: 0;
+	border-radius: 2px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	background-color: #665851;
+	cursor:pointer;
+	outline: none;
+}
+
 .selected {
 	color: #665851!important;
 	transition: 0.5s;
