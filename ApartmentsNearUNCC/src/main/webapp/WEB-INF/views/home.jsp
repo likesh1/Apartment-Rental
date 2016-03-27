@@ -29,7 +29,7 @@
 		<div class="top">
 			<h1 id="title" class="hidden"><span id="logo">Apartments Near<span> UNCC</span></span></h1>
 		</div>
-		<div class="login-box animated fadeInUp">
+		<div id="Login" class="login-box animated fadeInUp">
 			<form:form name="LoginForm" method="post" onsubmit="return validate(this);" action="login.do" modelAttribute="loginBean">
 				<div class="box-header">
 					<h2>Log In</h2>
@@ -50,6 +50,27 @@
 				<a href="#"><p class="small">I'll do it later</p></a>
 			</form:form>
 		</div>
+		<div id="Registration" class="login-box animated fadeInUp">
+			<form:form name="RegistrationForm" method="post" onsubmit="return validate(this);" action="login.do" >
+				<div class="box-header">
+					<h2>Log In</h2>
+				</div>
+				<label for="username" path="username">Username</label>
+				<br/>
+				<input type="text" id="username" name="username" path="username"/>
+				<br/>
+				<label for="password" path="password">Password<label>
+				<br/>
+				<input type="password" id="password" name="password" path="password"/>
+				<br/>
+				<label >${errorMessage }</label><br/>
+				<button type="submit" id="submit">Sign In</button>
+				<input type="button" value="Sign Up" id="signup" />
+				<br/>
+				<a href="#"><p class="small">Forgot your password?</p></a>
+				<a href="#"><p class="small">I'll do it later</p></a>
+			</form:form>
+		</div>
 	</div>
 </body>
 
@@ -57,6 +78,7 @@
 	$(document).ready(function () {
     	$('#logo').addClass('animated fadeInDown');
     	$("input:text:visible:first").focus();
+    	$('#Registration').hide();
 	});
 	$('#username').focus(function() {
 		$('label[for="username"]').addClass('selected');
@@ -69,6 +91,10 @@
 	});
 	$('#password').blur(function() {
 		$('label[for="password"]').removeClass('selected');
+	});
+	$('#signup').click(function(){
+		$('#Login').hide();
+		$('#Registration').show();
 	});
 </script>
 
