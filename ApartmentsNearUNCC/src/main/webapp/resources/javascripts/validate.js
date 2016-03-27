@@ -13,6 +13,7 @@ if(username==""){
 	form.username.focus();
 	form.username.style.borderColor="red";
 	form.username.style.borderStyle="solid";
+	document.getElementById('ErrorMessage').innerHTML="Username Blank!!";
 	return false;
 	
 }
@@ -20,6 +21,7 @@ else if(password==""){
 	form.password.focus();
 	form.password.style.borderColor="red";
 	form.password.style.borderStyle="solid";
+	document.getElementById('ErrorMessage').innerHTML="Password Blank!!";
 	return false;
 }
 

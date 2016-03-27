@@ -9,7 +9,7 @@
 	<spring:url value="/resources/css/animate.css" var="animateCSS" />
 	<spring:url value="/resources/css/style.css" var="styleCSS" />
 	<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
-	
+	<spring:url value="/resources/javascripts/validate_registration.js" var="validateRegistrationJS" />
 	<meta charset="utf-8">
 	<title>ApartmentNearUNCC - Sign In</title>
 
@@ -22,6 +22,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="${ validateJS }"></script>
+	<script src="${validateRegistrationJS}"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@
 				<br/>
 				<form:input type="password" id="password" name="password" path="password"/>
 				<br/>
-				<label >${errorMessage }</label><br/>
+				<label id="ErrorMessage">${errorMessage }</label><br/>
 				<button type="submit" id="submit">Sign In</button>
 				<input type="button" value="Sign Up" id="signup" onclick=""/>
 				<br/>
@@ -51,21 +52,27 @@
 			</form:form>
 		</div>
 		<div id="Registration" class="login-box animated fadeInUp">
-			<form:form name="RegistrationForm" method="post" onsubmit="return validate(this);" action="login.do" >
+			<form:form name="RegistrationForm" method="post" onsubmit="return validateRegistration(this);" action="register.do" modelAttribute="registrationBean">
 				<div class="box-header">
 					<h2>Log In</h2>
 				</div>
-				<label for="FName" path="username">Username</label>
+				<form:label for="FName" path="fname">firstName</form:label>
+				<form:input type="text" id="fname" name="fname" path="fname"/>
 				<br/>
-				<input type="text" id="username" name="username" path="username"/>
+				<form:label for="LName" path="lname">lastname</form:label>
+				<form:input type="text" id="lname" name="lname" path="lname"/>
 				<br/>
-				<label for="Lname" path="password">Password<label>
+				<form:label for="Email" path="email">email id</form:label>
+				<form:input type="text" id="email" name="email" path="email"/>
 				<br/>
-				<input type="password" id="password" name="password" path="password"/>
+				<form:label for="Password" path="password">Password</form:label>
+				<form:input type="password" id="password" name="password" path="password"/>
 				<br/>
-				<label >${errorMessage }</label><br/>
-				<button type="submit" id="submit">Sign In</button>
-				<input type="button" value="Sign Up" id="signup" />
+				<label for="Password" >Password</label>
+				<input type="password" id="repeat_password" name="repeat_password" />
+				<br/>
+				<label id="registrationErrorMessage">${errorMessage }</label><br/>
+				<button type="submit" id="submit">Sign Up</button>
 				<br/>
 				<a href="#"><p class="small">Forgot your password?</p></a>
 				<a href="#"><p class="small">I'll do it later</p></a>
