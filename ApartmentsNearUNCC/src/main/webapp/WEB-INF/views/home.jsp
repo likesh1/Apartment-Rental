@@ -55,7 +55,7 @@
 				<div class="box-header">
 					<h2>Log In</h2>
 				</div>
-				<label for="username" path="username">Username</label>
+				<label for="FName" path="username">Username</label>
 				<br/>
 				<input type="text" id="username" name="username" path="username"/>
 				<br/>
