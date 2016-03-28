@@ -26,6 +26,6 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/SSDI_08" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="Sheeba100" />
 	</bean>
 </beans>
