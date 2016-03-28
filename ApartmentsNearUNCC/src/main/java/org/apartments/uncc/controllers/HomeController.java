@@ -120,6 +120,7 @@ public class HomeController {
 		
 	}
 	
+<<<<<<< HEAD
 	 
 
 	 @RequestMapping(value = "/apartmentList", method = RequestMethod.GET)
@@ -137,6 +138,16 @@ public class HomeController {
 	 return model;
 
 	 }
+=======
+	@RequestMapping(value="/welcome", method = RequestMethod.GET)
+	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response)
+	{
+		ModelAndView model= new ModelAndView("welcome");
+
+		return model;
+		
+	}
+>>>>>>> master
 	
 	
 }

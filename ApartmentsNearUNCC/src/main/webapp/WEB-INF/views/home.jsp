@@ -33,7 +33,7 @@
 		<div id="Login" class="login-box animated fadeInUp">
 			<form:form name="LoginForm" method="post" onsubmit="return validate(this);" action="login.do" modelAttribute="loginBean">
 				<div class="box-header">
-					<h2>Log In</h2>
+					<h2>Sign In</h2>
 				</div>
 				<form:label for="username" path="username">Username</form:label>
 				<br/>
@@ -48,13 +48,13 @@
 				<input type="button" value="Sign Up" id="signup" onclick=""/>
 				<br/>
 				<a href="#"><p class="small">Forgot your password?</p></a>
-				<a href="#"><p class="small">I'll do it later</p></a>
+				<a href="welcome"><p class="small">I'll do it later</p></a>
 			</form:form>
 		</div>
 		<div id="Registration" class="login-box animated fadeInUp">
 			<form:form name="RegistrationForm" method="post" onsubmit="return validateRegistration(this);" action="register.do" modelAttribute="registrationBean">
 				<div class="box-header">
-					<h2>Log In</h2>
+					<h2>Sign Up</h2>
 				</div>
 				<form:label for="FName" path="fname">firstName</form:label>
 				<form:input type="text" id="fname" name="fname" path="fname"/>
@@ -75,7 +75,7 @@
 				<button type="submit" id="submit">Sign Up</button>
 				<br/>
 				<a href="#"><p class="small">Forgot your password?</p></a>
-				<a href="#"><p class="small">I'll do it later</p></a>
+				<a href="welcome"><p class="small">I'll do it later</p></a>
 			</form:form>
 		</div>
 	</div>
