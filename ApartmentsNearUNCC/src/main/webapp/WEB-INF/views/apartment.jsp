@@ -87,7 +87,7 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-<li><a href="/uncc/welcome">About Us</a></li>
+<li><a href="welcome">About Us</a></li>
 
 <li><a href="#service" class='scroll'>Location</a></li>
 
