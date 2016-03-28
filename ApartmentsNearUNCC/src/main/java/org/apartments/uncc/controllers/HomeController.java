@@ -72,7 +72,7 @@ public class HomeController {
 				else
 				{
 						model = new ModelAndView("home");
-						request.setAttribute("errorMessage", "Invalid credentials!!");
+						request.setAttribute("loginErrorMessage", "Invalid credentials!!");
 				}
 
 		}
@@ -109,7 +109,7 @@ public class HomeController {
 			//model.addAttribute("serverTime", formattedDate );
 			request.setAttribute("loginBean", loginBean);
 			
-			request.setAttribute("errorMessage", ieie.getMessage()+registrationBean.getEmail());
+			request.setAttribute("registrationErrorMessage", ieie.getMessage()+registrationBean.getEmail());
 		}
 		catch(Exception e)
 		{
@@ -119,6 +119,24 @@ public class HomeController {
 		return model;
 		
 	}
+	
+	 
+
+	 @RequestMapping(value = "/apartmentList", method = RequestMethod.GET)
+
+	 public ModelAndView getaparments(HttpServletRequest request, HttpServletResponse response) {
+
+	 System.out.println("Controller Called");
+
+	 //List<ApartmentDaoImpl> apartment=new ArrayList<ApartmentDaoImpl>();
+
+	 ModelAndView model = new ModelAndView("apartment");
+
+
+
+	 return model;
+
+	 }
 	
 	
 }

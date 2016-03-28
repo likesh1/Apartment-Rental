@@ -43,7 +43,7 @@
 				<br/>
 				<form:input type="password" id="password" name="password" path="password"/>
 				<br/>
-				<label id="ErrorMessage">${errorMessage }</label><br/>
+				<label id="ErrorMessage">${loginErrorMessage }</label><br/>
 				<button type="submit" id="submit">Sign In</button>
 				<input type="button" value="Sign Up" id="signup" onclick=""/>
 				<br/>
@@ -71,7 +71,7 @@
 				<label for="Password" >Password</label>
 				<input type="password" id="repeat_password" name="repeat_password" />
 				<br/>
-				<label id="registrationErrorMessage">${errorMessage }</label><br/>
+				<label id="registrationErrorMessage">${registrationErrorMessage }</label><br/>
 				<button type="submit" id="submit">Sign Up</button>
 				<br/>
 				<a href="#"><p class="small">Forgot your password?</p></a>
