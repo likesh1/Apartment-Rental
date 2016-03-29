@@ -13,254 +13,212 @@
 <html>
 
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <title>Apartments Near UNCC (Location)</title>
 
-<spring:url value="/resources/css/bootstrap.css" var="bootstrapCSS" />
+<body>
+<header>
+        <div class="row">
+            <div class="pull-right social-icons">
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
+        <nav class="navbar nav-tabs" style="background: transparent;border: none" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/home">HOME</a></li>
+                        <li><a href="#/location">LOCATION</a></li>
+                        <li><a href="#/reserve">REGISTRATION</a></li>
+                        <li><a href="#/login">LOGIN</a></li>
+                        <li><a href="#/about">ABOUT US</a></li>
+                        <li ><a href="#/contact">CONTACT</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+
+	<section id="leftNav" class="col-xs-12">
+	<div class="col-xs-3">
+    	<div class="container">
+     	   <div class="row">
+        	    <p>Room Rent</p>
+        	    <div >
+        	    	<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> $200 - $300
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> $300 - $400
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> $400 - $500
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> above $500
+    					</label>
+  					</div>
+        	    </div>
+        	</div>
+        </div>
+        <div class="container">
+     	   <div class="row">
+        	    <p>Rooms</p>
+        	    <div >
+        	    	<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> 1
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> 2
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> 3
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> 4
+    					</label>
+  					</div>
+        	    </div>
+        	</div>
+        </div>
+        <div class="container">
+     	   <div class="row">
+        	    <p>Bathrooms</p>
+        	    <div >
+        	    	<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> Attached
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> Common
+    					</label>
+  					</div>
+        	    </div>
+        	</div>
+        </div>
+        <div class="container">
+     	   <div class="row">
+        	    <p>Flooring</p>
+        	    <div >
+        	    	<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> Wooden
+    					</label>
+  					</div>
+  					<div class="checkbox">
+    					<label>
+      						<input type="checkbox"> Carpet
+    					</label>
+  					</div>
+        	    </div>
+        	</div>
+        </div>
+       </div>
+       
+		<div class="container col-sm-4">
+	  	<div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+        <c:forEach items="${apartments}" var="apartments">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">APARTMENT ${apartments.apartmentId}</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                	<div class="table-responsive">          
+  						<table class="table">
+						      <tr>
+						        <td>DEPOSITE AMOUNT:</td>
+						        <td>${apartments.depositAmt}</td>
+						      </tr>
+						      <tr>
+						        <td>RENT:</td>
+						        <td>${apartments.rent}</td>
+						      </tr>
+						      <tr>
+						        <td>AVAILABLE FROM:</td>
+						        <td>${apartments.availablityFrom}</td>
+						      </tr>
+						      <tr>
+						        <td>UTILITIES</td>
+						        <td><c:out value="${apartments.utilities}" /></td>
+						      </tr>
+						      <tr>
+						        <td>AREA</td>
+						        <td><c:out value="${apartments.area}" /></td>
+						      </tr>
+						      <tr>
+						        <td>STREET</td>
+						        <td><c:out value="${apartments.street}" /></td>
+						      </tr>
+						      <tr>
+						        <td>DOOR NUMBER</td>
+						        <td><c:out value="${apartments.doorNo}" /></td>
+						      </tr>
+						      <tr>
+						        <td>CITY</td>
+						        <td><c:out value="${apartments.city}" /></td>
+						      </tr>
+						      <tr>
+						        <td>NUMBER OF ROOMS</td>
+						        <td>${apartments.no_of_rooms}</td>
+						      </tr>
+						      <tr>
+						        <td>NUMBER OF BATHROOMS</td>
+						        <td>${apartments.no_of_bathroom}</td>
+						      </tr>
+						      <tr>
+						        <td>FLOORING</td>
+						        <td><c:out value="${apartments.flooring}" /></td>
+						      </tr>
+						  </table>
+						  </div>
+						</div>
+	            </div>
+	          </c:forEach>
+            </div>
+        </div>
+    </div>
+  
+    </section>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
 
-<spring:url value="/resources/css/style1.css" var="style1CSS" />
-
-<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
-
-<spring:url value="/resources/images/" var="images" />
-
-<spring:url value="/resources/javascripts/" var="js" />
-
-<link href="${bootstrapCSS}" rel='stylesheet' />
-
-<link href="${style1CSS}" rel='stylesheet' />
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
-
-<script type="application/x-javascript">
-	
-
-addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-</script>
-
-<script src="${js}jquery-1.9.1.min.js"></script>
-
-<!----requred-js-files---->
-
-<!-- script src="${js}jquery.min.js"></script-->
-
-<script src="${js}bootstrap.min.js"></script>
-
-<!----//requred-js-files---->
-
-<script src="${js}hover_pack.js"></script>
-
-<script type="text/javascript" src="${js}move-top.js"></script>
-
-<script type="text/javascript" src="${js}easing.js"></script>
-
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-
-		$(".scroll").click(function(event) {
-
-			event.preventDefault();
-
-			$('html,body').animate({
-
-				scrollTop : $(this.hash).offset().top
-
-			}, 1200);
-
-		});
-
-	});
-</script>
-
-<link rel="stylesheet"
-	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-<li><a href="welcome">About Us</a></li>
-
-<li><a href="#service" class='scroll'>Location</a></li>
-
-<li><a href="#projects" class="scroll">Registration</a></li>
-
-<li><a href="#team" class="scroll">Log In</a></li>
-
-<li><a href="#news" class="scroll">Contact Us</a></li>
-
-</ul>
-
-</div>
-
-<!-- /.navbar-collapse -->
-
-</div>
-
-<!-- /.container-fluid -->
-
-</nav>
-
-<div class="clear"></div>
-
-</div>
-
-</div>
-
-<div>
-
-	<table>
-
-		<tr>
-
-			<td>
-
-				<p>Room Rent</p>
-
-				<div class="checkbox">
-
-					<label><input type="checkbox" value="">$200 - $300</label>
-
-				</div>
-
-				<div class="checkbox">
-
-					<label><input type="checkbox" value="">$300 - $400</label>
-
-				</div>
-
-				<div class="checkbox">
-
-					<label><input type="checkbox" value="">$400 - $500</label>
-
-				</div>
-
-				<div class="checkbox">
-
-					<label><input type="checkbox" value="">above $500</label>
-
-				</div>
-
-				<div>
-
-					<p>Rooms</p>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">1</label>
-
-					</div>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">2</label>
-
-					</div>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">3</label>
-
-					</div>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">4</label>
-
-					</div>
-
-				</div>
-
-				<div>
-
-					<p>Bathrooms</p>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">Attached</label>
-
-					</div>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">Common</label>
-
-					</div>
-
-				</div>
-
-				<div>
-
-					<p>Flooring</p>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">Wooden</label>
-
-					</div>
-
-					<div class="checkbox">
-
-						<label><input type="checkbox" value="">Carpet</label>
-
-					</div>
-
-				</div>
-
-			</td>
-
-			<td>
-
-				<button type="button" class="btn btn-info" data-toggle="collapse"
-					data-target="#demo">Simple collapsible</button>
-
-			</td>
-
-		</tr>
-
-	</table>
-
-</div>
-
-<div class="main">
-
-	<div class="container">
-
-		<div class="services" id="services">
-
-			<div id="accordion">
-
-				<h3>Apartment ${XapartmentId}</h3>
-
-				<div>
-
-					<p>
-
-						Deposit Amount: XdepositAmt</br> Rent: Xrent Availability From:
-						XavailablityFrom Utilities: Xutilities Area: Xarea Street: Xstreet
-
-						Door Number: XdoorNo City: Xcity Number Of Rooms: XnoOfRoom Number
-						Of Bathrooms: Xno_of_bathroom Flooring: Xflooring
-
-					</p>
-
-				</div>
-
-				</body>
-
-				<script>
-					$(function() {
-
-						$("#accordion").accordion();
-
-					});
-				</script>
 </html>
