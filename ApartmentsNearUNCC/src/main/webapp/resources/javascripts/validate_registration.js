@@ -44,9 +44,9 @@ else if(email==""){
 }
 else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email)){
 	//alert("Error!!");
-	form.fname.focus();
-	form.fname.style.borderColor="red";
-	form.fname.style.borderStyle="solid";
+	form.email.focus();
+	form.email.style.borderColor="red";
+	form.email.style.borderStyle="solid";
 	document.getElementById('registrationErrorMessage').innerHTML="Not a valid email id!!";
 	return false;
 	

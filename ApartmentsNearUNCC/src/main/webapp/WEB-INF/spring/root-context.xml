@@ -28,4 +28,17 @@
 		<property name="username" value="root" />
 		<property name="password" value="Sheeba100" />
 	</bean>
+	
+		
+	<bean id="apartmentListDelegate" class="org.apartments.uncc.delegate.ApartmentListDelegate">
+		<property name="apartmentService" ref="apartmentService"></property>
+	</bean>
+
+	<bean id="apartmentService" class="org.apartments.uncc.service.impl.ApartmentServiceImpl">
+		<property name="apartmentDao" ref="apartmentDao"></property>
+	</bean>
+
+	<bean name="apartmentDao" class="org.apartments.uncc.dao.impl.ApartmentDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 </beans>

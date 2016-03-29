@@ -1,15 +1,19 @@
 package org.apartments.uncc.controllers;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
+import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 import org.apartments.uncc.viewBeans.LoginBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
 import org.slf4j.Logger;
@@ -38,6 +42,8 @@ public class HomeController {
 	private LoginDelegate loginDelegate;
 	@Autowired
 	private RegistrationDelegate registrationDelegate;
+	@Autowired
+	private ApartmentListDelegate apartmentListDelegate;
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -71,6 +77,11 @@ public class HomeController {
 				}
 				else
 				{
+					RegistrationBean registrationBean = new RegistrationBean();
+					//RegistrationBean registrationBean = new RegistrationBean();
+					//model = new ModelAndView("home");
+					//model.addAttribute("serverTime", formattedDate );
+					request.setAttribute("registrationBean", registrationBean);
 						model = new ModelAndView("home");
 						request.setAttribute("loginErrorMessage", "Invalid credentials!!");
 				}
@@ -123,16 +134,26 @@ public class HomeController {
 
 	 
 
-	 @RequestMapping(value = "/apartmentList", method = RequestMethod.GET)
+	@RequestMapping(value = "/apartmentList", method = RequestMethod.GET)
 
 	 public ModelAndView getaparments(HttpServletRequest request, HttpServletResponse response) {
 
 	 System.out.println("Controller Called");
 
-	 //List<ApartmentDaoImpl> apartment=new ArrayList<ApartmentDaoImpl>();
-
+	 
+	 //ApartmentDaoImpl apt=new ApartmentDaoImpl();
+	 try {
+		//apartment=apt.aparmentAll();
+		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList();
+		System.out.println("The apartment details"+apartment);
+		request.setAttribute("appartmenList", apartment);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 
 	 ModelAndView model = new ModelAndView("apartment");
-
+	 
 
 
 	 return model;
