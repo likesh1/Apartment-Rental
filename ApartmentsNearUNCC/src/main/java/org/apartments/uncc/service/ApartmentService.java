@@ -13,6 +13,6 @@ import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
  */
 public interface ApartmentService {
 
-	List<ApartmentDetailsBean> getApartmentList();
+	List<ApartmentDetailsBean> getApartmentList(String location);
 	
 }

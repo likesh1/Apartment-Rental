@@ -152,11 +152,11 @@
 	  	<div class="panel-group" id="accordion">
         <div class="panel panel-default">
         <c:forEach items="${apartmentList}" var="apartments">
-        	<c:set var="id" value="${apartments.apartmentId}"></c:set>
+        	<c:set var="id" value="${apartments.doorNo}"></c:set>
         	<c:set var="href">#${id }</c:set>
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.apartmentId}</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.doorNo}</a>
                 </h4>
             </div>
             <div id="${id}" class="panel-collapse collapse">

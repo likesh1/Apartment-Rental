@@ -24,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -136,15 +137,15 @@ public class HomeController {
 
 	@RequestMapping(value = "/apartmentList", method = RequestMethod.GET)
 
-	 public ModelAndView getaparments(HttpServletRequest request, HttpServletResponse response) {
+	 public ModelAndView getaparments(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="Location", required=false) String location) {
 
-	 System.out.println("Controller Called");
+	 System.out.println("Controller Called"+location);
 
 	 
 	 //ApartmentDaoImpl apt=new ApartmentDaoImpl();
 	 try {
 		//apartment=apt.aparmentAll();
-		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList();
+		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList(location);
 		System.out.println("The apartment details"+apartment);
 		request.setAttribute("apartmentList", apartment);
 	} catch (SQLException e) {

@@ -25,10 +25,10 @@ public class ApartmentDaoImpl implements ApartmentDao{
 	}
 
 	@Override
-	public List<ApartmentDetailsBean> getApartmentList() {
+	public List<ApartmentDetailsBean> getApartmentList(String location) {
 		// TODO Auto-generated method stub
 		List<ApartmentDetailsBean> apartment = new ArrayList<ApartmentDetailsBean>();
-		String query = "Select * from Apartments";
+		String query = "Select * from Apartments where area=?";
 		//Connection con = DatabaseConnection.connect();
 		
 		ResultSet rs=null;
@@ -38,7 +38,7 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		
 			//pstmt = con.prepareStatement(query);
 			PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
-
+			pstmt.setString(1, location);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ApartmentDetailsBean apt = new ApartmentDetailsBean();

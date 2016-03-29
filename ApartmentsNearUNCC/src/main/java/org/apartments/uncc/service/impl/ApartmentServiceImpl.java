@@ -35,9 +35,9 @@ public class ApartmentServiceImpl implements ApartmentService {
 
 
 	@Override
-	public List<ApartmentDetailsBean> getApartmentList() {
+	public List<ApartmentDetailsBean> getApartmentList(String location) {
 		// TODO Auto-generated method stub
-		return apartmentDao.getApartmentList();
+		return apartmentDao.getApartmentList(location);
 	}
 
 }

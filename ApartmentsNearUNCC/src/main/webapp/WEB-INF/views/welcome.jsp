@@ -193,10 +193,10 @@ Author URL: SSDI_08
 					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
-				  	<h3>UT Drive</h3>
+				  	<h3 name="Location" id="Location1" >UT Drive</h3>
 				  	<!-- <p>Project Status</p>
 				  	<i class="dating"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList">Apartment List</a></div>
+				  	 <div class="project-btn"><a href="apartmentList?Location=UT Drive">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3 project_grid">
@@ -207,7 +207,7 @@ Author URL: SSDI_08
 				  	<h3>UT North</h3>
 				  <!-- 	<p class="blue">Project Status</p>
 				  	<i class="wedding"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList">Apartment List</a></div>
+				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3 project_grid">
@@ -218,7 +218,7 @@ Author URL: SSDI_08
 				  	<h3>Ashford Greens</h3>
 				  <!-- 	<p class="green">Project Status</p>
 				  	<i class="travel"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList">Apartment List</a></div>
+				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3">
@@ -229,7 +229,7 @@ Author URL: SSDI_08
 				  	<h3>Colonial Grand</h3>
 				  <!-- 	<p class="dark">Project Status</p>
 				  	<i class="ecommerce"> </i>-->                                       
-				  	 <div class="project-btn"><a href="apartmentList">Apartment List</a></div>
+				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
 				  </div>
 				</div>
 	  		</div>

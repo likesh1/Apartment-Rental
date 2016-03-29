@@ -27,8 +27,8 @@ public class ApartmentListDelegate {
 		this.apartmentService = apartmentService;
 	}
 	
-	public List<ApartmentDetailsBean> getApartmentList() throws SQLException
+	public List<ApartmentDetailsBean> getApartmentList(String location) throws SQLException
 	{
-	     return apartmentService.getApartmentList();
+	     return apartmentService.getApartmentList(location);
 	}
 }
