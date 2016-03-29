@@ -184,12 +184,13 @@ Author URL: SSDI_08
         </div>
        </div>
        <div>
-		<div class="container col-sm-4">
+		<div class="container col-sm-8">
 	  	<div class="panel-group" id="accordion">
         <div class="panel panel-default">
         <c:forEach items="${apartmentList}" var="apartments">
         	<c:set var="id" value="${apartments.doorNo}"></c:set>
         	<c:set var="href">#${id }</c:set>
+            
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.doorNo}</a>
@@ -200,53 +201,67 @@ Author URL: SSDI_08
                 	<div class="table-responsive">          
   						<table class="table">
 						      <tr>
-						        <td>DEPOSITE AMOUNT:</td>
-						        <td>${apartments.depositAmt}</td>
+						        <td>NUMBER OF ROOMS</td>
+						        <td>${apartments.no_of_rooms}</td>
+						        <td></td>
+						         <td>NUMBER OF BATHROOMS</td>
+						        <td>${apartments.no_of_bathroom}</td>
 						      </tr>
 						      <tr>
 						        <td>RENT:</td>
 						        <td>${apartments.rent}</td>
+						        <td></td>
+						        <td>FLOORING</td>
+						        <td><c:out value="${apartments.flooring}" /></td>
+						        
 						      </tr>
+						      <tr>
+						        
+						        <td></td>
+						        <td></td>
+						        <td></td>
+						        <td></td>
+						        <td><div class="project-btn"><a href="apartmentDetails?id=1">Apartment List</a></div></td>
+						      </tr>
+						<!-- 
 						      <tr>
 						        <td>AVAILABLE FROM:</td>
 						        <td>${apartments.availablityFrom}</td>
-						      </tr>
-						      <tr>
+						        <td></td>
 						        <td>UTILITIES</td>
 						        <td><c:out value="${apartments.utilities}" /></td>
 						      </tr>
 						      <tr>
 						        <td>AREA</td>
 						        <td><c:out value="${apartments.area}" /></td>
-						      </tr>
-						      <tr>
+						        <td></td>
 						        <td>STREET</td>
 						        <td><c:out value="${apartments.street}" /></td>
 						      </tr>
+					
 						      <tr>
 						        <td>DOOR NUMBER</td>
 						        <td><c:out value="${apartments.doorNo}" /></td>
-						      </tr>
-						      <tr>
+						        <td></td>
 						        <td>CITY</td>
 						        <td><c:out value="${apartments.city}" /></td>
 						      </tr>
+						      
+						      
+						      
 						      <tr>
-						        <td>NUMBER OF ROOMS</td>
-						        <td>${apartments.no_of_rooms}</td>
-						      </tr>
-						      <tr>
-						        <td>NUMBER OF BATHROOMS</td>
-						        <td>${apartments.no_of_bathroom}</td>
-						      </tr>
-						      <tr>
-						        <td>FLOORING</td>
-						        <td><c:out value="${apartments.flooring}" /></td>
-						      </tr>
+						        
+						        <td></td>
+						        <td>DEPOSITE AMOUNT:</td>
+						        <td>${apartments.depositAmt}</td>
+						        <td></td>
+						        <td><div class="project-btn"><a href="apartmentDetails?id=1">Apartment List</a></div></td>
+						      </tr> -->
 						  </table>
 						  </div>
 						</div>
 	            </div>
+	            
 	          </c:forEach>
             </div>
         </div>
@@ -771,7 +786,12 @@ $(window).load(function() {
 		</script>
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
    </div>
+   
 
 </body>
-
+<style>
+   	 .wrapper {
+            width: 400px;
+      }
+   </style>
 </html>
