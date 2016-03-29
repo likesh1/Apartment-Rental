@@ -44,11 +44,7 @@ Author URL: SSDI_08
       	<div class="header-shadow">
       	  <div class="header-top">
       		<div class="logo">
-<<<<<<< HEAD
-				<a href="/uncc/welcome"><img src="${images }logo.png" alt=""/><br><span class="m_1">Apartments Near UNCC</span></a>
-=======
 				<a href="index.html"><img src="${images }logo.png" alt=""/><br><span class="m_1">For Rent Near UNCC</span></a>
->>>>>>> master
 			 </div>
 			 <nav class="navbar navbar-default menu" role="navigation"><h3 class="nav_right"><a href="index.html"><img src="${ images}logo.png" class="img-responsive" alt=""/></a></h3>
 			  <div class="container-fluid">
@@ -65,14 +61,6 @@ Author URL: SSDI_08
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav menu1">
 			      	<li class="active"><a href="#home" class="scroll"> <span> </span><i class="menu-border"></i></a></li>
-<<<<<<< HEAD
-			        <li><a href="#team" class="scroll">About Us</a></li>
-			        <li><a href="#services" class='scroll'>Location</a></li>
-			        <li><a href="#projects" class="scroll">Registration</a></li>
-			        <li><a href="#team" class="scroll">Log In</a></li>
-			        <li><a href="#news" class="scroll">Contact Us</a></li>
-			        </ul>	     
-=======
 			        <li><a href="#about" class="scroll">Register</a></li>
 			   <!-- <li><a href="#services" class='scroll'>Services</a></li>-->
 			        <li><a href="#projects" class="scroll">Locations</a></li>
@@ -97,7 +85,6 @@ Author URL: SSDI_08
 					  </form>
 					</div>
 			      </form>
->>>>>>> master
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
@@ -107,9 +94,6 @@ Author URL: SSDI_08
 		</div>
 	     <div class="index-banner" id="home">
        	   <div class="wmuSlider example1">
-<<<<<<< HEAD
-			   
-=======
 			   <div class="wmuSliderWrapper">
 				   <article style="position: absolute; width: 100%; opacity: 0;"> 
 				   	<div class="banner-wrap">
@@ -148,7 +132,6 @@ Author URL: SSDI_08
                 	<li><a href="#" class="">1</a></li>
                 	<li><a href="#" class="wmuActive">2</a></li>
                 </ul>
->>>>>>> master
             </div>
             <script src="${js}jquery.wmuSlider.js"></script> 
 			  <script>
@@ -158,10 +141,6 @@ Author URL: SSDI_08
 	</div>
     <div class="main">	
 	  <div class="container">
-<<<<<<< HEAD
-		<div class="services" id="services">
-			<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
-=======
 	   <div class="about" id="about">
 			<div class="row about-top">
 			  <ul class="about-top">
@@ -175,37 +154,33 @@ Author URL: SSDI_08
 		</div>
 		<!-- <div class="services" id="services">
 			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
->>>>>>> master
 			<div class="row service_grids">
 			  <div class="col-md-3 text-center service_grid1">
 				 <i class="web"> </i>
-				 <h3 class="m_4">UT Drive</h3>
-				 <p class="m_5">Nearest to University....</p>
-				 <div class="service-btn"><a href="apartmentList">ApartmentList</a></div>
+				 <h3 class="m_4">Web Development</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
+				 <div class="service-btn"><a href="#">Read More</a></div>
 			  </div>
 			  <div class="col-md-3 text-center service_grid1">
 				 <i class="app"> </i>
-				 <h3 class="m_4">UT North</h3>
-				 <p class="m_5">Walkable distance to University....</p>
-				 <div class="service-btn"><a href="apartmentList">Read More</a></div>
+				 <h3 class="m_4">App Development</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
+				 <div class="service-btn"><a href="#">Read More</a></div>
 			  </div>
 			  <div class="col-md-3 text-center service_grid1">
 				 <i class="php"> </i>
-				 <h3 class="m_4">Ashford</h3>
-				 <p class="m_5">Newly built colony....</p>
+				 <h3 class="m_4">Php Development</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
 				 <div class="service-btn"><a href="#">Read More</a></div>
 			  </div>
 			  <div class="col-md-3 text-center">
 				 <i class="wordpress"> </i>
-				 <h3 class="m_4">Colonial Grand</h3>
-				 <p class="m_5">Next to Ashford...</p>
+				 <h3 class="m_4">Wordpress</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
 				 <div class="service-btn"><a href="#">Read More</a></div>
 			  </div>
 			</div>-->
 	    </div>
-<<<<<<< HEAD
-	  </div>	  
-=======
 	    <div class="projects" id="projects">
 	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
 	    </div>
@@ -261,24 +236,16 @@ Author URL: SSDI_08
 	  	</div>
 	  </div>
 	  
->>>>>>> master
 	  <div class="team" id="team">
 	  	<div class="container">
 	  	  <div class="m_3"><span class="left_line1"> </span><h3>Our Team</h3><span class="right_line1"> </span></div>
 		    <div class="horizontalSlider">
 			 <div class="jcarousel">
 				<ul>
-<<<<<<< HEAD
-			    	<li><figure><img src="${images}t1.jpg" class="img-responsive" alt=""/></figure>
-			    		<h4 class="m_5"><a href="#">Pritam Borate</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-=======
 			    	<li><figure><img src="${images}Pritam.jpg" class="img-responsive" alt=""/></figure>
 			    		<h4 class="m_5"><a href="#">Pritam Borate</a></h4>
 			    		<p class="m_6">Developer</p>
 			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
->>>>>>> master
 			    		<div class="social_networks">
 						  <i class="facebook"> </i>
 						  <i class="twitter"> </i>
@@ -289,10 +256,6 @@ Author URL: SSDI_08
 						  <div class="clear"> </div>
 						</div>-->
 					</li>
-<<<<<<< HEAD
-					<li><figure><img src="${images}t2.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Likesh</a></h4>
-=======
 					<li><figure><img src="${images}Khyati.jpg" class="img-responsive" alt=""/></figure>
 			        	<h4 class="m_5"><a href="#">Khyati Savakia</a></h4>
 			    		<p class="m_6">Designer</p><br></br>
@@ -407,7 +370,6 @@ Author URL: SSDI_08
 			        </li>
 					<li><figure><img src="${images}t2.jpg" class="img-responsive" alt=""/></figure>
 			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
->>>>>>> master
 			    		<p class="m_6">Ceo Founder</p>
 			    		<div class="project-btn"><a href="#">Look at me</a></div>
 			    		<div class="social_networks">
@@ -421,7 +383,7 @@ Author URL: SSDI_08
 						</div>
 			        </li>
 			    	<li><figure><img src="${images}t3.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Saranya</a></h4>
+			        <h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
 			    		<p class="m_6">Ceo Founder</p>
 			    		<div class="project-btn"><a href="#">Look at me</a></div>
 			    		<div class="social_networks">
@@ -435,7 +397,7 @@ Author URL: SSDI_08
 						</div>
 			        </li>
 					<li><figure><img src="${images}t4.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Khyati</a></h4>
+			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
 			    		<p class="m_6">Ceo Founder</p>
 			    		<div class="project-btn"><a href="#">Look at me</a></div>
 			    		<div class="social_networks">
@@ -447,17 +409,6 @@ Author URL: SSDI_08
 						  <i class="be"> </i>
 						  <div class="clear"> </div>
 						</div>
-<<<<<<< HEAD
-			        </li>		    	
-			    </ul>
-         </div>		
-	</div>	 	
-	<div class="footer">
-		<div class="container">
-			 <div class="footer-logo">
-	</div>
-	</div>
-=======
 			        </li>-->
 			    </ul>
          </div>
@@ -688,7 +639,6 @@ $(window).load(function() {
 			    <p>© 2016 SSDI_08</p>
 		    </div>
      </div>
->>>>>>> master
 	<script type="text/javascript">
 			$(document).ready(function() {
 			
@@ -705,7 +655,6 @@ $(window).load(function() {
 			});
 		</script>
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
-   
-	</div>
+   </div>
 </body>
 </html>
