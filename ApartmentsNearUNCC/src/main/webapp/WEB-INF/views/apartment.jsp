@@ -1,6 +1,7 @@
 <!-- Author: SSDI_08 Author URL: SSDI_08 -->
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -150,13 +151,15 @@
 		<div class="container col-sm-4">
 	  	<div class="panel-group" id="accordion">
         <div class="panel panel-default">
-        <c:forEach items="${apartments}" var="apartments">
+        <c:forEach items="${apartmentList}" var="apartments">
+        	<c:set var="id" value="${apartments.apartmentId}"></c:set>
+        	<c:set var="href">#${id }</c:set>
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">APARTMENT ${apartments.apartmentId}</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.apartmentId}</a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse">
+            <div id="${id}" class="panel-collapse collapse">
                 <div class="panel-body">
                 	<div class="table-responsive">          
   						<table class="table">

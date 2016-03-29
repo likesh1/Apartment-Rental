@@ -146,7 +146,7 @@ public class HomeController {
 		//apartment=apt.aparmentAll();
 		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList();
 		System.out.println("The apartment details"+apartment);
-		request.setAttribute("appartmenList", apartment);
+		request.setAttribute("apartmentList", apartment);
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
