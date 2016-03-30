@@ -221,7 +221,7 @@ Author URL: SSDI_08
 						        <td></td>
 						        <td></td>
 						        <td></td>
-						        <td><div class="project-btn"><a href="apartmentDetails?id=1">Apartment List</a></div></td>
+						        <td><div class="project-btn"><a href="apartmentDetails?id=UT Drive">Apartment List</a></div></td>
 						      </tr>
 						<!-- 
 						      <tr>
