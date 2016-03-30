@@ -137,84 +137,104 @@ Author URL: SSDI_08
    		     </script> 	           	      
       </div>
 	</div>
+	<section>
+	<div>
 	<div class="main">	
 	  <div class="container">
 	   <div class="about" id="about">
 			
-<!-- 		
-	Copy pAste Code here for Details	  	     
--->
-		<!-- <div class="services" id="services">
-			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
-			<div class="row service_grids">
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="web"> </i>
-				 <h3 class="m_4">Web Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="app"> </i>
-				 <h3 class="m_4">App Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="php"> </i>
-				 <h3 class="m_4">Php Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center">
-				 <i class="wordpress"> </i>
-				 <h3 class="m_4">Wordpress</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			</div>-->
-	    </div>
-	    <div class="team" id="team">
+<div>
+		<div class="container col-sm-4" style="width:100%">
+	  	<div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+        
+        	<c:set var="id" value="${apartmentDetails.doorNo}"></c:set>
+        	<c:set var="href">#${id }</c:set>
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    APARTMENT ${apartmentDetails.doorNo}
+                </h4>
+            </div>
+           <!-- <div id="${id}" class="panel-collapse collapse">  -->
+                <div class="panel-body">
+                	<div class="table-responsive">    
+  						<table class="table" style="width:90%">
+						      <tr>
+						        <td>DEPOSIT AMOUNT:</td>
+						        <td>${apartmentDetails.depositAmt}</td>
+						        <td>RENT:</td>
+						        <td>${apartmentDetails.rent}</td>
+						      </tr>
+						      <tr>
+						        <td>AVAILABLE FROM:</td>
+						        <td>${apartmentDetails.availablityFrom}</td>
+						        <td>UTILITIES</td>
+						        <td><c:out value="${apartmentDetails.utilities}" /></td>
+						      </tr>
+						      <tr>
+						        <td>AREA</td>
+						        <td><c:out value="${apartmentDetails.area}" /></td>
+						        <td>STREET</td>
+						        <td><c:out value="${apartmentDetails.street}" /></td>
+						      </tr>
+						      <tr>
+						        <td>DOOR NUMBER</td>
+						        <td><c:out value="${apartmentDetails.doorNo}" /></td>
+						        <td>CITY</td>
+						        <td><c:out value="${apartmentDetails.city}" /></td>
+						      </tr>
+						      <tr>
+						        <td>NUMBER OF ROOMS</td>
+						        <td>${apartmentDetails.no_of_rooms}</td>
+						        <td>NUMBER OF BATHROOMS</td>
+						        <td>${apartmentDetails.no_of_bathroom}</td>
+						      </tr>
+						      <tr>
+						        <td>FLOORING</td>
+						        <td><c:out value="${apartmentDetails.flooring}" /></td>
+						        <td></td><td></td>
+						      </tr>
+						      <tr>
+						      <td></td><td></td><td></td>
+						        <td><div class="about-btn"><a href="#contactDetails">Contact Details</a></div></td>
+						        </tr>
+						  </table>
+						  </div>
+						</div>
+	            </div>  
+	         
+            </div>
+        </div>
+    </div>
+  </div>
+    </section>
+			
+		</div> 		
+	  	     
+
+		
+	   
+	    <div class="team" id="contactDetails">
 	  	<div class="container">
-	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact Details</h3><span class="right_line1"> </span></div>
+	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact</h3><span class="right_line1"> </span></div>
 		    <div class="horizontalSlider">
 			 <div class="jcarousel">
 				<ul>
 			    	<li>
-			    		<h4 class="m_5"><a href="#">Owner</a></h4>
-			    		<p class="m_6">Chandler Bing</p><br></br>
-			    		<p >Email me @ ChandlerBing@uncc.edu</p><br></br>
-			    		<p>Call me @ 704-000-5678</p>
+			    		<h4 class="m_5"><a href="#">${ownerDetails.oFirstName} ${ownerDetails.oLastName}</a></h4>
+			    		<p class="m_6">Owner</p><br></br>
+			    		<p >Email: ${ownerDetails.oEmail}</p><br></br>
+			    		<p>Call me @ ${ownerDetails.oPhoneNo}</p>
 			    	</li>
+			    	<c:forEach items="${tenantDetails}" var="tenants">
 			    	<li>
-			    		<h4 class="m_5"><a href="#">Tenant #1</a></h4>
-			    		<p class="m_6">Chandler Bing</p><br></br>
-			    		<p >Email me @ ChandlerBing@uncc.edu</p><br></br>
-			    		<p>Call me @ 704-000-5678</p>
+			    		<h4 class="m_5"><a href="#">${tenants.tfirstName} ${tenants.tlastName}</a></h4>
+			    		<p class="m_6">Tenant</p><br></br>
+			    		<p >Email: ${tenants.tEmail }</p><br></br>
+			    		<p>Call me @ ${tenants.tPhoneNo }</p>
 			    	</li>
-			    	<li>
-			    		<h4 class="m_5"><a href="#">Tenant #2</a></h4>
-			    		<p class="m_6">Chandler Bing</p><br></br>
-			    		<p >Email me @ ChandlerBing@uncc.edu</p><br></br>
-			    		<p>Call me @ 704-000-5678</p>
-			    	</li>
-			    	<li>
-			    		<h4 class="m_5"><a href="#">Tenant #3</a></h4>
-			    		<p class="m_6">Chandler Bing</p><br></br>
-			    		<p >Email me @ ChandlerBing@uncc.edu</p><br></br>
-			    		<p>Call me @ 704-000-5678</p>
-			    	</li>
-			    	<li>
-			    		<h4 class="m_5"><a href="#">Tenant #4</a></h4>
-			    		<p class="m_6">Chandler Bing</p><br></br>
-			    		<p >Email me @ ChandlerBing@uncc.edu</p><br></br>
-			    		<p>Call me @ 704-000-5678</p>
-			    	</li>
-			    	<li>
-			    		<h4 class="m_5"><a href="#">Tenant #5</a></h4>
-			    		<p class="m_6">Chandler Bing</p><br></br>
-			    		<p >Email me @ ChandlerBing@uncc.edu</p><br></br>
-			    		<p>Call me @ 704-000-5678</p>
-			    	</li>
+			    	
+			    	</c:forEach>
 			    </ul>
 			  </div>
 			  <div class="sliderControl">
