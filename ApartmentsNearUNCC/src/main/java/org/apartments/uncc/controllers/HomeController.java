@@ -171,7 +171,7 @@ public class HomeController {
 	 //ApartmentDaoImpl apt=new ApartmentDaoImpl();
 	 try {
 		//apartment=apt.aparmentAll();
-		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList(id);
+		 List<ApartmentDetailsBean> apartment=apartmentDetailsDelegate.getApartmentList(id);
 		System.out.println("The apartment details"+apartment);
 		request.setAttribute("apartmentList", apartment);
 	} catch (SQLException e) {
