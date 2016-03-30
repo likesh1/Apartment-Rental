@@ -160,6 +160,32 @@ public class HomeController {
 	 return model;
 
 	 }
+	
+	@RequestMapping(value = "/apartmentDetails", method = RequestMethod.GET)
+
+	 public ModelAndView getaparmentDetails(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="id", required=false) String id) {
+
+	 System.out.println("Controller Called"+id);
+
+	 
+	 //ApartmentDaoImpl apt=new ApartmentDaoImpl();
+	 try {
+		//apartment=apt.aparmentAll();
+		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList(id);
+		System.out.println("The apartment details"+apartment);
+		request.setAttribute("apartmentList", apartment);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 
+	 ModelAndView model = new ModelAndView("apartmentDetails");
+	 
+
+
+	 return model;
+
+	 }
 
 	@RequestMapping(value="/welcome", method = RequestMethod.GET)
 	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response)
