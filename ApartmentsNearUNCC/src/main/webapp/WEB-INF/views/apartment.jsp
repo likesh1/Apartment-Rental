@@ -189,8 +189,9 @@ Author URL: SSDI_08
         <div class="panel panel-default">
         <c:forEach items="${apartmentList}" var="apartments">
         	<c:set var="id" value="${apartments.doorNo}"></c:set>
+        	<c:set var="apt_id" value="${apartments.apartmentId}"></c:set>
         	<c:set var="href">#${id }</c:set>
-            
+            <c:set var="apartmentDetailshref">apartmentDetails?id=${apt_id }</c:set>
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.doorNo}</a>
@@ -221,7 +222,7 @@ Author URL: SSDI_08
 						        <td></td>
 						        <td></td>
 						        <td></td>
-						        <td><div class="project-btn"><a href="apartmentDetails?id=UT Drive">Apartment List</a></div></td>
+						        <td><div class="project-btn"><a href="${apartmentDetailshref }">Apartment List</a></div></td>
 						      </tr>
 						<!-- 
 						      <tr>

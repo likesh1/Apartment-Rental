@@ -4,6 +4,7 @@
 package org.apartments.uncc.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 
@@ -13,4 +14,5 @@ import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
  */
 public interface ApartmentDao {
 	public List<ApartmentDetailsBean> getApartmentList(String location);
+	public Map getApartmentDetails(int id);
 }

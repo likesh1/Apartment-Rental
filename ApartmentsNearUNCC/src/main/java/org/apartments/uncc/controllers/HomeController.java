@@ -5,10 +5,12 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apartments.uncc.delegate.ApartmentDetailsDelegate;
 import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
@@ -45,7 +47,8 @@ public class HomeController {
 	private RegistrationDelegate registrationDelegate;
 	@Autowired
 	private ApartmentListDelegate apartmentListDelegate;
-	
+	@Autowired
+	private ApartmentDetailsDelegate apartmentDetailsDelegate;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -165,20 +168,16 @@ public class HomeController {
 
 	 public ModelAndView getaparmentDetails(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="id", required=false) String id) {
 
-	 System.out.println("Controller Called"+id);
+	 System.out.println("apartmentDetailsController Called"+id);
 
 	 
-	 //ApartmentDaoImpl apt=new ApartmentDaoImpl();
-	 try {
-		//apartment=apt.aparmentAll();
-		 List<ApartmentDetailsBean> apartment=apartmentDetailsDelegate.getApartmentList(id);
-		System.out.println("The apartment details"+apartment);
-		request.setAttribute("apartmentList", apartment);
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	 
+	 //apartment=apt.aparmentAll();
+	 Map apartment=apartmentDetailsDelegate.getApartmentDetails(id);
+	 System.out.println("The apartment details"+apartment);
+	 request.setAttribute("apartmentDetails", apartment.get("ApartmentDetails"));
+	 request.setAttribute("ownerDetails", apartment.get("OwnerDetails"));
+	 request.setAttribute("tenantDetails", apartment.get("TenantDetails"));
+	 request.setAttribute("reviews", apartment.get("ReviewAndRatings"));
 	 ModelAndView model = new ModelAndView("apartmentDetails");
 	 
 

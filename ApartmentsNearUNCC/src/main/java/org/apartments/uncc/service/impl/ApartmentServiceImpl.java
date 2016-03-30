@@ -4,6 +4,7 @@
 package org.apartments.uncc.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apartments.uncc.dao.ApartmentDao;
 import org.apartments.uncc.dao.UserDao;
@@ -38,6 +39,13 @@ public class ApartmentServiceImpl implements ApartmentService {
 	public List<ApartmentDetailsBean> getApartmentList(String location) {
 		// TODO Auto-generated method stub
 		return apartmentDao.getApartmentList(location);
+	}
+
+
+	@Override
+	public Map getApartmentDetails(int id) {
+		// TODO Auto-generated method stub
+		return apartmentDao.getApartmentDetails(id);
 	}
 
 }

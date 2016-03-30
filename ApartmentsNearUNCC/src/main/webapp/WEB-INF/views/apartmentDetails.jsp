@@ -141,74 +141,9 @@ Author URL: SSDI_08
 	  <div class="container">
 	   <div class="about" id="about">
 			
-			  	     
-<div>
-		<div class="container col-sm-4" style="width:100%">
-	  	<div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-        <c:forEach items="${apartmentList}" var="apartments">
-        	<c:set var="id" value="${apartments.doorNo}"></c:set>
-        	<c:set var="href">#${id }</c:set>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.doorNo}</a>
-                </h4>
-            </div>
-            <div id="${id}" class="panel-collapse collapse">
-                <div class="panel-body">
-                	<div class="table-responsive">    
-  						<table class="table" style="width:90%">
-						      <tr>
-						        <td>DEPOSIT AMOUNT:</td>
-						        <td>${apartments.depositAmt}</td>
-						        <td>RENT:</td>
-						        <td>${apartments.rent}</td>
-						      </tr>
-						      <tr>
-						        <td>AVAILABLE FROM:</td>
-						        <td>${apartments.availablityFrom}</td>
-						        <td>UTILITIES</td>
-						        <td><c:out value="${apartments.utilities}" /></td>
-						      </tr>
-						      <tr>
-						        <td>AREA</td>
-						        <td><c:out value="${apartments.area}" /></td>
-						        <td>STREET</td>
-						        <td><c:out value="${apartments.street}" /></td>
-						      </tr>
-						      <tr>
-						        <td>DOOR NUMBER</td>
-						        <td><c:out value="${apartments.doorNo}" /></td>
-						        <td>CITY</td>
-						        <td><c:out value="${apartments.city}" /></td>
-						      </tr>
-						      <tr>
-						        <td>NUMBER OF ROOMS</td>
-						        <td>${apartments.no_of_rooms}</td>
-						        <td>NUMBER OF BATHROOMS</td>
-						        <td>${apartments.no_of_bathroom}</td>
-						      </tr>
-						      <tr>
-						        <td>FLOORING</td>
-						        <td><c:out value="${apartments.flooring}" /></td>
-						        <td></td><td></td>
-						      </tr>
-						      <tr>
-						      <td></td><td></td><td></td>
-						        <td><div class="about-btn"><a href="#team">Contact Details</a></div></td>
-						        </tr>
-						  </table>
-						  </div>
-						</div>
-	            </div>
-	          </c:forEach>
-            </div>
-        </div>
-    </div>
-  </div>
-    </section>
-			
-		</div>
+<!-- 		
+	Copy pAste Code here for Details	  	     
+-->
 		<!-- <div class="services" id="services">
 			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
 			<div class="row service_grids">

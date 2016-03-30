@@ -4,6 +4,7 @@
 package org.apartments.uncc.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 
@@ -14,5 +15,6 @@ import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 public interface ApartmentService {
 
 	List<ApartmentDetailsBean> getApartmentList(String location);
+	public Map getApartmentDetails(int id);
 	
 }
