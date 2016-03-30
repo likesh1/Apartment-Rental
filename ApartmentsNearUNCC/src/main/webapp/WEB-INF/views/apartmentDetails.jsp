@@ -329,33 +329,38 @@ Author URL: SSDI_08
 	  	  <table><tr><td><div>
 	  	  <tr>
 	  	  <td>
-	  	  Average Rating:
+	  	  Rating:
 	  	  </td>
 	  	  <td>
 	  	  Comments:
 	  	  </td>
 	  	  </tr>
+	  	  <c:forEach items="${reviews}" var="review">
+	  	  <c:set var="Rating" value="${review.rating }"></c:set>
 	  	  <tr>
 	  	  <td>
 	  	  <div class="stars">
   					<form action="">
-					    <input class="star star-5" id="star-5" type="radio" name="star"/>
+					    <input class="star star-5" id="star-5" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 5}">checked="checked"</c:if> />
 					    <label class="star star-5" for="star-5"></label>
-					    <input class="star star-4" id="star-4" type="radio" name="star"/>
+					    <input class="star star-4" id="star-4" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 4}">checked="checked"</c:if> />
 					    <label class="star star-4" for="star-4"></label>
-					    <input class="star star-3" id="star-3" type="radio" name="star"/>
+					    <input class="star star-3" id="star-3" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 3}">checked="checked"</c:if> />
 					    <label class="star star-3" for="star-3"></label>
-					    <input class="star star-2" id="star-2" type="radio" name="star"/>
+					    <input class="star star-2" id="star-2" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 2}">checked="checked"</c:if> />
 					    <label class="star star-2" for="star-2"></label>
-					    <input class="star star-1" id="star-1" type="radio" name="star"/>
+					    <input class="star star-1" id="star-1" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 1}">checked="checked"</c:if> />
 					    <label class="star star-1" for="star-1"></label>
 					 </form>
 				</div>
 	  	  </td>
 	  	  <td>
-	  	  <p> Its a clean Home...!!!</br>Its a good ventilated Home!!Best place to live!!</br>Home away from home!!</br>Like a palace at low cost</p>
+	  	  <p> ${review.comments }</p>
 	  	  </td>
-	  	  </tr></div></td></tr><tr><td>&nbsp</td></tr></tr><td>&nbsp</br></td></tr>
+	  	  </tr>
+	  	  </c:forEach>
+	  	  </div></td></tr>
+	  	  <tr><td>&nbsp</td></tr><tr><td>&nbsp</br></td></tr>
 	  	  <tr><td><div>
 	  	  <tr>
 	  	  <td>Add your Rating</td>
@@ -365,16 +370,16 @@ Author URL: SSDI_08
 	  	  <td>
 	  	  		<div class="stars">
   					<form action="">
-					    <input class="star star-5" id="star-5" type="radio" name="star"/>
-					    <label class="star star-5" for="star-5"></label>
-					    <input class="star star-4" id="star-4" type="radio" name="star"/>
-					    <label class="star star-4" for="star-4"></label>
-					    <input class="star star-3" id="star-3" type="radio" name="star"/>
-					    <label class="star star-3" for="star-3"></label>
-					    <input class="star star-2" id="star-2" type="radio" name="star"/>
-					    <label class="star star-2" for="star-2"></label>
-					    <input class="star star-1" id="star-1" type="radio" name="star"/>
-					    <label class="star star-1" for="star-1"></label>
+					    <input class="star star-5" id="star-05" type="radio" name="star"/>
+					    <label class="star star-5" for="star-05"></label>
+					    <input class="star star-4" id="star-04" type="radio" name="star"/>
+					    <label class="star star-4" for="star-04"></label>
+					    <input class="star star-3" id="star-03" type="radio" name="star"/>
+					    <label class="star star-3" for="star-03"></label>
+					    <input class="star star-2" id="star-02" type="radio" name="star"/>
+					    <label class="star star-2" for="star-02"></label>
+					    <input class="star star-1" id="star-01" type="radio" name="star"/>
+					    <label class="star star-1" for="star-01"></label>
 					 </form>
 				</div>
 	  	  </td>
