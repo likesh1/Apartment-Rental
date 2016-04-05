@@ -15,6 +15,8 @@
 
 	<bean id="userService" class="org.apartments.uncc.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
+		<property name="codeGenerator" ref="codeGenerator"></property>
+		<property name="sendMail" ref="sendMail"></property>
 	</bean>
 
 	<bean name="userDao" class="org.apartments.uncc.dao.impl.UserDaoImpl">
@@ -28,6 +30,11 @@
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
+	
+	<bean id="codeGenerator" class="org.apartments.uncc.utilities.impl.CodeGeneratorImpl">
+	
+	</bean>
+	
 	
 		
 	<bean id="apartmentListDelegate" class="org.apartments.uncc.delegate.ApartmentListDelegate">
@@ -45,5 +52,21 @@
 	
 	<bean name="apartmentDetailsDelegate" class="org.apartments.uncc.delegate.ApartmentDetailsDelegate">
 		<property name="apartmentService" ref="apartmentService"></property>
+	</bean>
+	
+	
+	<bean name="sendMail" class="org.apartments.uncc.utilities.impl.SendEmailUtilityImpl">
+		<property name="mailSender" ref="mailSender"></property>
+		<property name="templateMessage" ref="templateMessage"></property>
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="127.0.0.1"/>
+	</bean>
+	
+	<!-- this is a template message that we can pre-load with default state -->
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+	    <property name="from" value="customerservice_offcampusliving@apts.com"/>
+	    <property name="subject" value="Welcome to off campus living!!"/>
 	</bean>
 </beans>

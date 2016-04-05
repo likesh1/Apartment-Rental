@@ -15,9 +15,11 @@ import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
+import org.apartments.uncc.utilities.impl.SendEmailUtilityImpl;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 import org.apartments.uncc.viewBeans.LoginBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
+import org.apartments.uncc.viewBeans.UserDetailsBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +29,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
+@SessionAttributes("user")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -49,6 +53,8 @@ public class HomeController {
 	private ApartmentListDelegate apartmentListDelegate;
 	@Autowired
 	private ApartmentDetailsDelegate apartmentDetailsDelegate;
+	@Autowired
+	private SendEmailUtilityImpl sendEmailUtilityImpl;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -63,6 +69,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("loginBean", loginBean);
 		model.addAttribute("registrationBean", registrationBean);
+		model.addAttribute("isSignupError",false);
 		return "home";
 	}
 	
@@ -75,6 +82,7 @@ public class HomeController {
 				boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
 				if(isValidUser)
 				{
+						
 						System.out.println("User Login Successful");
 						request.setAttribute("loggedInUser", loginBean.getUsername());
 						model = new ModelAndView("welcome");
@@ -88,6 +96,7 @@ public class HomeController {
 					request.setAttribute("registrationBean", registrationBean);
 						model = new ModelAndView("home");
 						request.setAttribute("loginErrorMessage", "Invalid credentials!!");
+						request.setAttribute("isSignupError",false);
 				}
 
 		}
@@ -109,9 +118,17 @@ public class HomeController {
 				boolean isValidRegistration = registrationDelegate.isValidRegistration(registrationBean);
 				if(isValidRegistration)
 				{
+						UserDetailsBean userDetails=new UserDetailsBean();
+						userDetails.setVerificationCode(registrationDelegate.getVerificationCode());
+						System.out.println("Verification code is : "+userDetails.getVerificationCode());
+						userDetails.setfName(registrationBean.getFname());
+						userDetails.setUsername(registrationBean.getEmail());
+						registrationDelegate.sendVerificationMail(userDetails);
+						//sendEmailUtilityImpl.sendEmail();
 						System.out.println("User Registration Successful");
-						request.setAttribute("loggedInUser", registrationBean.getFname());
-						model = new ModelAndView("welcome");
+						//request.setAttribute("userDetails", userDetails);
+						model = new ModelAndView("verification");
+						model.addObject("user", userDetails);
 				}
 				
 
@@ -123,7 +140,7 @@ public class HomeController {
 			model = new ModelAndView("home");
 			//model.addAttribute("serverTime", formattedDate );
 			request.setAttribute("loginBean", loginBean);
-			
+			request.setAttribute("isSignupError",true);
 			request.setAttribute("registrationErrorMessage", ieie.getMessage()+registrationBean.getEmail());
 		}
 		catch(Exception e)
@@ -186,15 +203,48 @@ public class HomeController {
 
 	 }
 
-	@RequestMapping(value="/welcome", method = RequestMethod.GET)
-	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value="/welcome", method = RequestMethod.POST)
+	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") UserDetailsBean userDetails)
 	{
-		ModelAndView model= new ModelAndView("welcome");
-
+		//HttpServletRequest request, HttpServletResponse response, , @RequestParam(value="otp", required=false) String otp,
+		ModelAndView model= new ModelAndView("verification");
+		System.out.println("OTP is : "+request.getParameter("otp")+"\nSession OTP is: "+userDetails.getVerificationCode());
+		int userOtp=Integer.parseInt(request.getParameter("otp"));
+		if(userOtp==(userDetails.getVerificationCode()))
+		{	
+			model= new ModelAndView("welcome");
+			System.out.println("OTP Matches");
+		}
 		return model;
 		
 	}
 
-	
+	@RequestMapping(value="/passwordRecovery.do" , method ={ RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView recoverPassword(HttpServletRequest request, HttpServletResponse response)
+	{
+		ModelAndView model= new ModelAndView("passwordrecovery");
+		if(request.getParameter("email")==null)
+		{
+			request.setAttribute("isValidEmail", false);
+			request.setAttribute("isCorrectOtp", false);
+		}
+		else if(request.getParameter("otp")==null)
+		{
+			if(!(request.getParameter("email")==null))
+				request.setAttribute("isValidEmail",true);
+			request.setAttribute("isCorrectOtp", false);
+		}
+		else if((request.getParameter("otp")).length()>0)
+		{
+			request.setAttribute("isCorrectOtp", true);
+			request.setAttribute("isValidEmail", true);
+			
+		}
+		else if((request.getParameter("email")).length()>0)
+		{
+			request.setAttribute("isValidEmail", true);
+		}
+		return model;
+	}
 	
 }

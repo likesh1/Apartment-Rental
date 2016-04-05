@@ -72,6 +72,7 @@ public class UserDaoImpl implements UserDao {
 				pstmt.setString(4, registratinBean.getPassword());
 				pstmt.executeUpdate();
 				System.out.println("---------Inserted In DB----------");
+				
 				return true;
 			}
 		} catch (SQLException e) {

@@ -35,6 +35,10 @@
 				<div class="box-header">
 					<h2>Sign In</h2>
 				</div>
+				<select>
+				  <option value="student">Student</option>
+				  <option value="owner">Owner</option>
+				</select><br/>
 				<form:label for="username" path="username">Username</form:label>
 				<br/>
 				<form:input type="text" id="username" name="username" path="username"/>
@@ -46,36 +50,45 @@
 				<label id="ErrorMessage">${loginErrorMessage }</label><br/>
 				<button type="submit" id="submit">Sign In</button>
 				<input type="button" value="Sign Up" id="signup" onclick=""/>
-				<br/>
-				<a href="#"><p class="small">Forgot your password?</p></a>
+				
+				<a href="passwordRecovery.do"><p class="small">Forgot your password?</p></a>
 				<a href="welcome"><p class="small">I'll do it later</p></a>
 			</form:form>
 		</div>
-		<div id="Registration" class="login-box animated fadeInUp">
+		<div id="Registration" class="registration-box animated fadeInUp">
 			<form:form name="RegistrationForm" method="post" onsubmit="return validateRegistration(this);" action="register.do" modelAttribute="registrationBean">
 				<div class="box-header">
 					<h2>Sign Up</h2>
 				</div>
-				<form:label for="FName" path="fname">firstName</form:label>
-				<form:input type="text" id="fname" name="fname" path="fname"/>
-				<br/>
-				<form:label for="LName" path="lname">lastname</form:label>
-				<form:input type="text" id="lname" name="lname" path="lname"/>
-				<br/>
-				<form:label for="Email" path="email">email id</form:label>
-				<form:input type="text" id="email" name="email" path="email"/>
-				<br/>
-				<form:label for="Password" path="password">Password</form:label>
-				<form:input type="password" id="password" name="password" path="password"/>
-				<br/>
-				<label for="Password" >Password</label>
-				<input type="password" id="repeat_password" name="repeat_password" />
-				<br/>
+				<table align="center"><tr><td>
+				<form:label for="FName" path="fname">firstName</form:label></td><td>
+				<form:input type="text" id="fname" name="fname" path="fname"/></td><td>
+				
+				<form:label for="LName" path="lname">lastname</form:label></td><td>
+				<form:input type="text" id="lname" name="lname" path="lname"/></td>
+				</tr><tr><td>
+				<form:label for="Email" path="email">email id</form:label></td><td>
+				<form:input type="text" id="email" name="email" path="email"/></td><td>
+
+				<label for="type">Login As</label></td><td>
+				<select>
+				  <option value="student">Student</option>
+				  <option value="owner">Owner</option>
+				</select></td>
+				</tr><tr><td>
+				<form:label for="Password" path="password">Password</form:label></td><td>
+				<form:input type="password" id="password" name="password" path="password"/></td><td>
+				<label for="Password" >Repeat Password</label></td><td>
+				<input type="password" id="repeat_password" name="repeat_password" /></td>
+				</tr>
+				</table>
+				
 				<label id="registrationErrorMessage">${registrationErrorMessage }</label><br/>
 				<button type="submit" id="submit">Sign Up</button>
-				<br/>
-				<a href="#"><p class="small">Forgot your password?</p></a>
+				<input type="button" value="Sign In" id="signin" onclick=""/>
+				<a href="passwordRecovery.do"><p class="small">Forgot your password?</p></a>
 				<a href="welcome"><p class="small">I'll do it later</p></a>
+				
 			</form:form>
 		</div>
 	</div>
@@ -83,9 +96,16 @@
 
 <script>
 	$(document).ready(function () {
+		var isSignupError=${isSignupError};
     	$('#logo').addClass('animated fadeInDown');
     	$("input:text:visible:first").focus();
-    	$('#Registration').hide();
+    	
+    	if(isSignupError){
+    		$('#Login').hide();
+    	}
+    	else{
+    		$('#Registration').hide();
+    	}
 	});
 	$('#username').focus(function() {
 		$('label[for="username"]').addClass('selected');
@@ -102,6 +122,10 @@
 	$('#signup').click(function(){
 		$('#Login').hide();
 		$('#Registration').show();
+	});
+	$('#signin').click(function(){
+		$('#Registration').hide();
+		$('#Login').show();
 	});
 </script>
 
