@@ -203,8 +203,8 @@ public class HomeController {
 
 	 }
 
-	@RequestMapping(value="/welcome", method = RequestMethod.POST)
-	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") UserDetailsBean userDetails)
+	@RequestMapping(value="/welcome", method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response,@ModelAttribute(value="user") UserDetailsBean userDetails)
 	{
 		//HttpServletRequest request, HttpServletResponse response, , @RequestParam(value="otp", required=false) String otp,
 		ModelAndView model= new ModelAndView("verification");
@@ -215,6 +215,16 @@ public class HomeController {
 			model= new ModelAndView("welcome");
 			System.out.println("OTP Matches");
 		}
+		return model;
+		
+	}
+	
+	@RequestMapping(value="/welcomeGuest", method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView welcomeGuest(HttpServletRequest request, HttpServletResponse response)
+	{
+		//HttpServletRequest request, HttpServletResponse response, , @RequestParam(value="otp", required=false) String otp,
+		ModelAndView model= new ModelAndView("welcome");
+			
 		return model;
 		
 	}

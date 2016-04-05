@@ -52,7 +52,7 @@
 				<input type="button" value="Sign Up" id="signup" onclick=""/>
 				
 				<a href="passwordRecovery.do"><p class="small">Forgot your password?</p></a>
-				<a href="welcome"><p class="small">I'll do it later</p></a>
+				<a href="welcomeGuest"><p class="small">I'll do it later</p></a>
 			</form:form>
 		</div>
 		<div id="Registration" class="registration-box animated fadeInUp">
@@ -87,7 +87,7 @@
 				<button type="submit" id="submit">Sign Up</button>
 				<input type="button" value="Sign In" id="signin" onclick=""/>
 				<a href="passwordRecovery.do"><p class="small">Forgot your password?</p></a>
-				<a href="welcome"><p class="small">I'll do it later</p></a>
+				<a href="welcomeGuest"><p class="small">I'll do it later</p></a>
 				
 			</form:form>
 		</div>
