@@ -36,7 +36,6 @@ import org.springframework.beans.factory.*;
 
 
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/test/resources/root-context-test.xml"})
-
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestUserDao {
 	@Autowired

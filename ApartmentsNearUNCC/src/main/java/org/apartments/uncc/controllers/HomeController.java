@@ -223,7 +223,7 @@ public class HomeController {
 	public ModelAndView welcomeGuest(HttpServletRequest request, HttpServletResponse response)
 	{
 		//HttpServletRequest request, HttpServletResponse response, , @RequestParam(value="otp", required=false) String otp,
-		ModelAndView model= new ModelAndView("welcome");
+		ModelAndView model= new ModelAndView("welcomeGuest");
 			
 		return model;
 		
