@@ -8,18 +8,25 @@ import static org.junit.Assert.*;
 import java.util.Locale;
 
 import org.apartments.uncc.controllers.HomeController;
+import org.apartments.uncc.viewBeans.LoginBean;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.server.MockMvc;
+import org.springframework.test.web.server.setup.MockMvcBuilders;
+import static org.springframework.test.web.server.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.server.result.MockMvcResultMatchers.*;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,12 +47,16 @@ public class TestController {
 	
 	@Autowired
     ApplicationContext applicationContext;
-    @Autowired
+    @InjectMocks
+	@Autowired
 	HomeController homeController;
     private MockHttpServletRequest request;
     private MockHttpServletResponse response;
     private HandlerAdapter handlerAdapter;
     private Locale locale;
+    private LoginBean loginBean;
+    private MockMvc mockMvc;
+    
     //private Model model;
      
 	@BeforeClass
@@ -64,9 +75,13 @@ public class TestController {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		 MockitoAnnotations.initMocks(this);
 		request=new MockHttpServletRequest();
 		response= new MockHttpServletResponse();
 		handlerAdapter=new AnnotationMethodHandlerAdapter();
+		loginBean=new LoginBean();
+		mockMvc=MockMvcBuilders.standaloneSetup(homeController).build();
+		//handlerAdapter.
 	}
 
 	/**
@@ -87,6 +102,30 @@ public class TestController {
 		final ModelAndView model=handlerAdapter.handle(request, response, homeController);
 		assertEquals("welcomeGuest", model.getViewName());
 		//fail("Not yet implemented");
+	}
+	
+	/**
+	 * Test method for {@link org.apartments.uncc.controllers.HomeController#login.do(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletRequest, org.apartments.uncc.viewBeans.LoginBean)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testLoginDoForValidLoginDetails() throws Exception{
+		loginBean.setUsername("pborate@uncc.edu");
+		loginBean.setPassword("pritam");
+		//final ModelAndView model=handlerAdapter.handle(request, response,homeController);
+		mockMvc.perform(post("/login.do").flashAttr("loginBean", loginBean)).andExpect(status().isOk())
+        .andExpect(view().name("welcome"));
+
+	}
+	
+	@Test
+	public void testLoginDoForInValidLoginDetails() throws Exception{
+		loginBean.setUsername("pborate1@uncc.edu");
+		loginBean.setPassword("pritam");
+		//final ModelAndView model=handlerAdapter.handle(request, response,homeController);
+		mockMvc.perform(post("/login.do").flashAttr("loginBean", loginBean)).andExpect(status().isOk())
+        .andExpect(view().name("home"));
+
 	}
 
 }

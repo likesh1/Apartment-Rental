@@ -254,60 +254,7 @@ Author URL: SSDI_08
          
          
             
-	    <div class="projects" id="projects">
-	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
-	    </div>
-	  </div> 
-	  <div class="project_top">
-	  	<div class="container">
-	  		<div class="row">
-	  			<div class="col-md-3 project_grid">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>UT Drive</h3>
-				  	<!-- <p>Project Status</p>
-				  	<i class="dating"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList?Location=UT Drive">Apartment List</a></div>
-				  </div>
-				</div>
-	  			<div class="col-md-3 project_grid">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>UT North</h3>
-				  <!-- 	<p class="blue">Project Status</p>
-				  	<i class="wedding"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
-				  </div>
-				</div>
-	  			<div class="col-md-3 project_grid">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>Ashford Greens</h3>
-				  <!-- 	<p class="green">Project Status</p>
-				  	<i class="travel"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
-				  </div>
-				</div>
-	  			<div class="col-md-3">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>Colonial Grand</h3>
-				  <!-- 	<p class="dark">Project Status</p>
-				  	<i class="ecommerce"> </i>-->                                       
-				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
-				  </div>
-				</div>
-	  		</div>
-	  	</div>
-	  </div>
+	    
 	  
 	  
 	<!-- <div class="sliderControl">
@@ -398,6 +345,61 @@ Author URL: SSDI_08
 	  		 	
 					</div>
 </div>
+
+<div class="projects" id="projects">
+	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
+	    </div>
+	  </div> 
+	  <div class="project_top">
+	  	<div class="container">
+	  		<div class="row">
+	  			<div class="col-md-3 project_grid">
+	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+				  </div></a>
+				  <div class="project_desc">
+				  	<h3>UT Drive</h3>
+				  	<!-- <p>Project Status</p>
+				  	<i class="dating"> </i>-->
+				  	 <div class="project-btn"><a href="apartmentList?Location=UT Drive">Apartment List</a></div>
+				  </div>
+				</div>
+	  			<div class="col-md-3 project_grid">
+	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+				  </div></a>
+				  <div class="project_desc">
+				  	<h3>UT North</h3>
+				  <!-- 	<p class="blue">Project Status</p>
+				  	<i class="wedding"> </i>-->
+				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
+				  </div>
+				</div>
+	  			<div class="col-md-3 project_grid">
+	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+				  </div></a>
+				  <div class="project_desc">
+				  	<h3>Ashford Greens</h3>
+				  <!-- 	<p class="green">Project Status</p>
+				  	<i class="travel"> </i>-->
+				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
+				  </div>
+				</div>
+	  			<div class="col-md-3">
+	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+				  </div></a>
+				  <div class="project_desc">
+				  	<h3>Colonial Grand</h3>
+				  <!-- 	<p class="dark">Project Status</p>
+				  	<i class="ecommerce"> </i>-->                                       
+				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
+				  </div>
+				</div>
+	  		</div>
+	  	</div>
+	  </div>
 
 	  			  <!-- <div><ul class="news_list">
 	  			     <li class="date">
