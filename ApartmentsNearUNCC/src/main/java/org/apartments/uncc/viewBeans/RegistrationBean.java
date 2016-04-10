@@ -12,7 +12,14 @@ public class RegistrationBean {
 	private String lname;
 	private String email;
 	private String password;
+	private String userRole;
 	
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
 	public String getFname() {
 		return fname;
 	}

@@ -53,9 +53,17 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean isValidRegistration(RegistrationBean registratinBean) throws SQLException, InvalidEmailIdException{
 		// TODO Auto-generated method stub
-		System.out.println("------Inside userDao-------");
-		String query = "Select * from students where semail = ?";
-		PreparedStatement pstmt;
+		System.out.println("------Inside userDao-------"+registratinBean.getUserRole());
+		String query = "Select * from login where email_id = ?";
+		String detailedQuery = "";
+		if(registratinBean.getUserRole().equals("owner"))
+		{
+			detailedQuery="insert into ApartmentOwner(oFirstName,oLastName,oEmail,oPassword) values (?,?,?,?)";
+		}
+		else
+			detailedQuery="insert into students(firstName,lastName,sEmail,sPassword) values (?,?,?,?)";
+		
+		PreparedStatement pstmtLogin,pstmt;
 		try {
 			pstmt = dataSource.getConnection().prepareStatement(query);
 			pstmt.setString(1, registratinBean.getEmail());
@@ -64,8 +72,13 @@ public class UserDaoImpl implements UserDao {
 				throw new InvalidEmailIdException("Email Id already exist, Please Use another email id.");
 			else
 			{
-				query="insert into students(firstName,lastName,sEmail,sPassword) values (?,?,?,?)";
-				pstmt = dataSource.getConnection().prepareStatement(query);
+				//query="insert into students(firstName,lastName,sEmail,sPassword) values (?,?,?,?)";
+				pstmtLogin = dataSource.getConnection().prepareStatement("insert into login(email_id,password,userRole) values (?,?,?)");
+				pstmtLogin.setString(1, registratinBean.getEmail());
+				pstmtLogin.setString(2, registratinBean.getPassword());
+				pstmtLogin.setString(3, registratinBean.getUserRole());
+				pstmtLogin.executeUpdate();
+				pstmt = dataSource.getConnection().prepareStatement(detailedQuery);
 				pstmt.setString(1, registratinBean.getFname());
 				pstmt.setString(2, registratinBean.getLname());
 				pstmt.setString(3, registratinBean.getEmail());

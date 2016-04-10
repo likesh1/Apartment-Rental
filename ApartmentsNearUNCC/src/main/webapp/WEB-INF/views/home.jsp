@@ -70,11 +70,11 @@
 				<form:label for="Email" path="email">email id</form:label></td><td>
 				<form:input type="text" id="email" name="email" path="email"/></td><td>
 
-				<label for="type">Login As</label></td><td>
-				<select>
-				  <option value="student">Student</option>
-				  <option value="owner">Owner</option>
-				</select></td>
+				<form:label for="type" path="userRole">Registrer As</form:label></td><td>
+				<form:select  path="userRole">
+				  <form:option value="student" path="userRole">Student</form:option>
+				  <form:option value="owner" path="userRole">Owner</form:option>
+				</form:select></td>
 				</tr><tr><td>
 				<form:label for="Password" path="password">Password</form:label></td><td>
 				<form:input type="password" id="password" name="password" path="password"/></td><td>
