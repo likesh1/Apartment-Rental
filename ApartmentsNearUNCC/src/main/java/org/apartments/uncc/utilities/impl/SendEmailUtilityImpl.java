@@ -77,9 +77,10 @@ public class SendEmailUtilityImpl implements ISendEmail {
 		mailSender.send(message);*/
 		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
         msg.setTo(userDetails.getUsername());
+        msg.setReplyTo("donot_reply@liveoffcampus.com");
         msg.setText(
             "Dear "+userDetails.getfName()
-                + ",\n\n thank you for registering with uncc.liveoffcampus.com \n"
+                + ",\n\nThank you for registering with uncc.liveoffcampus.com \n"
                 + "Your OTP for verification is: "+userDetails.getVerificationCode()+"\n"
                 + "Please use this code to verify your email id. "
                 + "We are glad to have you!!!\n\n"
