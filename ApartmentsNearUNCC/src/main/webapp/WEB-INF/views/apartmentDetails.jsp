@@ -213,7 +213,6 @@ Author URL: SSDI_08
 			
 		</div> 		
 	  	     
-	
 		<!-- The Modal--> 
 <div id="myModal" class="modal">
 
@@ -242,6 +241,7 @@ Author URL: SSDI_08
   </div>
 
 </div>
+	
 	   
 	    <div class="team" id="team">
 	  	<div class="container">
