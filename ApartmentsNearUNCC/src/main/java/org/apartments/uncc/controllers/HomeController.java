@@ -2,6 +2,7 @@ package org.apartments.uncc.controllers;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -9,16 +10,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apartments.uncc.delegate.ApartmentDetailsDelegate;
 import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
+import org.apartments.uncc.delegate.MailDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
 import org.apartments.uncc.exceptions.InvalidCredentialsException;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
 import org.apartments.uncc.utilities.impl.SendEmailUtilityImpl;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
+import org.apartments.uncc.viewBeans.FilterBean;
 import org.apartments.uncc.viewBeans.LoginBean;
+import org.apartments.uncc.viewBeans.MailBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 import org.slf4j.Logger;
@@ -56,6 +61,8 @@ public class HomeController {
 	private ApartmentDetailsDelegate apartmentDetailsDelegate;
 	@Autowired
 	private SendEmailUtilityImpl sendEmailUtilityImpl;
+	@Autowired
+	private MailDelegate mailDelegate;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -159,29 +166,58 @@ public class HomeController {
 
 	@RequestMapping(value = "/apartmentList", method = RequestMethod.GET)
 
-	 public ModelAndView getaparments(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="Location", required=false) String location) {
+	public ModelAndView getaparments(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="Location", required=false) String location, HttpSession session) {
 
-	 System.out.println("Controller Called"+location);
+		System.out.println("Controller Called"+location);
 
-	 
-	 //ApartmentDaoImpl apt=new ApartmentDaoImpl();
-	 try {
-		//apartment=apt.aparmentAll();
-		 List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList(location);
-		System.out.println("The apartment details"+apartment);
-		request.setAttribute("apartmentList", apartment);
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+
+		//ApartmentDaoImpl apt=new ApartmentDaoImpl();
+		try {
+			//apartment=apt.aparmentAll();
+			List<ApartmentDetailsBean> apartment=apartmentListDelegate.getApartmentList(location);
+			System.out.println("The apartment details"+apartment);
+			request.setAttribute("apartmentList", apartment);
+
+			session.setAttribute("apartmentsActualList", apartment);
+
+			FilterBean filters=new FilterBean();
+
+			List<String> rentValues = new ArrayList<String>();
+			rentValues.add("$200 - $300");
+			rentValues.add("$300 - $400");
+			rentValues.add("$400 - $500");
+			rentValues.add("above $500");
+
+			List<String> roomValues = new ArrayList<String>();
+			roomValues.add("1");
+			roomValues.add("2");
+			roomValues.add("3");
+			roomValues.add("4");
+
+			List<String> bathroomValues = new ArrayList<String>();
+			bathroomValues.add("Attached");
+			bathroomValues.add("Common");
+
+			List<String> floor = new ArrayList<String>();
+			floor.add("Carpet");
+			floor.add("Wooden");
+
+			request.setAttribute("filterBean", filters);
+			request.setAttribute("rentValues", rentValues);
+			request.setAttribute("roomValues", roomValues);
+			request.setAttribute("bathroomValues", bathroomValues);
+			request.setAttribute("floorValues", floor);	
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		ModelAndView model = new ModelAndView("apartment");
+		return model;
+
 	}
-	 
-	 ModelAndView model = new ModelAndView("apartment");
-	 
-
-
-	 return model;
-
-	 }
 	
 	@RequestMapping(value = "/apartmentDetails", method = RequestMethod.GET)
 
@@ -191,12 +227,14 @@ public class HomeController {
 
 	 
 	 //apartment=apt.aparmentAll();
+	 MailBean mailBean=new MailBean();
 	 Map apartment=apartmentDetailsDelegate.getApartmentDetails(id);
 	 System.out.println("The apartment details"+apartment);
 	 request.setAttribute("apartmentDetails", apartment.get("ApartmentDetails"));
 	 request.setAttribute("ownerDetails", apartment.get("OwnerDetails"));
 	 request.setAttribute("tenantDetails", apartment.get("TenantDetails"));
 	 request.setAttribute("reviews", apartment.get("ReviewAndRatings"));
+	 request.setAttribute("MailBean", mailBean);
 	 ModelAndView model = new ModelAndView("apartmentDetails");
 	 
 
@@ -204,6 +242,34 @@ public class HomeController {
 	 return model;
 
 	 }
+	
+	@RequestMapping(value="/sendmail.do", method = RequestMethod.POST)
+	public ModelAndView usermail(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("MailBean")MailBean mailBean)
+	{
+		ModelAndView model= null;
+		try
+		{
+			
+			
+						mailBean.setMailbody(mailBean.getMailbody());
+						mailBean.setTo(mailBean.getTo());
+						System.out.println("MSG : "+request.getParameter("mailbody"));
+						System.out.println("InsideMailMapping!");
+						mailDelegate.sendEnquiryMail(mailBean);
+						System.out.println("InsideMailMapping2!");
+						//request.setAttribute("userDetails", userDetails);
+						model = new ModelAndView("apartmentDetails");
+						
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return model ;
+		
+	}
 
 	@RequestMapping(value="/validateUser", method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response,@ModelAttribute(value="user") UserDetailsBean userDetails)
@@ -261,6 +327,102 @@ public class HomeController {
 			request.setAttribute("isValidEmail", true);
 		}
 		return model;
+	}
+	
+	@RequestMapping(value="/filterApts", method = RequestMethod.POST)
+	public ModelAndView executeFilter(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("filterBean")FilterBean filterBean)
+	{
+		ModelAndView model= null;		
+
+		List<String> rentValues = new ArrayList<String>();
+		rentValues.add("$200 - $300");
+		rentValues.add("$300 - $400");
+		rentValues.add("$400 - $500");
+		rentValues.add("above $500");
+
+		List<Integer> roomValues = new ArrayList<Integer>();
+		roomValues.add(1);
+		roomValues.add(2);
+		roomValues.add(3);
+		roomValues.add(4);
+
+		List<String> bathroomValues = new ArrayList<String>();
+		bathroomValues.add("Attached");
+		bathroomValues.add("Common");
+
+		List<String> floor = new ArrayList<String>();
+		floor.add("Carpet");
+		floor.add("Wooden");
+
+		request.setAttribute("rentValues", rentValues);
+		request.setAttribute("roomValues", roomValues);
+		request.setAttribute("bathroomValues", bathroomValues);
+		request.setAttribute("floorValues", floor);
+
+		System.out.println("khyati");
+		HttpSession session=request.getSession();
+		@SuppressWarnings("unchecked")
+		List<ApartmentDetailsBean> apartments=(List<ApartmentDetailsBean>) session.getAttribute("apartmentsActualList");
+		List<ApartmentDetailsBean> filteredApts= new ArrayList<ApartmentDetailsBean>();
+		for (int i=0; i<apartments.size();i++)
+		{
+			System.out.println(apartments.get(i).getDoorNo());
+			if(!(filterBean.getRoomFilter()==null))
+			{
+				System.out.println("---First----");
+				if (filterBean.getRoomFilter().contains(apartments.get(i).getno_of_rooms()))
+				{
+					if(!(filterBean.getBathFilter()==null))
+					{
+						if (filterBean.getBathFilter().contains(apartments.get(i).getType_bathroom()))
+						{
+							if(!(filterBean.getFloorFilter()==null))
+							{
+								if (filterBean.getFloorFilter().contains(apartments.get(i).getFlooring()))
+								{
+									filteredApts.add(apartments.get(i));
+								}
+							}
+							else
+								filteredApts.add(apartments.get(i));
+						}
+					}
+					else
+						filteredApts.add(apartments.get(i));
+				}
+			}
+			else if(!(filterBean.getBathFilter()==null))
+			{
+				System.out.println("---Second----");
+				if (filterBean.getBathFilter().contains(apartments.get(i).getType_bathroom()))
+				{
+					if(!(filterBean.getFloorFilter()==null))
+					{
+						if (filterBean.getFloorFilter().contains(apartments.get(i).getFlooring()))
+						{
+							filteredApts.add(apartments.get(i));
+						}
+					}
+					else
+						filteredApts.add(apartments.get(i));
+				}
+				
+			}
+			else if(!(filterBean.getFloorFilter()==null))
+			{
+				System.out.println("---Third----");
+				if (filterBean.getFloorFilter().contains(apartments.get(i).getFlooring()))
+				{
+					filteredApts.add(apartments.get(i));
+				}
+			}
+			else{filteredApts=apartments;}
+		}
+
+		request.setAttribute("apartmentList", filteredApts);
+		model=new ModelAndView("apartment");
+		return model;
+		
 	}
 	
 }

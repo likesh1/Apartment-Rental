@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserDetailsBean isValidUser(LoginBean loginBean) throws SQLException, InvalidCredentialsException {
 		// TODO Auto-generated method stub
-		String query = "select email_id, userRole from login where Email_id = ? and Password = ?";
+		String query = "select email_id, userRole, isActive from login where Email_id = ? and Password = ?";
 		PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
 		pstmt.setString(1, loginBean.getUsername());
 		pstmt.setString(2, loginBean.getPassword());

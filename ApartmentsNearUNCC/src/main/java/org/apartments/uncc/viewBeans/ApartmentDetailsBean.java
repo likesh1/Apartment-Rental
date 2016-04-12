@@ -16,6 +16,14 @@ public class ApartmentDetailsBean {
 	private int no_of_rooms;
 	private int no_of_bathroom;
 	private String flooring;
+	private String type_bathroom;
+	
+	public String getType_bathroom() {
+		return type_bathroom;
+	}
+	public void setType_bathroom(String type_bathroom) {
+		this.type_bathroom = type_bathroom;
+	}
 	
 	public int getApartmentId() {
 		return apartmentId;

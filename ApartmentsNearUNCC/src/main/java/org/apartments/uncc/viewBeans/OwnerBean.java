@@ -9,18 +9,19 @@ package org.apartments.uncc.viewBeans;
  */
 public class OwnerBean {
 
-	private int oSSN;
+	private int ownerId;
+	public int getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
 	private String oFirstName;
 	private String oLastName;
 	private String oEmail;
 	private long oPhoneNo;
 	private String oPassword;
-	public int getoSSN() {
-		return oSSN;
-	}
-	public void setoSSN(int oSSN) {
-		this.oSSN = oSSN;
-	}
+	
 	public String getoFirstName() {
 		return oFirstName;
 	}

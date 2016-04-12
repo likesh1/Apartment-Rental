@@ -211,26 +211,53 @@ Author URL: SSDI_08
 			
 		</div> 		
 	  	     
+	
+		<!-- The Modal--> 
+<div id="myModal" class="modal">
 
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Send your mail</h2>
+    </div>
+    <form:form name="MailForm" method="post" action="sendmail.do" commandName="MailBean">
+    <div class="modal-body">
+    
+      <table>
 		
+      <tr><td><form:input type="hidden" id="to" rows="1" cols="100" path="to"/></td></tr>
+      <tr><td>Enter your Message: </td></tr>
+      <tr><td><form:textarea rows="4" cols="100" path="mailbody"></form:textarea></td></tr>
+
+      </table>
+      
+    </div>
+    <div class="modal-footer">
+      <form:button id="send">Send</form:button>
+    </div>
+    </form:form>
+  </div>
+
+</div>
 	   
-	    <div class="team" id="contactDetails">
+	    <div class="team" id="team">
 	  	<div class="container">
-	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact</h3><span class="right_line1"> </span></div>
+	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact Details</h3><span class="right_line1"> </span></div>
 		    <div class="horizontalSlider">
 			 <div class="jcarousel">
 				<ul>
 			    	<li>
 			    		<h4 class="m_5"><a href="#">${ownerDetails.oFirstName} ${ownerDetails.oLastName}</a></h4>
 			    		<p class="m_6">Owner</p><br></br>
-			    		<p >Email: ${ownerDetails.oEmail}</p><br></br>
+			    		Email me @ <a class="info_link" id="mailOwner" href="#">${ownerDetails.oEmail}</a><br></br>
 			    		<p>Call me @ ${ownerDetails.oPhoneNo}</p>
 			    	</li>
 			    	<c:forEach items="${tenantDetails}" var="tenants">
 			    	<li>
 			    		<h4 class="m_5"><a href="#">${tenants.tfirstName} ${tenants.tlastName}</a></h4>
 			    		<p class="m_6">Tenant</p><br></br>
-			    		<p >Email: ${tenants.tEmail }</p><br></br>
+			    		Email me @ <a class="info_link" id="mailTenant" href="#">${tenants.tEmail }</a><br></br>
 			    		<p>Call me @ ${tenants.tPhoneNo }</p>
 			    	</li>
 			    	
@@ -622,8 +649,59 @@ $(window).load(function() {
 				
 				$().UItoTop({ easingType: 'easeOutQuart' });
 				
+				$(function(){
+					$('.info_link').click(function(){
+						$("#to").val($(this).text());
+					});
+				});
+				
 			});
 		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			// Get the modal
+			var modal = document.getElementById('myModal');
+			
+			// Get the button that opens the modal
+			var lnkOwner = document.getElementById("mailOwner");
+			var lnkTenant = document.getElementById("mailTenant");
+			
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			
+			
+			
+			// When the user clicks the button, open the modal 
+			lnkOwner.onclick = function() {
+			    modal.style.display = "block";
+			}
+			lnkTenant.onclick = function() {
+			    modal.style.display = "block";
+			}
+			
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
+			
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+			
+			$(".modal-content").animate({top: "300px"});
+			$(".modal-content").animate({opacity:"30"});
+			$(".modal-content").css({position: "relative",margin: "auto",padding: "0",border: "1px solid #888",width: "80%"});
+			
+			$(".modal").css({position: "fixed",display: "none"});
+			$(".modal").css({
+				backgroundColor: "rgb(0,0,0)",
+				backgroundColor: "rgba(0,0,0,0.4)"});
+				
+
+</script>
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
    </div>
 

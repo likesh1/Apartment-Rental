@@ -5,6 +5,7 @@ Author URL: SSDI_08
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="false" %>
 <!DOCTYPE HTML>
 <html>
@@ -92,97 +93,55 @@ Author URL: SSDI_08
 		 </div>  
 		</div>
 		</div>
-	     <section id="leftNav" class="col-xs-12">
-	<div class="col-xs-3">
+	     <section id="leftNav" class="col-xs-10">
+	<div class="col-xs-2">
     	<div class="container">
-     	   <div class="row">
-        	    <p>Room Rent</p>
-        	    <div >
-        	    	<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> $200 - $300
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> $300 - $400
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> $400 - $500
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> above $500
-    					</label>
-  					</div>
-        	    </div>
-        	</div>
-        </div>
-        <div class="container">
-     	   <div class="row">
-        	    <p>Rooms</p>
-        	    <div >
-        	    	<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> 1
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> 2
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> 3
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> 4
-    					</label>
-  					</div>
-        	    </div>
-        	</div>
-        </div>
-        <div class="container">
-     	   <div class="row">
-        	    <p>Bathrooms</p>
-        	    <div >
-        	    	<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> Attached
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> Common
-    					</label>
-  					</div>
-        	    </div>
-        	</div>
-        </div>
-        <div class="container">
-     	   <div class="row">
-        	    <p>Flooring</p>
-        	    <div >
-        	    	<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> Wooden
-    					</label>
-  					</div>
-  					<div class="checkbox">
-    					<label>
-      						<input type="checkbox"> Carpet
-    					</label>
-  					</div>
-        	    </div>
-        	</div>
-        </div>
-       </div>
+    	<form:form name="filterForm" method="post" action="filterApts" commandName="filterBean">    	  
+	     <table>
+	     <tr height="30px">
+	     <td colspan="3">
+	     <span style="font-weight: bold;">Apartment Filters</span>
+	     </td>
+	     </tr>
+	     <tr>
+	     
+	     </tr>
+	     
+			
+			<!-- <tr>
+			<td>
+			<p>Room Rent</p>			
+			<form:checkboxes path="rentFilter" items="${rentValues}" delimiter="<br>"/>
+            </td>
+            </tr>-->
+            <tr>
+			<td>
+				<p>Rooms</p>
+        	    
+				<form:checkboxes path="roomFilter" items="${roomValues}" delimiter="<br>"/>
+                </td>
+			</tr>
+			
+			<tr>
+			<td>
+				<p>Bathrooms</p>
+        	    <form:checkboxes path="bathFilter" items="${bathroomValues}" delimiter="<br>"/>
+                </td>
+			</tr>
+			<tr>
+			<td>
+				<p>Flooring</p>
+        	    
+				<form:checkboxes path="floorFilter" items="${floorValues}" delimiter="<br>"/>
+                </td>
+			</tr>
+			<tr height="20px"></tr>
+			<tr height="30px"><td colspan="3">
+			  <input class="btn btn-primary" type="submit" value="Apply Filters" id="btnApply"/>
+			</table>
+			</form:form>
+			</div>
+			</div>
        <div>
 		<div class="container col-sm-8">
 	  	<div class="panel-group" id="accordion">
@@ -192,6 +151,7 @@ Author URL: SSDI_08
         	<c:set var="apt_id" value="${apartments.apartmentId}"></c:set>
         	<c:set var="href">#${id }</c:set>
             <c:set var="apartmentDetailshref">apartmentDetails?id=${apt_id }</c:set>
+
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="${href}">APARTMENT ${apartments.doorNo}</a>
@@ -199,18 +159,18 @@ Author URL: SSDI_08
             </div>
             <div id="${id}" class="panel-collapse collapse">
                 <div class="panel-body">
-                	<div class="table-responsive">          
-  						<table class="table">
+                	<div class="table-responsive" id="apartmentDiv">          
+  						<table class="table" id="tblBlah">
 						      <tr>
 						        <td>NUMBER OF ROOMS</td>
 						        <td>${apartments.no_of_rooms}</td>
 						        <td></td>
-						         <td>NUMBER OF BATHROOMS</td>
-						        <td>${apartments.no_of_bathroom}</td>
+						         <td>BATHROOMS</td>
+						        <td>${apartments.type_bathroom}</td>
 						      </tr>
 						      <tr>
 						        <td>RENT:</td>
-						        <td>${apartments.rent}</td>
+						        <td id="rentForApt">${apartments.rent}</td>
 						        <td></td>
 						        <td>FLOORING</td>
 						        <td><c:out value="${apartments.flooring}" /></td>
@@ -223,52 +183,25 @@ Author URL: SSDI_08
 						        <td></td>
 						        <td></td>
 						        <td><div class="project-btn"><a href="${apartmentDetailshref }">Apartment List</a></div></td>
-						      </tr>
-						<!-- 
-						      <tr>
-						        <td>AVAILABLE FROM:</td>
-						        <td>${apartments.availablityFrom}</td>
-						        <td></td>
-						        <td>UTILITIES</td>
-						        <td><c:out value="${apartments.utilities}" /></td>
-						      </tr>
-						      <tr>
-						        <td>AREA</td>
-						        <td><c:out value="${apartments.area}" /></td>
-						        <td></td>
-						        <td>STREET</td>
-						        <td><c:out value="${apartments.street}" /></td>
-						      </tr>
-					
-						      <tr>
-						        <td>DOOR NUMBER</td>
-						        <td><c:out value="${apartments.doorNo}" /></td>
-						        <td></td>
-						        <td>CITY</td>
-						        <td><c:out value="${apartments.city}" /></td>
-						      </tr>
-						      
-						      
-						      
-						      <tr>
-						        
-						        <td></td>
-						        <td>DEPOSITE AMOUNT:</td>
-						        <td>${apartments.depositAmt}</td>
-						        <td></td>
-						        <td><div class="project-btn"><a href="apartmentDetails?id=1">Apartment List</a></div></td>
-						      </tr> -->
+						      </tr>					
 						  </table>
 						  </div>
 						</div>
 	            </div>
 	            
 	          </c:forEach>
+	          <c:if test="${fn:length(apartmentList) lt 1}">
+	          	 <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a>NO MATCHING APARTMENTS FOUND!!</a>
+                </h4>
+            </div>
+	          </c:if>
             </div>
         </div>
     </div>
-  </div>
-    </section>
+ </div>
+ </section>
 	</div>
 	<div class="main">	
 	  <div class="container">

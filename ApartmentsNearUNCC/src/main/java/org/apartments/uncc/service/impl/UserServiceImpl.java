@@ -12,6 +12,7 @@ import org.apartments.uncc.service.UserService;
 import org.apartments.uncc.utilities.ICodeGenerator;
 import org.apartments.uncc.utilities.ISendEmail;
 import org.apartments.uncc.viewBeans.LoginBean;
+import org.apartments.uncc.viewBeans.MailBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 
@@ -85,6 +86,12 @@ public class UserServiceImpl implements UserService {
 	public void sendVerificationMail(UserDetailsBean userDetails) {
 		// TODO Auto-generated method stub
 		sendMail.sendEmail(userDetails);
+	}
+	
+	@Override
+	public void sendEnquiryMail(MailBean mailBean) {
+		// TODO Auto-generated method stub
+		sendMail.sendEmail(mailBean);
 	}
 
 

@@ -58,6 +58,16 @@ else if(password==""){
 	document.getElementById('registrationErrorMessage').innerHTML="Password Blank!!";
 	return false;
 }
+
+else if(!(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/).test(password)){
+	form.password.focus();
+	form.password.style.borderColor="red";
+	form.password.style.borderStyle="solid";
+	document.getElementById('registrationErrorMessage').innerHTML="Enter at least one number, one lowercase and one uppercase letter and " +
+			"at least six characters that are letters, numbers or the underscorenote";
+	return false;
+}
+
 else if(password!=repeat_password){
 	form.repeat_password.focus();
 	form.repeat_password.style.borderColor="red";

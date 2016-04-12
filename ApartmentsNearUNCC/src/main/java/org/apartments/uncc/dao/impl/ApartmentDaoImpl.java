@@ -59,6 +59,7 @@ public class ApartmentDaoImpl implements ApartmentDao{
 				apt.setno_of_rooms(rs.getInt("no_of_rooms"));
 				apt.setno_of_bathroom(rs.getInt("no_of_bathroom"));
 				apt.setFlooring(rs.getString("flooring"));
+				apt.setType_bathroom(rs.getString("type_bathroom"));
 				apartment.add(apt);
 			}
 
@@ -80,7 +81,7 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		apartmentDetails.put("ApartmentDetails", getApartmentInfo(query, id));
 		query = "Select * from Tenant where apartmentId=?";
 		apartmentDetails.put("TenantDetails", getTenantDetails(query, id));
-		query = "Select * from ApartmentOwner where oSSN IN(select oSSN from Apartments where apartmentId=? )";
+		query = "Select * from ApartmentOwner where ownerId IN(select ownerId from Apartments where apartmentId=? )";
 		apartmentDetails.put("OwnerDetails", getOwnerDetails(query, id));
 		query = "Select rating,comments from Feedback where apartmentId=?";
 		apartmentDetails.put("ReviewAndRatings", getReviewComments(query, id));
@@ -132,7 +133,7 @@ public class ApartmentDaoImpl implements ApartmentDao{
 				owner.setoLastName(rs.getString("oLastName"));
 				owner.setoPassword(rs.getString("oPassword"));
 				owner.setoPhoneNo(rs.getLong("oPhoneNo"));
-				owner.setoSSN(rs.getInt("oSSN"));
+				owner.setOwnerId(rs.getInt("ownerId"));
 				
 			}
 			

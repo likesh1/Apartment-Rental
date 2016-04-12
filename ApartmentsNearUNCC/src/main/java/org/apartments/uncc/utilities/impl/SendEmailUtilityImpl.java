@@ -9,6 +9,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.apartments.uncc.utilities.ISendEmail;
+import org.apartments.uncc.viewBeans.MailBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
@@ -95,6 +96,46 @@ public class SendEmailUtilityImpl implements ISendEmail {
             System.err.println(ex.getMessage());
         }
 	}
+
+	
+
+	
+
+	/* (non-Javadoc)
+	 * @see org.apartments.uncc.utilities.ISendEmail#sendVerificationCode()
+	
+	@Override
+	public int sendVerificationCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	} */
+
+	@Override
+	public void sendEmail(MailBean mailBean) {
+		// TODO Auto-generated method stub
+		System.out.println("Inside Mail API");
+		
+		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+		//sg.setFrom("sprakas2@uncc.edu");
+		System.out.println("To --"+mailBean.getTo());
+        msg.setTo("pborate@uncc.edu");
+        //msg.setSubject("Student is interested in renting your apartment.");
+        msg.setText(
+            "Dear "
+                
+                + "\n\n"+mailBean.getMailbody()
+                + "\n\nRegards,\n"
+                + "Team SSDI_08");
+        try{
+            this.mailSender.send(msg);
+            System.out.println("Mail Sent!!!");
+        }
+        catch (MailException ex) {
+            // simply log it and go on...
+            System.err.println(ex.getMessage());
+        }
+	}
+
 
 	
 
