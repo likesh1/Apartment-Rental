@@ -99,15 +99,17 @@ Author URL: SSDI_08
 	<div class="index-banner" id="home">
        	   <div class="wmuSlider example1">
 			   <div class="wmuSliderWrapper">
+			   <c:forEach items="${imageList}" var="image">
 				   <article style="position: absolute; width: 100%; opacity: 0;"> 
 				   	<div class="banner-wrap">
 				   		 <div class="slider-left">
-						    <img src="${images}utr1.jpg" alt=""/>
+						    <img src="${images}/apartmentImages/${image}.jpg" alt=""/>
 						 </div>
 					     <div class="clear"></div>
 					 </div>
 					</article>
-				   <article style="position: relative; width: 100%; opacity: 1;"> 
+					</c:forEach>
+				   <!-- <article style="position: relative; width: 100%; opacity: 1;"> 
 				   	 <div class="banner-wrap">
 				   	 	<div class="slider-left">
 						    <img src="${images}utr2.jpg" alt=""/>
@@ -122,7 +124,7 @@ Author URL: SSDI_08
 						 </div>
 					     <div class="clear"></div>
 					 </div>
-				   </article>
+				   </article> -->
 				 </div>
 				<a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
                 <ul class="wmuSliderPagination">

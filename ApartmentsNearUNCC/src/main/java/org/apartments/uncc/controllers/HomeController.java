@@ -42,7 +42,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({"user","apartmentDetails","ownerDetails","tenantDetails","reviews"})
+@SessionAttributes({"user","apartmentDetails","ownerDetails","tenantDetails","reviews","imageList"})
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -236,6 +236,7 @@ public class HomeController {
 	 model.addObject("ownerDetails", apartment.get("OwnerDetails"));
 	 model.addObject("tenantDetails", apartment.get("TenantDetails"));
 	 model.addObject("reviews", apartment.get("ReviewAndRatings"));
+	 model.addObject("imageList",apartment.get("images"));
 	 model.addObject("MailBean", mailBean);
 
 

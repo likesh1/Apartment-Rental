@@ -85,8 +85,32 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		apartmentDetails.put("OwnerDetails", getOwnerDetails(query, id));
 		query = "Select rating,comments from Feedback where apartmentId=?";
 		apartmentDetails.put("ReviewAndRatings", getReviewComments(query, id));
+		query = "select photo from aptImages where apartmentId=?";
+		apartmentDetails.put("images", getImages(query, id));
 		
 		return apartmentDetails;
+	}
+
+	private List<String> getImages(String query, int id) {
+		// TODO Auto-generated method stub
+		ResultSet rs=null;
+		List<String> imageList = new ArrayList<String>();
+		try {
+			
+			//pstmt = con.prepareStatement(query);
+			PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) 
+			{
+				imageList.add(rs.getString(1));
+			}
+		}catch (SQLException e) {
+
+			e.printStackTrace();
+			
+		}
+			return imageList;
 	}
 
 	private List<ApartmentReviewBean> getReviewComments(String query, int id) {
