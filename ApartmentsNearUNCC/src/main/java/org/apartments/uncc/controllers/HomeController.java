@@ -247,7 +247,7 @@ public class HomeController {
 			
 			
 						mailBean.setMailbody(mailBean.getMailbody());
-						mailBean.setTo (mailBean.getTo());
+						mailBean.setTo(mailBean.getTo());
 						System.out.println("MSG : "+request.getParameter("mailbody"));
 						System.out.println("InsideMailMapping!");
 						mailDelegate.sendEnquiryMail(mailBean);

@@ -17,8 +17,9 @@
 		<property name="userDao" ref="userDao"></property>
 		<property name="codeGenerator" ref="codeGenerator"></property>
 		<property name="sendMail" ref="sendMail"></property>
+		
 	</bean>
-
+	
 	<bean name="userDao" class="org.apartments.uncc.dao.impl.UserDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
@@ -28,7 +29,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/SSDI_08_test" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="Sheeba100" />
 	</bean>
 	
 	<bean id="codeGenerator" class="org.apartments.uncc.utilities.impl.CodeGeneratorImpl">
@@ -39,6 +40,10 @@
 		
 	<bean id="apartmentListDelegate" class="org.apartments.uncc.delegate.ApartmentListDelegate">
 		<property name="apartmentService" ref="apartmentService"></property>
+	</bean>
+	
+	<bean id="MailDelegate" class="org.apartments.uncc.delegate.MailDelegate">
+		<property name="userService" ref="userService"></property>
 	</bean>
 
 	<bean id="apartmentService" class="org.apartments.uncc.service.impl.ApartmentServiceImpl">
@@ -61,7 +66,16 @@
 	</bean>
 	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-	    <property name="host" value="127.0.0.1"/>
+	     <property name="host" value="smtp.gmail.com"/>
+	    <property name="port" value="587" />
+		<property name="username" value="ssdispring@gmail.com" />
+		<property name="password" value="ssditeam08" />
+		<property name="javaMailProperties">
+		   <props>
+	       	      <prop key="mail.smtp.auth">true</prop>
+	       	      <prop key="mail.smtp.starttls.enable">true</prop>
+	       	   </props>
+		</property>
 	</bean>
 	
 	<!-- this is a template message that we can pre-load with default state -->
@@ -69,4 +83,7 @@
 	    <property name="from" value="customerservice_offcampusliving@apts.com"/>
 	    <property name="subject" value="Welcome to off campus living!!"/>
 	</bean>
+	
+	
+	
 </beans>

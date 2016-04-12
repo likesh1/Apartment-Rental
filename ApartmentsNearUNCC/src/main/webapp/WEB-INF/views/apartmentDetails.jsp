@@ -722,6 +722,11 @@ $(".modal").css({position: "fixed",display: "none"});
 $(".modal").css({
 	backgroundColor: "rgb(0,0,0)",
 	backgroundColor: "rgba(0,0,0,0.4)"});
+	$(function(){
+		$('.info_link').click(function(){
+			$("#to").val($(this).text());
+		});
+	});
 	
 
 
