@@ -6,10 +6,12 @@ package org.apartments.uncc.service.impl;
 import java.sql.SQLException;
 
 import org.apartments.uncc.dao.UserDao;
+import org.apartments.uncc.exceptions.InvalidCredentialsException;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
 import org.apartments.uncc.service.UserService;
 import org.apartments.uncc.utilities.ICodeGenerator;
 import org.apartments.uncc.utilities.ISendEmail;
+import org.apartments.uncc.viewBeans.LoginBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 
@@ -59,9 +61,9 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public boolean isValidUser(String username, String password) throws SQLException{
+	public UserDetailsBean isValidUser(LoginBean loginBean) throws SQLException, InvalidCredentialsException{
 		// TODO Auto-generated method stub
-		return userDao.isValidUser(username, password);
+		return userDao.isValidUser(loginBean);
 	}
 
 
@@ -83,6 +85,13 @@ public class UserServiceImpl implements UserService {
 	public void sendVerificationMail(UserDetailsBean userDetails) {
 		// TODO Auto-generated method stub
 		sendMail.sendEmail(userDetails);
+	}
+
+
+	@Override
+	public void activateAccount(String username) {
+		// TODO Auto-generated method stub
+		userDao.activateAccount(username);
 	}
 
 }

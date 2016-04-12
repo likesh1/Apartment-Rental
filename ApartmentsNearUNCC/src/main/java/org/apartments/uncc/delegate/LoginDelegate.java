@@ -5,8 +5,11 @@ package org.apartments.uncc.delegate;
 
 import java.sql.SQLException;
 
+import org.apartments.uncc.exceptions.InvalidCredentialsException;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
 import org.apartments.uncc.service.UserService;
+import org.apartments.uncc.viewBeans.LoginBean;
+import org.apartments.uncc.viewBeans.UserDetailsBean;
 
 /**
  * @author Pritam
@@ -24,9 +27,14 @@ public class LoginDelegate {
 		this.userService = userService;
 	}
 	
-	public boolean isValidUser(String username, String password) throws SQLException, InvalidEmailIdException
+	public UserDetailsBean isValidUser(LoginBean loginBean) throws SQLException, InvalidCredentialsException
 	{
-	     return userService.isValidUser(username, password);
+	     return userService.isValidUser(loginBean);
+	}
+
+	public void activateAccount(String username) {
+		// TODO Auto-generated method stub
+		userService.activateAccount(username);
 	}
 
 }

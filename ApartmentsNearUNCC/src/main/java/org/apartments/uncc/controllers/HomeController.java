@@ -14,6 +14,7 @@ import org.apartments.uncc.delegate.ApartmentDetailsDelegate;
 import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
+import org.apartments.uncc.exceptions.InvalidCredentialsException;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
 import org.apartments.uncc.utilities.impl.SendEmailUtilityImpl;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
@@ -77,34 +78,34 @@ public class HomeController {
 	public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginBean")LoginBean loginBean)
 	{
 		ModelAndView model= null;
-		try
-		{
-				boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
-				if(isValidUser)
-				{
-						
-						System.out.println("User Login Successful");
-						request.setAttribute("loggedInUser", loginBean.getUsername());
-						model = new ModelAndView("welcome");
-				}
+			UserDetailsBean validUser;
+			try {
+				validUser = loginDelegate.isValidUser(loginBean);
+				System.out.println("Id: "+validUser.getUsername()+" Role:"+validUser.getUserRole()+" Name:"+validUser.getfName());
+				System.out.println("User Login Successful");
+				request.setAttribute("loggedInUser", loginBean.getUsername());
+				if(validUser.getUserRole().equals("student"))
+					model = new ModelAndView("welcomeStudent");
 				else
-				{
-					RegistrationBean registrationBean = new RegistrationBean();
-					//RegistrationBean registrationBean = new RegistrationBean();
-					//model = new ModelAndView("home");
-					//model.addAttribute("serverTime", formattedDate );
-					request.setAttribute("registrationBean", registrationBean);
-						model = new ModelAndView("home");
-						request.setAttribute("loginErrorMessage", "Invalid credentials!!");
-						request.setAttribute("isSignupError",false);
-				}
-
-		}
-		catch(Exception e)
-		{
+					model = new ModelAndView("welcomeOwner");
+				model.addObject("user", validUser);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-		}
+			} catch (InvalidCredentialsException e) {
+				// TODO Auto-generated catch block
+				RegistrationBean registrationBean = new RegistrationBean();
+				//RegistrationBean registrationBean = new RegistrationBean();
+				//model = new ModelAndView("home");
+				//model.addAttribute("serverTime", formattedDate );
+				request.setAttribute("registrationBean", registrationBean);
+					model = new ModelAndView("home");
+					request.setAttribute("loginErrorMessage", e.getMessage());
+					request.setAttribute("isSignupError",false);
+			}
+				
 
+	
 		return model;
 		
 	}
@@ -123,6 +124,7 @@ public class HomeController {
 						System.out.println("Verification code is : "+userDetails.getVerificationCode());
 						userDetails.setfName(registrationBean.getFname());
 						userDetails.setUsername(registrationBean.getEmail());
+						userDetails.setUserRole(registrationBean.getUserRole());
 						registrationDelegate.sendVerificationMail(userDetails);
 						//sendEmailUtilityImpl.sendEmail();
 						System.out.println("User Registration Successful");
@@ -203,7 +205,7 @@ public class HomeController {
 
 	 }
 
-	@RequestMapping(value="/welcome", method = { RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/validateUser", method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response,@ModelAttribute(value="user") UserDetailsBean userDetails)
 	{
 		//HttpServletRequest request, HttpServletResponse response, , @RequestParam(value="otp", required=false) String otp,
@@ -212,7 +214,11 @@ public class HomeController {
 		int userOtp=Integer.parseInt(request.getParameter("otp"));
 		if(userOtp==(userDetails.getVerificationCode()))
 		{	
-			model= new ModelAndView("welcome");
+			loginDelegate.activateAccount(userDetails.getUsername());
+			if(userDetails.getUserRole().equals("student"))
+				model= new ModelAndView("welcomeStudent");
+			else
+				model = new ModelAndView("welcomeOwner");
 			System.out.println("OTP Matches");
 		}
 		return model;

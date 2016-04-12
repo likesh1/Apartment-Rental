@@ -10,8 +10,11 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.apartments.uncc.dao.UserDao;
+import org.apartments.uncc.exceptions.InvalidCredentialsException;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
+import org.apartments.uncc.viewBeans.LoginBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
+import org.apartments.uncc.viewBeans.UserDetailsBean;
 
 /**
  * @author Pritam Borate
@@ -36,18 +39,49 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public boolean isValidUser(String username, String password) throws SQLException {
+	public UserDetailsBean isValidUser(LoginBean loginBean) throws SQLException, InvalidCredentialsException {
 		// TODO Auto-generated method stub
-		String query = "Select count(1) from students where sEmail = ? and sPassword = ?";
+		String query = "select email_id, userRole from login where Email_id = ? and Password = ?";
 		PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
-		pstmt.setString(1, username);
-		pstmt.setString(2, password);
+		pstmt.setString(1, loginBean.getUsername());
+		pstmt.setString(2, loginBean.getPassword());
 		ResultSet resultSet = pstmt.executeQuery();
+		UserDetailsBean user;
 		if (resultSet.next())
-			return (resultSet.getInt(1) > 0);	
+		{	
+			user=new UserDetailsBean();
+			user.setUsername(resultSet.getString(1));
+			user.setUserRole(resultSet.getString(2));
+			user.setfName(getFName(loginBean.getUsername(),user.getUserRole()));
+		}
 		else
-				return false;
-		//return false;
+				throw new InvalidCredentialsException("Invalid Credentials!!");
+		return user;
+	}
+
+	private String getFName(String username, String userRole) {
+		// TODO Auto-generated method stub
+		String fName="";
+		String query ="";
+		if(userRole.equals("student"))
+			query="select firstName from students where semail = ?";
+		else
+			query="select oFirstName from ApartmentOwner where oemail = ?";
+		try {
+			PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
+			pstmt.setString(1, username);
+			ResultSet resultSet = pstmt.executeQuery();
+			
+			if (resultSet.next())
+			{	
+				fName=resultSet.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return fName;
 	}
 
 	@Override
@@ -94,6 +128,23 @@ public class UserDaoImpl implements UserDao {
 		}
 		System.out.println("-----Error While insertion------");
 		return false;
+		
+	}
+
+	@Override
+	public void activateAccount(String username) {
+		// TODO Auto-generated method stub
+		String query="update login set isActive=true where email_id=?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = dataSource.getConnection().prepareStatement(query);
+			pstmt.setString(1, username);
+			pstmt.executeUpdate();
+			System.out.println("Updated Account!!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

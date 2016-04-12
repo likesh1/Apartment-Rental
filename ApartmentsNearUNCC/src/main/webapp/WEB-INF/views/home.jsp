@@ -35,10 +35,6 @@
 				<div class="box-header">
 					<h2>Sign In</h2>
 				</div>
-				<select>
-				  <option value="student">Student</option>
-				  <option value="owner">Owner</option>
-				</select><br/>
 				<form:label for="username" path="username">Username</form:label>
 				<br/>
 				<form:input type="text" id="username" name="username" path="username"/>

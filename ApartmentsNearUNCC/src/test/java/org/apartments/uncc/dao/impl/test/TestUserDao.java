@@ -13,6 +13,9 @@ import org.apartments.uncc.dao.UserDao;
 import org.apartments.uncc.dao.impl.UserDaoImpl;
 import org.apartments.uncc.dao.impl.stub.UserDaoImplStub;
 import org.apartments.uncc.dao.impl.stub.UserDaoStub;
+import org.apartments.uncc.exceptions.InvalidCredentialsException;
+import org.apartments.uncc.viewBeans.LoginBean;
+import org.apartments.uncc.viewBeans.UserDetailsBean;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,6 +45,8 @@ public class TestUserDao {
 	private ApplicationContext applicationContext;
 	@Autowired
 	private UserDao userDao;
+	private UserDetailsBean userBean;
+	private LoginBean loginBean;
 	
 	
 
@@ -65,6 +70,9 @@ public class TestUserDao {
 	@Before
 	public void setUp() throws Exception {
 		//userDao=new UserDaoImpl();
+		loginBean=new LoginBean();
+		loginBean.setUsername("pborate@uncc.edu");
+		loginBean.setPassword("PR");
 	}
 
 	/**
@@ -76,13 +84,14 @@ public class TestUserDao {
 
 	/**
 	 * Test method for {@link org.apartments.uncc.dao.impl.UserDaoImpl#isValidUser(java.lang.String, java.lang.String)}.
+	 * @throws InvalidCredentialsException 
 	 */
 	@Test
-	public void testIsValidUser() {
+	public void testIsValidUser() throws InvalidCredentialsException {
 		try {
 			System.out.println("Its Working!!!");
-			System.out.println("------"+userDao.isValidUser("pborate@uncc.edu", "pritam"));
-			assertFalse("Test case Failed",userDao.isValidUser("pborate@uncc.edu", "pritam123"));
+			System.out.println("------"+userDao.isValidUser(loginBean));
+			assertEquals("pborate@uncc.edu",userDao.isValidUser(loginBean).getUsername());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

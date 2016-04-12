@@ -15,9 +15,9 @@
   <h2>Verify your Email Id!!</h2>
   <div class="alert alert-success">
     <strong>Congratulations!</strong> You are one step away from activating your account. Please enter OTP sent to ${user.username}
-    <br><form action="welcome" method="POST"><input type="text" id="otp" name="otp"><br><button id="verify">Verify</button></form>
+    <br><form action="validateUser" method="POST"><input type="text" id="otp" name="otp"><br><button id="verify">Verify</button></form>
   </div>
-  <div class="alert alert-info">
+  <!-- <div class="alert alert-info">
     <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
   </div>
   <div class="alert alert-warning">
@@ -25,7 +25,7 @@
   </div>
   <div class="alert alert-danger">
     <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
-  </div>
+  </div> -->
 </div>
 
 </body>
