@@ -42,7 +42,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes("user")
+@SessionAttributes({"user","apartmentDetails","ownerDetails","tenantDetails","reviews"})
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -230,13 +230,13 @@ public class HomeController {
 	 MailBean mailBean=new MailBean();
 	 Map apartment=apartmentDetailsDelegate.getApartmentDetails(id);
 	 System.out.println("The apartment details"+apartment);
-	 request.setAttribute("apartmentDetails", apartment.get("ApartmentDetails"));
-	 request.setAttribute("ownerDetails", apartment.get("OwnerDetails"));
-	 request.setAttribute("tenantDetails", apartment.get("TenantDetails"));
-	 request.setAttribute("reviews", apartment.get("ReviewAndRatings"));
-	 request.setAttribute("MailBean", mailBean);
+	
 	 ModelAndView model = new ModelAndView("apartmentDetails");
-	 
+	 model.addObject("apartmentDetails", apartment.get("ApartmentDetails"));
+	 model.addObject("ownerDetails", apartment.get("OwnerDetails"));
+	 model.addObject("tenantDetails", apartment.get("TenantDetails"));
+	 model.addObject("reviews", apartment.get("ReviewAndRatings"));
+	 model.addObject("MailBean", mailBean);
 
 
 	 return model;
@@ -249,8 +249,10 @@ public class HomeController {
 		ModelAndView model= null;
 		try
 		{
+			//HttpSession session=request.getSession();
 			
-			
+					//System.out.println("---Tada----"+session.getAttribute("ownerDetails"));
+					 
 						mailBean.setMailbody(mailBean.getMailbody());
 						mailBean.setTo(mailBean.getTo());
 						System.out.println("MSG : "+request.getParameter("mailbody"));

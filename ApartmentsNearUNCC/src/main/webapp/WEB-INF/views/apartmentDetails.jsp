@@ -672,10 +672,13 @@ $(window).load(function() {
 			// When the user clicks the button, open the modal 
 			lnkOwner.onclick = function() {
 			    modal.style.display = "block";
-			}
-			lnkTenant.onclick = function() {
-			    modal.style.display = "block";
-			}
+			};
+			if(lnkTenant!=null){
+				lnkTenant.onclick = function() {
+				    modal.style.display = "block";
+				}
+			};
+			
 			
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() {
