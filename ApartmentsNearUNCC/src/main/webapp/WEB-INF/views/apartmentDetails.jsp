@@ -649,13 +649,11 @@ $(window).load(function() {
 				
 				$().UItoTop({ easingType: 'easeOutQuart' });
 				
-				$(function(){
-					$('.info_link').click(function(){
-						$("#to").val($(this).text());
-					});
-				});
+				
 				
 			});
+			
+			
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script type="text/javascript">
@@ -699,7 +697,12 @@ $(window).load(function() {
 			$(".modal").css({
 				backgroundColor: "rgb(0,0,0)",
 				backgroundColor: "rgba(0,0,0,0.4)"});
-				
+			$(function(){
+				$(".info_link").click(function(){
+					
+					$("#to").val($(this).text());
+				});
+			});
 
 </script>
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>

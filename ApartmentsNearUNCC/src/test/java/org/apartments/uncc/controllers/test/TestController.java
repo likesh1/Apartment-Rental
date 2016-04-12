@@ -114,7 +114,7 @@ public class TestController {
 		loginBean.setPassword("pritam");
 		//final ModelAndView model=handlerAdapter.handle(request, response,homeController);
 		mockMvc.perform(post("/login.do").flashAttr("loginBean", loginBean)).andExpect(status().isOk())
-        .andExpect(view().name("welcome"));
+        .andExpect(view().name("welcomeStudent"));
 
 	}
 	

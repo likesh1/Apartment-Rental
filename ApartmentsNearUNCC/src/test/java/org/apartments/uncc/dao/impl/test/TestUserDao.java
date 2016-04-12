@@ -72,7 +72,7 @@ public class TestUserDao {
 		//userDao=new UserDaoImpl();
 		loginBean=new LoginBean();
 		loginBean.setUsername("pborate@uncc.edu");
-		loginBean.setPassword("PR");
+		loginBean.setPassword("pritam");
 	}
 
 	/**

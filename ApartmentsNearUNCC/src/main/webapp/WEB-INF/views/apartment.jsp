@@ -93,8 +93,8 @@ Author URL: SSDI_08
 		 </div>  
 		</div>
 		</div>
-	     <section id="leftNav" class="col-xs-10">
-	<div class="col-xs-2">
+	     <section id="leftNav" class="col-xs-12">
+	<div class="col-xs-3">
     	<div class="container">
     	<form:form name="filterForm" method="post" action="filterApts" commandName="filterBean">    	  
 	     <table>

@@ -8,6 +8,10 @@
 	<bean id="registrationDelegate" class="org.apartments.uncc.delegate.RegistrationDelegate">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	
+	<bean id="mailDelegate" class="org.apartments.uncc.delegate.MailDelegate">
+		<property name="userService" ref="userService"></property>
+	</bean>
 		
 	<bean id="loginDelegate" class="org.apartments.uncc.delegate.LoginDelegate">
 		<property name="userService" ref="userService"></property>
@@ -61,7 +65,16 @@
 	</bean>
 	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-	    <property name="host" value="127.0.0.1"/>
+	    <property name="host" value="smtp.gmail.com"/>
+	    <property name="port" value="587" />
+		<property name="username" value="ssdispring@gmail.com" />
+		<property name="password" value="ssditeam08" />
+		<property name="javaMailProperties">
+		   <props>
+	       	      <prop key="mail.smtp.auth">true</prop>
+	       	      <prop key="mail.smtp.starttls.enable">true</prop>
+	       	   </props>
+		</property>
 	</bean>
 	
 	<!-- this is a template message that we can pre-load with default state -->

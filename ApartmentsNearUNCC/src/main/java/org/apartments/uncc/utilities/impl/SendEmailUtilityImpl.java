@@ -118,7 +118,7 @@ public class SendEmailUtilityImpl implements ISendEmail {
 		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
 		//sg.setFrom("sprakas2@uncc.edu");
 		System.out.println("To --"+mailBean.getTo());
-        msg.setTo("pborate@uncc.edu");
+        msg.setTo(mailBean.getTo());
         //msg.setSubject("Student is interested in renting your apartment.");
         msg.setText(
             "Dear "
