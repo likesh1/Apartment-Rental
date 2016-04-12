@@ -13,11 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apartments.uncc.delegate.ApartmentDetailsDelegate;
 import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
+import org.apartments.uncc.delegate.MailDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
+
 import org.apartments.uncc.utilities.impl.SendEmailUtilityImpl;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 import org.apartments.uncc.viewBeans.LoginBean;
+import org.apartments.uncc.viewBeans.MailBean;
 import org.apartments.uncc.viewBeans.RegistrationBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 import org.slf4j.Logger;
@@ -53,8 +56,9 @@ public class HomeController {
 	private ApartmentListDelegate apartmentListDelegate;
 	@Autowired
 	private ApartmentDetailsDelegate apartmentDetailsDelegate;
+	
 	@Autowired
-	private SendEmailUtilityImpl sendEmailUtilityImpl;
+	private MailDelegate mailDelegate;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -66,9 +70,11 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		LoginBean loginBean=new LoginBean();
 		RegistrationBean registrationBean = new RegistrationBean();
+		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("loginBean", loginBean);
 		model.addAttribute("registrationBean", registrationBean);
+		
 		model.addAttribute("isSignupError",false);
 		return "home";
 	}
@@ -187,6 +193,7 @@ public class HomeController {
 
 	 System.out.println("apartmentDetailsController Called"+id);
 
+	 MailBean mailBean = new MailBean();
 	 
 	 //apartment=apt.aparmentAll();
 	 Map apartment=apartmentDetailsDelegate.getApartmentDetails(id);
@@ -195,6 +202,7 @@ public class HomeController {
 	 request.setAttribute("ownerDetails", apartment.get("OwnerDetails"));
 	 request.setAttribute("tenantDetails", apartment.get("TenantDetails"));
 	 request.setAttribute("reviews", apartment.get("ReviewAndRatings"));
+	 request.setAttribute("MailBean", mailBean);
 	 ModelAndView model = new ModelAndView("apartmentDetails");
 	 
 
@@ -228,6 +236,37 @@ public class HomeController {
 		return model;
 		
 	}
+	
+	
+	@RequestMapping(value="/sendmail.do", method = RequestMethod.POST)
+	public ModelAndView usermail(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("MailBean")MailBean mailBean)
+	{
+		ModelAndView model= null;
+		try
+		{
+			
+			
+						mailBean.setMailbody(mailBean.getMailbody());
+						mailBean.setTo (mailBean.getTo());
+						System.out.println("MSG : "+request.getParameter("mailbody"));
+						System.out.println("InsideMailMapping!");
+						mailDelegate.sendEnquiryMail(mailBean);
+						System.out.println("InsideMailMapping2!");
+						//request.setAttribute("userDetails", userDetails);
+						model = new ModelAndView("apartmentDetails");
+						
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return model ;
+		
+	}
+	
+
 
 	@RequestMapping(value="/passwordRecovery.do" , method ={ RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView recoverPassword(HttpServletRequest request, HttpServletResponse response)

@@ -3,6 +3,7 @@
  */
 package org.apartments.uncc.utilities;
 
+import org.apartments.uncc.viewBeans.MailBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 
 /**
@@ -11,5 +12,6 @@ import org.apartments.uncc.viewBeans.UserDetailsBean;
  */
 public interface ISendEmail {
 	public void sendEmail(UserDetailsBean userDetails);
+	public void sendEmail(MailBean mailBean);
 	//public int sendVerificationCode();
 }

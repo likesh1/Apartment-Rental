@@ -2,6 +2,8 @@
 Author: SSDI_08
 Author URL: SSDI_08
 -->
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -89,7 +91,7 @@ Author URL: SSDI_08
 					</div>
 			      </form>
 			    </div><!-- /.navbar-collapse -->
-			  </div><!-- /.container-fluid -->
+			  </div></div><!-- /.container-fluid -->
 			</nav>
             <div class="clear"></div>
 		 </div>  
@@ -137,25 +139,26 @@ Author URL: SSDI_08
    		     </script> 	           	      
       </div>
 	</div>
-	<section>
-	<div>
 	<div class="main">	
 	  <div class="container">
 	   <div class="about" id="about">
 			
-<div>
+			  	     
+
 		<div class="container col-sm-4" style="width:100%">
-	  	<div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-        
+		                  
+	  	<div class="panel-group" id="accordion">                 
+        <div class="panel panel-default">                 
+       
         	<c:set var="id" value="${apartmentDetails.doorNo}"></c:set>
         	<c:set var="href">#${id }</c:set>
             <div class="panel-heading">
                 <h4 class="panel-title">
                     APARTMENT ${apartmentDetails.doorNo}
+  
                 </h4>
             </div>
-           <!-- <div id="${id}" class="panel-collapse collapse">  -->
+           <!--<div id="${id}" class="panel-collapse collapse">-->
                 <div class="panel-body">
                 	<div class="table-responsive">    
   						<table class="table" style="width:90%">
@@ -196,41 +199,94 @@ Author URL: SSDI_08
 						      </tr>
 						      <tr>
 						      <td></td><td></td><td></td>
-						        <td><div class="about-btn"><a href="#contactDetails">Contact Details</a></div></td>
+						        <td><div class="about-btn"><a href="#team">Contact Details</a></div></td>
 						        </tr>
 						  </table>
 						  </div>
 						</div>
-	            </div>  
-	         
+	            </div>
+	          
             </div>
         </div>
     </div>
   </div>
-    </section>
+    <!--  </section>   -->
 			
-		</div> 		
-	  	     
-
 		
-	   
-	    <div class="team" id="contactDetails">
+		<!-- <div class="services" id="services">
+			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
+			<div class="row service_grids">
+			  <div class="col-md-3 text-center service_grid1">
+				 <i class="web"> </i>
+				 <h3 class="m_4">Web Development</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
+				 <div class="service-btn"><a href="#">Read More</a></div>
+			  </div>
+			  <div class="col-md-3 text-center service_grid1">
+				 <i class="app"> </i>
+				 <h3 class="m_4">App Development</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
+				 <div class="service-btn"><a href="#">Read More</a></div>
+			  </div>
+			  <div class="col-md-3 text-center service_grid1">
+				 <i class="php"> </i>
+				 <h3 class="m_4">Php Development</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
+				 <div class="service-btn"><a href="#">Read More</a></div>
+			  </div>
+			  <div class="col-md-3 text-center">
+				 <i class="wordpress"> </i>
+				 <h3 class="m_4">Wordpress</h3>
+				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
+				 <div class="service-btn"><a href="#">Read More</a></div>
+			  </div>
+			</div>-->
+	    </div>
+	    <!-- The Modal--> 
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Send your mail</h2>
+    </div>
+    <form:form name="MailForm" method="post" action="sendmail.do" commandName="MailBean">
+    <div class="modal-body">
+    
+      <table>
+		
+      <tr><td><form:input type="hidden" id="to" rows="1" cols="100" path="to"/></td></tr>
+      <tr><td>Enter your Message: </td></tr>
+      <tr><td><form:textarea rows="4" cols="100" path="mailbody"></form:textarea></td></tr>
+
+      </table>
+      
+    </div>
+    <div class="modal-footer">
+      <form:button id="send">Send</form:button>
+    </div>
+    </form:form>
+  </div>
+
+</div>
+	    <div class="team" id="team">
 	  	<div class="container">
-	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact</h3><span class="right_line1"> </span></div>
+	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact Details</h3><span class="right_line1"> </span></div>
 		    <div class="horizontalSlider">
 			 <div class="jcarousel">
 				<ul>
 			    	<li>
 			    		<h4 class="m_5"><a href="#">${ownerDetails.oFirstName} ${ownerDetails.oLastName}</a></h4>
 			    		<p class="m_6">Owner</p><br></br>
-			    		<p >Email: ${ownerDetails.oEmail}</p><br></br>
+			    		Email me @ <a class="info_link" id="mailOwner" href="#"> ${ownerDetails.oEmail}</a><br></br>
 			    		<p>Call me @ ${ownerDetails.oPhoneNo}</p>
 			    	</li>
 			    	<c:forEach items="${tenantDetails}" var="tenants">
 			    	<li>
 			    		<h4 class="m_5"><a href="#">${tenants.tfirstName} ${tenants.tlastName}</a></h4>
 			    		<p class="m_6">Tenant</p><br></br>
-			    		<p >Email: ${tenants.tEmail }</p><br></br>
+			    		Email me @ <a class="info_link" id="mailTenant" href="#"> ${tenants.tEmail }</a><br></br>
 			    		<p>Call me @ ${tenants.tPhoneNo }</p>
 			    	</li>
 			    	
@@ -254,99 +310,7 @@ Author URL: SSDI_08
          
          
             
-	    
-	  
-	  
-	<!-- <div class="sliderControl">
-		<div class="control">
-		 <a href="#" class="jcarousel-control-prev"></a>
-		 <a href="#" class="jcarousel-control-next"></a>
-		</div>
-		<div class="jcarousel-pagination"></div>
-		</div>
-		</div>
-		<script src="${js}jquery.touchSwipe.min.js"></script>
-		<script src="${js}app.js"></script>
-		<script src="${js}jcarousel.js"></script>-->
-        <div class="m_3" id="news"><span class="left_line1"> </span><h3>Feedback</h3><span class="right_line1"> </span></div>
-	 </div>
-	</div>
-	  <div class="project_top">
-	  	<div class="container">
-	  	  <table><tr><td><div>
-	  	  <tr>
-	  	  <td>
-	  	  Rating:
-	  	  </td>
-	  	  <td>
-	  	  Comments:
-	  	  </td>
-	  	  </tr>
-	  	  <c:forEach items="${reviews}" var="review">
-	  	  <c:set var="Rating" value="${review.rating }"></c:set>
-	  	  <tr>
-	  	  <td>
-	  	  <div class="stars">
-  					<form action="">
-					    <input class="star star-5" id="star-5" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 5}">checked="checked"</c:if> />
-					    <label class="star star-5" for="star-5"></label>
-					    <input class="star star-4" id="star-4" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 4}">checked="checked"</c:if> />
-					    <label class="star star-4" for="star-4"></label>
-					    <input class="star star-3" id="star-3" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 3}">checked="checked"</c:if> />
-					    <label class="star star-3" for="star-3"></label>
-					    <input class="star star-2" id="star-2" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 2}">checked="checked"</c:if> />
-					    <label class="star star-2" for="star-2"></label>
-					    <input class="star star-1" id="star-1" type="radio" name="star" disabled="disabled" <c:if test="${Rating == 1}">checked="checked"</c:if> />
-					    <label class="star star-1" for="star-1"></label>
-					 </form>
-				</div>
-	  	  </td>
-	  	  <td>
-	  	  <p> ${review.comments }</p>
-	  	  </td>
-	  	  </tr>
-	  	  </c:forEach>
-	  	  </div></td></tr>
-	  	  <tr><td>&nbsp</td></tr><tr><td>&nbsp</br></td></tr>
-	  	  <tr><td><div>
-	  	  <tr>
-	  	  <td>Add your Rating</td>
-	  	  <td>Add your Comments</td>
-	  	  </tr>
-	  	  <tr>
-	  	  <td>
-	  	  		<div class="stars">
-  					<form action="">
-					    <input class="star star-5" id="star-05" type="radio" name="star"/>
-					    <label class="star star-5" for="star-05"></label>
-					    <input class="star star-4" id="star-04" type="radio" name="star"/>
-					    <label class="star star-4" for="star-04"></label>
-					    <input class="star star-3" id="star-03" type="radio" name="star"/>
-					    <label class="star star-3" for="star-03"></label>
-					    <input class="star star-2" id="star-02" type="radio" name="star"/>
-					    <label class="star star-2" for="star-02"></label>
-					    <input class="star star-1" id="star-01" type="radio" name="star"/>
-					    <label class="star star-1" for="star-01"></label>
-					 </form>
-				</div>
-	  	  </td>
-	  	  <td style="width:100%">
-	  	  <form action="/html/tags/html_form_tag_action.cfm" method="post">
-<div>
-<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em; width:100%">
-
-</textarea>
-</div>
-<input type="submit" value="Submit">
-</form>
-	  	  </td>
-	  	  </tr></div></td></tr>
-	  	  </table>
-	  		 	
-					</div>
-</div>
-
-<div class="projects" id="projects">
+	    <div class="projects" id="projects">
 	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
 	    </div>
 	  </div> 
@@ -400,6 +364,91 @@ Author URL: SSDI_08
 	  		</div>
 	  	</div>
 	  </div>
+	  
+	  
+	<!-- <div class="sliderControl">
+		<div class="control">
+		 <a href="#" class="jcarousel-control-prev"></a>
+		 <a href="#" class="jcarousel-control-next"></a>
+		</div>
+		<div class="jcarousel-pagination"></div>
+		</div>
+		</div>
+		<script src="${js}jquery.touchSwipe.min.js"></script>
+		<script src="${js}app.js"></script>
+		<script src="${js}jcarousel.js"></script>-->
+        <div class="m_3" id="news"><span class="left_line1"> </span><h3>Feedback</h3><span class="right_line1"> </span></div>
+	 </div>
+	</div>
+	  <div class="project_top">
+	  	<div class="container">
+	  	  <table><tr><td><div>
+	  	  <tr>
+	  	  <td>
+	  	  Average Rating:
+	  	  </td>
+	  	  <td>
+	  	  Comments:
+	  	  </td>
+	  	  </tr>
+	  	  <tr>
+	  	  <td>
+	  	  <div class="stars">
+  					<form action="">
+					    <input class="star star-5" id="star-5" type="radio" name="star"/>
+					    <label class="star star-5" for="star-5"></label>
+					    <input class="star star-4" id="star-4" type="radio" name="star"/>
+					    <label class="star star-4" for="star-4"></label>
+					    <input class="star star-3" id="star-3" type="radio" name="star"/>
+					    <label class="star star-3" for="star-3"></label>
+					    <input class="star star-2" id="star-2" type="radio" name="star"/>
+					    <label class="star star-2" for="star-2"></label>
+					    <input class="star star-1" id="star-1" type="radio" name="star"/>
+					    <label class="star star-1" for="star-1"></label>
+					 </form>
+				</div>
+	  	  </td>
+	  	  <td>
+	  	  <p> Its a clean Home...!!!</br>Its a good ventilated Home!!Best place to live!!</br>Home away from home!!</br>Like a palace at low cost</p>
+	  	  </td>
+	  	  </tr></div></td></tr><tr><td>&nbsp</td></tr></tr><td>&nbsp</br></td></tr>
+	  	  <tr><td><div>
+	  	  <tr>
+	  	  <td>Add your Rating</td>
+	  	  <td>Add your Comments</td>
+	  	  </tr>
+	  	  <tr>
+	  	  <td>
+	  	  		<div class="stars">
+  					<form action="">
+					    <input class="star star-5" id="star-5" type="radio" name="star"/>
+					    <label class="star star-5" for="star-5"></label>
+					    <input class="star star-4" id="star-4" type="radio" name="star"/>
+					    <label class="star star-4" for="star-4"></label>
+					    <input class="star star-3" id="star-3" type="radio" name="star"/>
+					    <label class="star star-3" for="star-3"></label>
+					    <input class="star star-2" id="star-2" type="radio" name="star"/>
+					    <label class="star star-2" for="star-2"></label>
+					    <input class="star star-1" id="star-1" type="radio" name="star"/>
+					    <label class="star star-1" for="star-1"></label>
+					 </form>
+				</div>
+	  	  </td>
+	  	  <td style="width:100%">
+	  	  <form action="/html/tags/html_form_tag_action.cfm" method="post">
+<div>
+<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em; width:100%">
+
+</textarea>
+</div>
+<input type="submit" value="Submit">
+</form>
+	  	  </td>
+	  	  </tr></div></td></tr>
+	  	  </table>
+	  		 	
+					</div>
+</div>
 
 	  			  <!-- <div><ul class="news_list">
 	  			     <li class="date">
@@ -504,7 +553,7 @@ Author URL: SSDI_08
 			<li><img src="${images}cl10.png" /></li>
 			<li><img src="${images}cl5.jpg" /></li>
 		</ul>
-	<script type="text/javascript">
+	 <script type="text/javascript">
 $(window).load(function() {
 	
 
@@ -536,10 +585,10 @@ $(window).load(function() {
 <script type="text/javascript" src="${js}jquery.flexisel.js"></script>
 </div>
 </div>
-</div>
-	<div class="footer">
+
+	<!-- <div class="footer">
 		<div class="container">
-			 <!-- <div class="footer-logo">
+			  <div class="footer-logo">
 				<a href="index.html"><img src="${images}logo.png" alt=""/><br><span class="m_1">Software Development</span></a>
 			 </div>
 			<div class="social_footer">
@@ -623,7 +672,63 @@ $(window).load(function() {
 				$().UItoTop({ easingType: 'easeOutQuart' });
 				
 			});
+			
+			$(function(){
+				$('.info_link').click(function(){
+					$("#to").val($(this).text());
+				});
+			});
 		</script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script type="text/javascript">
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var lnkOwner = document.getElementById("mailOwner");
+var lnkTenant = document.getElementById("mailTenant");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+// When the user clicks the button, open the modal 
+lnkOwner.onclick = function() {
+    modal.style.display = "block";
+}
+lnkTenant.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+$(".modal-content").animate({top: "300px"});
+$(".modal-content").animate({opacity:"30"});
+$(".modal-content").css({position: "relative",margin: "auto",padding: "0",border: "1px solid #888",width: "80%"});
+
+$(".modal").css({position: "fixed",display: "none"});
+$(".modal").css({
+	backgroundColor: "rgb(0,0,0)",
+	backgroundColor: "rgba(0,0,0,0.4)"});
+	
+
+
+
+
+
+</script>
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
    </div>
 

@@ -7,8 +7,9 @@ import java.io.File;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-
+import javax.activation.*;
 import org.apartments.uncc.utilities.ISendEmail;
+import org.apartments.uncc.viewBeans.MailBean;
 import org.apartments.uncc.viewBeans.UserDetailsBean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
@@ -94,6 +95,31 @@ public class SendEmailUtilityImpl implements ISendEmail {
             System.err.println(ex.getMessage());
         }
 	}
+
+	@Override
+	public void sendEmail(MailBean mailBean) {
+		// TODO Auto-generated method stub
+		System.out.println("Inside Mail API");
+		
+		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+		msg.setFrom("sprakas2@uncc.edu");
+        msg.setTo(mailBean.getTo());
+        msg.setText(
+            "Dear "
+                
+                + "\n\n"+mailBean.getMailbody()
+                + "\nRegards,\n"
+                + "Team SSDI_08");
+        try{
+            this.mailSender.send(msg);
+            System.out.println("Mail Sent!!!");
+        }
+        catch (MailException ex) {
+            // simply log it and go on...
+            System.err.println(ex.getMessage());
+        }
+	}
+
 
 	
 
