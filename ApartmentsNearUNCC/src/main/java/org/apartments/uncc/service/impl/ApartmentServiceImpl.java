@@ -48,4 +48,11 @@ public class ApartmentServiceImpl implements ApartmentService {
 		return apartmentDao.getApartmentDetails(id);
 	}
 
+
+	@Override
+	public List<ApartmentDetailsBean> getMyApartments(String emailId) {
+		// TODO Auto-generated method stub
+		return apartmentDao.getApartmentDetails(emailId);
+	}
+
 }

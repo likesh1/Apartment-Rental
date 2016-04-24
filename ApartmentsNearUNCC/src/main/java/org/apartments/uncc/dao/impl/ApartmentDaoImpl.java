@@ -247,4 +247,47 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		return apt;
 	}
 
+	@Override
+	public List<ApartmentDetailsBean> getApartmentDetails(String emailId) {
+		// TODO Auto-generated method stub
+		List<ApartmentDetailsBean> apartment = new ArrayList<ApartmentDetailsBean>();
+		String query = "Select * from Apartments where ownerId=(select ownerId from ApartmentOwner where oEmail=?)";
+		//Connection con = DatabaseConnection.connect();
+		
+		ResultSet rs=null;
+//		PreparedStatement pstmt=null;
+		System.out.println("Inside AparmentDaoImpl");
+		try {
+		
+			//pstmt = con.prepareStatement(query);
+			PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
+			pstmt.setString(1, emailId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ApartmentDetailsBean apt = new ApartmentDetailsBean();
+				apt.setApartmentId(rs.getInt("apartmentId"));
+				apt.setDepositAmt(rs.getInt("depositAmt"));
+				apt.setRent(rs.getInt("rent"));
+				apt.setAvailablityFrom(rs.getDate("availablityFrom"));
+				apt.setUtilities(rs.getString("utilities"));
+				apt.setArea(rs.getString("area"));
+				apt.setStreet(rs.getString("street"));
+				apt.setDoorNo(rs.getString("doorNo"));
+				apt.setCity(rs.getString("city"));
+				apt.setno_of_rooms(rs.getInt("no_of_rooms"));
+				apt.setno_of_bathroom(rs.getInt("no_of_bathroom"));
+				apt.setFlooring(rs.getString("flooring"));
+				apt.setType_bathroom(rs.getString("type_bathroom"));
+				apartment.add(apt);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			
+		}
+
+		return apartment;
+	}
+
 }

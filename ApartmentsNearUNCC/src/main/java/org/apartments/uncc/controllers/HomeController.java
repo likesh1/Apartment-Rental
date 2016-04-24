@@ -84,17 +84,24 @@ public class HomeController {
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginBean")LoginBean loginBean)
 	{
+		
 		ModelAndView model= null;
+		
 			UserDetailsBean validUser;
 			try {
 				validUser = loginDelegate.isValidUser(loginBean);
 				System.out.println("Id: "+validUser.getUsername()+" Role:"+validUser.getUserRole()+" Name:"+validUser.getfName());
 				System.out.println("User Login Successful");
 				request.setAttribute("loggedInUser", loginBean.getUsername());
+				//session.setAttribute("role", validUser.getUserRole());
 				if(validUser.getUserRole().equals("student"))
 					model = new ModelAndView("welcomeStudent");
 				else
+				{	
 					model = new ModelAndView("welcomeOwner");
+					List<ApartmentDetailsBean> myApartments= apartmentListDelegate.getMyApartments(validUser.getUsername());
+					model.addObject("myApartments",myApartments);
+				}
 				model.addObject("user", validUser);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -111,8 +118,7 @@ public class HomeController {
 					request.setAttribute("isSignupError",false);
 			}
 				
-
-	
+		
 		return model;
 		
 	}

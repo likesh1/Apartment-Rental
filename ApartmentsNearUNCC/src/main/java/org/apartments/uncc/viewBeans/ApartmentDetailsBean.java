@@ -97,4 +97,27 @@ public class ApartmentDetailsBean {
 	public void setFlooring(String flooring) {
 		this.flooring = flooring;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + apartmentId;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ApartmentDetailsBean other = (ApartmentDetailsBean) obj;
+		if (apartmentId != other.apartmentId)
+			return false;
+		return true;
+	}
+	
+	
+	
 }

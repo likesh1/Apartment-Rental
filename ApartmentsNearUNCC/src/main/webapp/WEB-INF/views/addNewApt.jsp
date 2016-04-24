@@ -5,18 +5,21 @@ Author URL: SSDI_08
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ page session="false" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Apartments Near UNCC</title>
+	<title>Apartments Near UNCC (Location)</title>
 	<spring:url value="/resources/css/bootstrap.css" var="bootstrapCSS" />
 	<spring:url value="/resources/css/style1.css" var="style1CSS" />
+	<spring:url value="/resources/css/Rating.css" var="RatingCSS" />
 	<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
 	<spring:url value="/resources/images/" var="images"/>
 	<spring:url value="/resources/javascripts/" var="js"/>
 	<link href="${bootstrapCSS}" rel='stylesheet' />
 	<link href="${style1CSS}" rel='stylesheet' />
+	<link href="${RatingCSS}" rel='stylesheet' />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -46,7 +49,7 @@ Author URL: SSDI_08
       		<div class="logo">
 				<a href="welcome"><img src="${images }logo.png" alt=""/><br><span class="m_1">For Rent Near UNCC</span></a>
 			 </div>
-			 <nav class="navbar navbar-default menu" role="navigation"><h3 class="nav_right"><a href="index.html"><img src="${ images}logo.png" class="img-responsive" alt=""/></a></h3>
+			 <nav class="navbar navbar-default menu" role="navigation"><h3 class="nav_right"><a href=""><img src="${ images}logo.png" class="img-responsive" alt=""/></a></h3>
 			  <div class="container-fluid">
 			    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
@@ -61,16 +64,15 @@ Author URL: SSDI_08
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav menu1">
 			      	<li class="active"><a href="#home" class="scroll"> <span> </span><i class="menu-border"></i></a></li>
-			        <li><a href="#" class="scroll">Profile</a></li>
+			        <li><a href="#about" class="scroll">Details</a></li>
 			   <!-- <li><a href="#services" class='scroll'>Services</a></li>-->
-			        <li><a href="#projects" class="scroll">Apartments</a></li>
-			        <li><a href="#team" class="scroll">Team</a></li>
-			   <!-- <li><a href="#news" class="scroll">News</a></li>-->
+			        <li><a href="#projects" class="scroll">Locations</a></li>
+			        <!-- <li><a href="#team" class="scroll">Team</a></li>-->
+			  <!--  <li><a href="#news" class="scroll">Reviews</a></li>-->
 			        <li><a href="#clients" class="scroll">Clients</a></li>
 			        <li><a href="#contact" class="scroll">Contact</a></li>
-			        <li><a href="logout.do">LogOut</a></li>
+			        <li><a href="#">My Profile</a></li>
 			       </ul>
-			       <h4 align="right" class="scroll">Welecome ${user.fName }!!!</h6>
 			        <!-- <div class="social">	
 					   <ul>	
 						  <li class="fb"><a href="#"><span> </span></a></li>
@@ -93,330 +95,171 @@ Author URL: SSDI_08
 		 </div>  
 		</div>
 		</div>
-	     <div class="index-banner" id="home">
-       	   <div class="wmuSlider example1">
-			   <div class="wmuSliderWrapper">
-				   <article style="position: absolute; width: 100%; opacity: 0;"> 
-				   	<div class="banner-wrap">
-				   		 <div class="slider-left">
-						    <h2>Rent Easy<br><span class="m_2">Home sweet home</span></h2>
-						    <p>It is good to be home! After you've completed your search and settled into your new home, you can return to our site to make secure rent payments and renew your lease.</p>
-						    <!-- <div class="button"><a href="#">Read More</a></div>-->
-						 </div>
-					     <div class="clear"></div>
-					 </div>
-					</article>
-				   <article style="position: relative; width: 100%; opacity: 1;"> 
-				   	 <div class="banner-wrap">
-				   	 	<div class="slider-left">
-						    <h1>Leases<br><span class="m_2">Secured</span></h1>
-						     <p>Once you have found the perfect place for rent, we will help you secure your lease quickly and hassle-free.</p>
-						     <!-- <div class="button"><a href="#">Read More</a></div>-->
-						 </div>
-					     <div class="clear"></div>
-					  </div>
-				   </article>
-				   <article style="position: absolute; width: 100%; opacity: 0;">
-				   	<div class="banner-wrap">
-				   		 <div class="slider-left">
-						    <h1>Together<br><span class="m_2">Enjoy your home</span></h1>
-						     <p>Home that makes you stress free</p>
-						      <!-- <div class="button"><a href="#">Read More</a></div>-->
-						 </div>
-					     <div class="clear"></div>
-					 </div>
-				   </article>
-				 </div>
-				<a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
-                <ul class="wmuSliderPagination">
-                	<li><a href="#" class="">0</a></li>
-                	<li><a href="#" class="">1</a></li>
-                	<li><a href="#" class="wmuActive">2</a></li>
-                </ul>
-            </div>
-            <script src="${js}jquery.wmuSlider.js"></script> 
-			  <script>
-       			$('.example1').wmuSlider();         
-   		     </script> 	           	      
-      </div>
+
+<section>
+		<div>
+			<div class="main">
+				<div class="container">
+					<div class="about" id="about">
+
+						<div>
+							<div class="container col-sm-4" style="width: 100%">
+								<div class="panel-group" id="accordion">
+									<div class="panel panel-default">
+
+										
+										<div class="panel-heading">
+											<h4 class="panel-title">APARTMENT
+												Details</h4>
+										</div>
+										<!-- <div id="${id}" class="panel-collapse collapse">  -->
+										<form:form action="addNewApartment" >
+										<div class="panel-body">
+											<div class="table-responsive">
+												<table class="table" style="width: 90%">
+													<tr>
+														<td>DEPOSIT AMOUNT:</td>
+														<td><input type="text" id="deposit" name="deposit"/></td>
+														<td>RENT:</td>
+														<td><input type="text" id="rent" name="rent"/></td>
+													</tr>
+													<tr>
+														<td>AVAILABLE FROM:</td>
+														<td><input type="text" id="from" name="from"/></td>
+														<td>UTILITIES</td>
+														<td><input type="text" id="utilites" name="utilities"/></td>
+													</tr>
+													<tr>
+														<td>AREA</td>
+														<td><input type="text" id="area" name="area"/></td>
+														<td>STREET</td>
+														<td><input type="text" id="street" name="street"/></td>
+													</tr>
+													<tr>
+														<td>DOOR NUMBER</td>
+														<td><input type="text" id="doorNo" name="doorNo"/></td>
+														<td>CITY</td>
+														<td><input type="text" id="city" name="city"/></td>
+													</tr>
+													<tr>
+														<td>NUMBER OF ROOMS</td>
+														<td><input type="text" id="rooms" name="rooms" /></td>
+														<td>BATHROOM TYPE</td>
+														<td><select id="bathrooms" name="bathrooms">
+																<option value="Attached">Attached</option>
+																<option value="Common">Common</option>
+															</select>
+														</td>
+													</tr>
+													<tr>
+														<td>FLOORING</td>
+														<td><select id="flooring" name="flooring" class="login-box">
+																<option value="Wooden">Wooden</option>
+																<option value="Carpet">Carpet</option>
+															</select></td>
+														<td></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td></td>
+														<td><div class="about-btn">
+																<button type="reset">Contact Details</button>
+															</div></td>
+														<td><div class="about-btn">
+																<button type="submit">Add Details</button>
+															</div></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										</form:form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					
+	</section>
+	
 	</div>
-    <div class="main">	
-	  <div class="container">
-	   <div class="about" id="about">
-			<div class="row about-top">
-			  <ul class="about-top">
-			  	<li><h2>List your Rentals with us</h2></li>
-			  	<li><p style="color:#6E6E6E;">Put your property in front of millions of students looking for apartments near UNCC.!
-<br></br>Post your rental in minutes. </p></li>
-			  	<li class="last"><div class="about-btn"><a href="http://localhost:8080/uncc">Register</a></div></li>
-			  	<div class="clear"></div>
-			  </ul>
-			</div>
-		</div>
-		<!-- <div class="services" id="services">
-			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
-			<div class="row service_grids">
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="web"> </i>
-				 <h3 class="m_4">Web Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="app"> </i>
-				 <h3 class="m_4">App Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="php"> </i>
-				 <h3 class="m_4">Php Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center">
-				 <i class="wordpress"> </i>
-				 <h3 class="m_4">Wordpress</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			</div>-->
+	
+
+
+	   
+	   
+	
+						
+         
+         
+            
+	    
+	  
+	  
+	<section>
+        <div class="m_3" id="news"><span class="left_line1"> </span><h3>Feedback</h3><span class="right_line1"> </span></div>
+	</section>
+
+
+<div class="projects" id="projects">
+	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
 	    </div>
-	    <div class="projects" id="projects">
-	    	<div class="m_3"><span class="left_line1"> </span><h3>My Apartments</h3><span class="right_line1"> </span></div>
-	    </div>
-	  </div> 
 	  <div class="project_top">
 	  	<div class="container">
 	  		<div class="row">
-	  			<c:forEach items="${myApartments}" var="apartments">
-	  			<c:set var="myAptDetails">myAptDetails?id=${apartments.apartmentId}</c:set>
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
 					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
-				  	<h3 name="name" id="name" >${apartments.doorNo}</h3>
+				  	<h3>UT Drive</h3>
 				  	<!-- <p>Project Status</p>
 				  	<i class="dating"> </i>-->
-				  	 <div class="project-btn"><a href="${myAptDetails}">Apartment Details</a></div>
+				  	 <div class="project-btn"><a href="apartmentList?Location=UT Drive">Apartment List</a></div>
 				  </div>
 				</div>
-	  			</c:forEach>
-	  			
-	  			
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
 					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
-				  	<h3>Add New</h3>
+				  	<h3>UT North</h3>
 				  <!-- 	<p class="blue">Project Status</p>
 				  	<i class="wedding"> </i>-->
-				  	 <div class="project-btn"><a href="addApartment">Add New Apartment</a></div>
+				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
 				  </div>
 				</div>
-	  			
+	  			<div class="col-md-3 project_grid">
+	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+				  </div></a>
+				  <div class="project_desc">
+				  	<h3>Ashford Greens</h3>
+				  <!-- 	<p class="green">Project Status</p>
+				  	<i class="travel"> </i>-->
+				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
+				  </div>
+				</div>
+	  			<div class="col-md-3">
+	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
+					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+				  </div></a>
+				  <div class="project_desc">
+				  	<h3>Colonial Grand</h3>
+				  <!-- 	<p class="dark">Project Status</p>
+				  	<i class="ecommerce"> </i>-->                                       
+				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
+				  </div>
+				</div>
 	  		</div>
 	  	</div>
 	  </div>
-	  
-	  <div class="team" id="team">
-	  	<div class="container">
-	  	  <div class="m_3"><span class="left_line1"> </span><h3>Our Team</h3><span class="right_line1"> </span></div>
-		    <div class="horizontalSlider">
-			 <div class="jcarousel">
-				<ul>
-			    	<li><figure><img src="${images}Pritam.jpg" class="img-responsive" alt=""/></figure>
-			    		<h4 class="m_5"><a href="#">Pritam Borate</a></h4>
-			    		<p class="m_6">Developer</p>
-			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
-					</li>
-					<li><figure><img src="${images}Khyati.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Khyati Savakia</a></h4>
-			    		<p class="m_6">Designer</p><br></br>
-			    		<!-- div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
-			        </li>
-			    	<li><figure><img src="${images}Liku.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Likesh Pammina</a></h4>
-			    		<p class="m_6">Developer</p>
-			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
-			        </li>
-					<li><figure><img src="${images}saran.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Saranya Prakash</a></h4>
-			    		<p class="m_6">Designer</p>
-			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
-			        </li>
-			    <!-- 	<li><figure><img src="${images}t1.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t2.jpg" class="img-responsive" alt=""/></figure>
-			        <h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-			    	<li><figure><img src="${images}t3.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t4.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-			    	<li><figure><img src="${images}t1.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t2.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-			    	<li><figure><img src="${images}t3.jpg" class="img-responsive" alt=""/></figure>
-			        <h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t4.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>-->
-			    </ul>
-         </div>
-	<!-- <div class="sliderControl">
-		<div class="control">
-		 <a href="#" class="jcarousel-control-prev"></a>
-		 <a href="#" class="jcarousel-control-next"></a>
-		</div>
-		<div class="jcarousel-pagination"></div>
-		</div>
-		</div>
-		<script src="${js}jquery.touchSwipe.min.js"></script>
-		<script src="${js}app.js"></script>
-		<script src="${js}jcarousel.js"></script>
-        <div class="m_3" id="news"><span class="left_line1"> </span><h3>News</h3><span class="right_line1"> </span></div>
-	 </div>
-	</div>
-	  <div class="project_top">
-	  	<div class="container">
-	  	  <div class="row news" >
-	  		 <div class="col-md-6">
-	  		 	<div class="news_left">
-	  			  <ul class="news_list">
+
+	  			  <!-- <div><ul class="news_list">
 	  			     <li class="date">
 						May<br><span class="highlight">20</span><br><span class="light_color">2014</span>
 					 </li>
@@ -637,9 +480,68 @@ $(window).load(function() {
 				
 				$().UItoTop({ easingType: 'easeOutQuart' });
 				
+				
+				
 			});
+			
+			
 		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			// Get the modal
+			var modal = document.getElementById('myModal');
+			
+			// Get the button that opens the modal
+			var lnkOwner = document.getElementById("mailOwner");
+			var lnkTenant = document.getElementById("mailTenant");
+			
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			
+			
+			
+			// When the user clicks the button, open the modal 
+			lnkOwner.onclick = function() {
+			    modal.style.display = "block";
+			};
+			if(lnkTenant!=null){
+				lnkTenant.onclick = function() {
+				    modal.style.display = "block";
+				}
+			};
+			
+			
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
+			
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+			
+			$(".modal-content").animate({top: "300px"});
+			$(".modal-content").animate({opacity:"30"});
+			$(".modal-content").css({position: "relative",margin: "auto",padding: "0",border: "1px solid #888",width: "80%"});
+			
+			$(".modal").css({position: "fixed",display: "none"});
+			$(".modal").css({
+				backgroundColor: "rgb(0,0,0)",
+				backgroundColor: "rgba(0,0,0,0.4)"});
+			$(function(){
+				$(".info_link").click(function(){
+					
+					$("#to").val($(this).text());
+				});
+			});
+
+</script>
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
    </div>
+
 </body>
+
 </html>

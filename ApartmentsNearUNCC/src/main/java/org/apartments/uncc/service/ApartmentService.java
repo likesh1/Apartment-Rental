@@ -16,5 +16,6 @@ public interface ApartmentService {
 
 	List<ApartmentDetailsBean> getApartmentList(String location);
 	public Map getApartmentDetails(int id);
+	List<ApartmentDetailsBean> getMyApartments(String emailId);
 	
 }

@@ -15,4 +15,5 @@ import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 public interface ApartmentDao {
 	public List<ApartmentDetailsBean> getApartmentList(String location);
 	public Map getApartmentDetails(int id);
+	public List<ApartmentDetailsBean> getApartmentDetails(String emailId);
 }

@@ -31,4 +31,9 @@ public class ApartmentListDelegate {
 	{
 	     return apartmentService.getApartmentList(location);
 	}
+	
+	public List<ApartmentDetailsBean> getMyApartments(String emailId)
+	{
+		return apartmentService.getMyApartments(emailId);
+	}
 }
