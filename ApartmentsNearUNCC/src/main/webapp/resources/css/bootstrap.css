@@ -5782,4 +5782,17 @@ button.close {
     display: none !important;
   }
 }
+
+label {
+  margin-left: 20px;
+}
+
+#datepicker {
+  width: 180px;
+  margin: 0 20px 20px 20px;
+}
+
+#datepicker > span:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=bootstrap.css.map */

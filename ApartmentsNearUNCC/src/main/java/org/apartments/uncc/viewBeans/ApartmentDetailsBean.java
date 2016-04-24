@@ -2,12 +2,20 @@ package org.apartments.uncc.viewBeans;
 
 import java.util.Date;
 
+
 public class ApartmentDetailsBean {
 	
 	private int apartmentId;
 	private int depositAmt;
 	private int rent;
 	private Date availablityFrom;
+	private String date;
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	private String utilities;
 	private String area;
 	private String street;

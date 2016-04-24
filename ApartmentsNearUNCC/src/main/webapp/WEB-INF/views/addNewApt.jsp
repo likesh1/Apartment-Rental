@@ -11,20 +11,27 @@ Author URL: SSDI_08
 <head>
 	<title>Apartments Near UNCC (Location)</title>
 	<spring:url value="/resources/css/bootstrap.css" var="bootstrapCSS" />
+	<spring:url value="/resources/css/bootstrap.min.css" var="bootstrapMinCSS" />
+	<spring:url value="/resources/css/datepicker.css" var="datepickerCSS" />
 	<spring:url value="/resources/css/style1.css" var="style1CSS" />
 	<spring:url value="/resources/css/Rating.css" var="RatingCSS" />
 	<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
+	<spring:url value="/resources/javascripts/bootstrap-datepicker.js" var="datepickerJS" />
+	<spring:url value="/resources/javascripts/bootstrap.min.js" var="bootstrapJS" />
 	<spring:url value="/resources/images/" var="images"/>
 	<spring:url value="/resources/javascripts/" var="js"/>
 	<link href="${bootstrapCSS}" rel='stylesheet' />
 	<link href="${style1CSS}" rel='stylesheet' />
 	<link href="${RatingCSS}" rel='stylesheet' />
+	<link href="${datepickerCSS}" rel='stylesheet' />
+	<link href="${bootstrapMinCSS }" rel='stylesheet'/>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<script src="${js}jquery-1.9.1.min.js"></script>
+	<script src="${js}bootstrap-datepicker.js"></script>
 	<!----requred-js-files---->
 	<!-- script src="${js}jquery.min.js"></script-->
 	<script src="${js}bootstrap.min.js"></script>
@@ -40,6 +47,7 @@ Author URL: SSDI_08
 						});
 					});
 				</script>
+				
 </head>
 <body>
 	<div class="header">	
@@ -96,11 +104,8 @@ Author URL: SSDI_08
 		</div>
 		</div>
 
-<section>
-		<div>
-			<div class="main">
-				<div class="container">
-					<div class="about" id="about">
+		<section>
+			<div>
 
 						<div>
 							<div class="container col-sm-4" style="width: 100%">
@@ -113,62 +118,171 @@ Author URL: SSDI_08
 												Details</h4>
 										</div>
 										<!-- <div id="${id}" class="panel-collapse collapse">  -->
-										<form:form action="addNewApartment" >
+										<form:form action="addNewApartment" modelAttribute="newApartment">
+										<div class="panel-body">
+											<div class="table-responsive">
+												<table title="New Apartment" class="table" style="width: 90%">
+													<tr class="info">
+														<td><label for="deposit">DEPOSIT AMOUNT: </label></td>
+														<td><form:input class="form-control" placeholder="deposit of room in $" path="depositAmt" type="text" id="deposit" name="deposit"/></td>
+														<td><label for="rent">RENT:</label></td>
+														<td><form:input class="form-control" placeholder="rent of room in $" type="text" id="rent" name="rent" path="rent"/></td>
+													</tr>
+													<tr class="info">
+														<td><label for="date">AVAILABLE FROM:</label></td>
+														<td><div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+															    <form:input class="form-control" type="text" id="date" readonly="readonly" path="date"/>
+															    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+															</div></td>
+														<td><label for="utilities">UTILITIES</label></td>
+														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="utilites" name="utilities" path="utilities"/></td>
+													</tr>
+													<tr class="info">
+														<td><label for="area">AREA</label></td>
+														<td><form:input class="form-control" placeholder="UT DRIVE" type="text" id="area" name="area" path="area"/></td>
+														<td><label for="street">STREET</label></td>
+														<td><form:input class="form-control" placeholder="Graduate Lane" type="text" id="street" name="street" path="street"/></td>
+													</tr>
+													<tr class="info">
+														<td><label for="doorNo">DOOR NUMBER</label></td>
+														<td><form:input class="form-control" placeholder="10008 G" type="text" id="doorNo" name="doorNo" path="doorNo"/></td>
+														<td><label for="city">CITY</label></td>
+														<td><form:input class="form-control" placeholder="Charlotte" type="text" id="city" name="city" path="city"/></td>
+													</tr>
+													<tr class="info">
+														<td><label for="rooms">NUMBER OF ROOMS</label></td>
+														<td><form:input class="form-control" placeholder="number of rooms$" type="text" id="rooms" name="rooms" path="no_of_rooms"/></td>
+														<td><label for="bathrooms">BATHROOM TYPE</label></td>
+														<td><form:select class="form-control" id="bathrooms" name="bathrooms" path="type_bathroom">
+																<option value="Select type of bathroom" disabled="disabled">Select type of bathroom</option>
+																<option value="Attached">Attached</option>
+																<option value="Common">Common</option>
+															</form:select>
+														</td>
+													</tr>
+													<tr class="info">
+														<td><label for="flooring">FLOORING</label></td>
+														<td><form:select id="flooring" name="flooring" class="form-control" path="flooring">
+																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
+																<option value="Wooden">Wooden</option>
+																<option value="Carpet">Carpet</option>
+															</form:select></td>
+														<td></td>
+														<td></td>
+													</tr>
+													<tr class="info">
+														<td></td>
+														<td></td>
+														<td></td>
+														<td><button class="btn btn-primary" type="reset">Reset</button>
+																<button class="btn btn-success"type="submit">Add Details</button>
+															</td>
+													</tr>
+												</table>
+												
+											</div>
+										</div>
+										</form:form>
+										<c:if test="${successInAddApt != null}">
+													<div class="alert alert-success">
+													    <strong>Success!</strong> ${successInAddApt }
+													  </div>
+												</c:if> 
+										<c:if test="${errorInAddApt != null}">
+													<div class="alert alert-danger">
+													    <strong>Error!</strong> ${errorInAddApt }
+													  </div>
+												</c:if> 
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					
+	</section>
+	<script type="text/javascript">
+	$(function () {
+		  $("#datepicker").datepicker({ 
+		        autoclose: true, 
+		        todayHighlight: true
+		  }).datepicker('update', new Date());;
+		});
+	</script>
+	
+	<section>
+			<div>
+
+						<div>
+							<div class="container col-sm-4" style="width: 100%">
+								<div class="panel-group" id="accordion">
+									<div class="panel panel-default">
+
+										
+										<div class="panel-heading">
+											<h4 class="panel-title">Tenant
+												Details</h4>
+										</div>
+										<!-- <div id="${id}" class="panel-collapse collapse">  -->
+										<form:form action="addNewApartment" modelAttribute="newApartment">
 										<div class="panel-body">
 											<div class="table-responsive">
 												<table class="table" style="width: 90%">
 													<tr>
 														<td>DEPOSIT AMOUNT:</td>
-														<td><input type="text" id="deposit" name="deposit"/></td>
+														<td><form:input placeholder="deposit of room in $" path="depositAmt" type="text" id="deposit" name="deposit"/>$</td>
 														<td>RENT:</td>
-														<td><input type="text" id="rent" name="rent"/></td>
+														<td><form:input placeholder="rent of room in $" type="text" id="rent" name="rent" path="rent"/>$</td>
 													</tr>
 													<tr>
 														<td>AVAILABLE FROM:</td>
-														<td><input type="text" id="from" name="from"/></td>
+														<td><form:input placeholder="date from which apartment is available" type="text" id="from" name="from" path="date"/></td>
 														<td>UTILITIES</td>
-														<td><input type="text" id="utilites" name="utilities"/></td>
+														<td><form:input placeholder="i.e. Internet" type="text" id="utilites" name="utilities" path="utilities"/></td>
 													</tr>
 													<tr>
 														<td>AREA</td>
-														<td><input type="text" id="area" name="area"/></td>
+														<td><form:input placeholder="UT DRIVE" type="text" id="area" name="area" path="area"/></td>
 														<td>STREET</td>
-														<td><input type="text" id="street" name="street"/></td>
+														<td><form:input placeholder="Graduate Lane" type="text" id="street" name="street" path="street"/></td>
 													</tr>
 													<tr>
 														<td>DOOR NUMBER</td>
-														<td><input type="text" id="doorNo" name="doorNo"/></td>
+														<td><form:input placeholder="10008 G" type="text" id="doorNo" name="doorNo" path="doorNo"/></td>
 														<td>CITY</td>
-														<td><input type="text" id="city" name="city"/></td>
+														<td><form:input placeholder="Charlotte" type="text" id="city" name="city" path="city"/></td>
 													</tr>
 													<tr>
 														<td>NUMBER OF ROOMS</td>
-														<td><input type="text" id="rooms" name="rooms" /></td>
+														<td><form:input placeholder="number of rooms$" type="text" id="rooms" name="rooms" path="no_of_rooms"/></td>
 														<td>BATHROOM TYPE</td>
-														<td><select id="bathrooms" name="bathrooms">
+														<td><form:select id="bathrooms" name="bathrooms" path="type_bathroom">
+																<option value="Select type of bathroom" disabled="disabled">Select type of bathroom</option>
 																<option value="Attached">Attached</option>
 																<option value="Common">Common</option>
-															</select>
+															</form:select>
 														</td>
 													</tr>
 													<tr>
 														<td>FLOORING</td>
-														<td><select id="flooring" name="flooring" class="login-box">
+														<td><form:select id="flooring" name="flooring" class="login-box" path="flooring">
+																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
 																<option value="Wooden">Wooden</option>
 																<option value="Carpet">Carpet</option>
-															</select></td>
+															</form:select></td>
 														<td></td>
 														<td></td>
 													</tr>
 													<tr>
 														<td></td>
 														<td></td>
-														<td><div class="about-btn">
-																<button type="reset">Contact Details</button>
-															</div></td>
-														<td><div class="about-btn">
-																<button type="submit">Add Details</button>
-															</div></td>
+														<td>
+																
+															</td>
+														<td>
+																<button class="btn btn-primary" type="reset">Reset</button>
+																<button class="btn btn-success"type="submit">Add Details</button>
+															</td>
 													</tr>
 												</table>
 											</div>
@@ -179,9 +293,6 @@ Author URL: SSDI_08
 								</div>
 							</div>
 						</div>
-					</div>
-					</div>
-					</div>
 					</div>
 					
 	</section>
@@ -486,7 +597,7 @@ $(window).load(function() {
 			
 			
 		</script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
 		<script type="text/javascript">
 			// Get the modal
 			var modal = document.getElementById('myModal');
