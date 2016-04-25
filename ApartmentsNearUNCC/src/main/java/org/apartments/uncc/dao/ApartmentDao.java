@@ -17,4 +17,5 @@ public interface ApartmentDao {
 	public Map getApartmentDetails(int id);
 	public List<ApartmentDetailsBean> getApartmentDetails(String emailId);
 	public int getNewApartmentId(ApartmentDetailsBean aptDetails,String email);
+	public int getOwnerId(int aptId);
 }

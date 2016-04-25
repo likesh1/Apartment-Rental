@@ -72,7 +72,7 @@ public class ApartmentController {
 		System.out.println("Date is - "+newApartment.getDate()+"\nRent is - "+newApartment.getRent()+"\nflooring is "+newApartment.getFlooring());
 		int id=ownerDelegate.getNewApartmentId(newApartment,user.getUsername());
 		System.out.println("Date is - "+newApartment.getDate()+"\nRent is - "+newApartment.getRent()+"\nflooring is "+newApartment.getFlooring());
-		request.setAttribute("aptId", id);
+		session.setAttribute("aptId", id);
 		request.setAttribute("successInAddApt", "Your apartment has been added succesfully!!");
 		return model;
 	}
@@ -87,36 +87,7 @@ public class ApartmentController {
 		HttpSession session=request.getSession();
 		String aptId=(String) session.getAttribute("aptId");
 		ownerDelegate.uploadFile(aptId,names,files);
-		String message = "";
-		for (int i = 0; i < files.length; i++) {
-			MultipartFile file = files[i];
-			String name = names[i];
-			try {
-				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File( rootPath+ File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
-
-				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath()
-						+ File.separator + name);
-				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-
-				logger.info("Server File Location="
-						+ serverFile.getAbsolutePath());
-
-				message = message + "You successfully uploaded file=" + name
-						+ "<br />";
-			} catch (Exception e) {
-				//return "You failed to upload " + name + " => " + e.getMessage();
-			}
-		}
+		
 		//return message;
 		return model;
 	}

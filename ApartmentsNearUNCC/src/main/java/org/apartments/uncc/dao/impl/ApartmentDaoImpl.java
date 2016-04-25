@@ -351,5 +351,23 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		}
 		return ownerId;
 	}
+	
+	public int getOwnerId(int aptId){
+		int ownerId=-1;
+		ResultSet rs=null;
+		String query1="select ownerId from Apartments where apartmentId=?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = dataSource.getConnection().prepareStatement(query1);
+			pstmt.setInt(1, aptId);
+			rs = pstmt.executeQuery();
+			rs.next();
+			ownerId=rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ownerId;
+	}
 
 }

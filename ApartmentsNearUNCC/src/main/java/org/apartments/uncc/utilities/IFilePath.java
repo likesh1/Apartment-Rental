@@ -9,4 +9,6 @@ package org.apartments.uncc.utilities;
  */
 public interface IFilePath {
 
+	String getFileUploadPath(String aptId);
+
 }
