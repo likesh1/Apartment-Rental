@@ -47,6 +47,10 @@
 	<bean id="apartmentListDelegate" class="org.apartments.uncc.delegate.ApartmentListDelegate">
 		<property name="apartmentService" ref="apartmentService"></property>
 	</bean>
+	
+	<bean id="ownerDelegate" class="org.apartments.uncc.delegate.OwnerDelegate">
+		<property name="apartmentService" ref="apartmentService"></property>
+	</bean>
 
 	<bean id="apartmentService" class="org.apartments.uncc.service.impl.ApartmentServiceImpl">
 		<property name="apartmentDao" ref="apartmentDao"></property>

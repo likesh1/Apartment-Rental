@@ -55,4 +55,11 @@ public class ApartmentServiceImpl implements ApartmentService {
 		return apartmentDao.getApartmentDetails(emailId);
 	}
 
+
+	@Override
+	public int getNewApartmentId(ApartmentDetailsBean aptDetails,String email) {
+		// TODO Auto-generated method stub
+		return apartmentDao.getNewApartmentId(aptDetails,email);
+	}
+
 }

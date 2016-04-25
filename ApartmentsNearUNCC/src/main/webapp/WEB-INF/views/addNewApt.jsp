@@ -2,7 +2,11 @@
 Author: SSDI_08
 Author URL: SSDI_08
 -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
@@ -95,7 +99,7 @@ Author URL: SSDI_08
 						 <input type="submit" value="">
 					  </form>
 					</div>
-			      </form>
+			      </form>-->
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
@@ -129,11 +133,9 @@ Author URL: SSDI_08
 														<td><form:input class="form-control" placeholder="rent of room in $" type="text" id="rent" name="rent" path="rent"/></td>
 													</tr>
 													<tr class="info">
-														<td><label for="date">AVAILABLE FROM:</label></td>
-														<td><div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-															    <form:input class="form-control" type="text" id="date" readonly="readonly" path="date"/>
-															    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-															</div></td>
+														<td><label for="rooms">NUMBER OF ROOMS</label></td>
+														<td><form:input class="form-control" placeholder="number of rooms$" type="number" min="1" max="5" id="rooms" name="rooms" path="no_of_rooms"/></td>
+		
 														<td><label for="utilities">UTILITIES</label></td>
 														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="utilites" name="utilities" path="utilities"/></td>
 													</tr>
@@ -150,8 +152,12 @@ Author URL: SSDI_08
 														<td><form:input class="form-control" placeholder="Charlotte" type="text" id="city" name="city" path="city"/></td>
 													</tr>
 													<tr class="info">
-														<td><label for="rooms">NUMBER OF ROOMS</label></td>
-														<td><form:input class="form-control" placeholder="number of rooms$" type="text" id="rooms" name="rooms" path="no_of_rooms"/></td>
+														<td><label for="flooring">FLOORING</label></td>
+														<td><form:select id="flooring" name="flooring" class="form-control" path="flooring">
+																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
+																<option value="Wooden">Wooden</option>
+																<option value="Carpet">Carpet</option>
+															</form:select></td>
 														<td><label for="bathrooms">BATHROOM TYPE</label></td>
 														<td><form:select class="form-control" id="bathrooms" name="bathrooms" path="type_bathroom">
 																<option value="Select type of bathroom" disabled="disabled">Select type of bathroom</option>
@@ -161,12 +167,12 @@ Author URL: SSDI_08
 														</td>
 													</tr>
 													<tr class="info">
-														<td><label for="flooring">FLOORING</label></td>
-														<td><form:select id="flooring" name="flooring" class="form-control" path="flooring">
-																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
-																<option value="Wooden">Wooden</option>
-																<option value="Carpet">Carpet</option>
-															</form:select></td>
+														
+														<td><label for="date">AVAILABLE FROM:</label></td>
+														<td><div id="datepicker" class="input-group date" data-date-format="mm/dd/yyyy">
+															    <form:input class="form-control" type="text" id="date" path="date"/>
+															    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+															</div></td>
 														<td></td>
 														<td></td>
 													</tr>
@@ -175,7 +181,7 @@ Author URL: SSDI_08
 														<td></td>
 														<td></td>
 														<td><button class="btn btn-primary" type="reset">Reset</button>
-																<button class="btn btn-success"type="submit">Add Details</button>
+																<button class="btn btn-success" type="submit">Add Details</button>
 															</td>
 													</tr>
 												</table>
@@ -200,7 +206,39 @@ Author URL: SSDI_08
 						</div>
 					</div>
 					
+					
+			<div class="container col-sm-4" style="width: 100%">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+
+						
+						<div class="panel-heading">
+							<h4 class="panel-title">Upload Images</h4>
+						</div>
+						
+		
+			<form method="post" enctype="multipart/form-data" action="saveImages">
+			<div class="panel-body">
+											<div class="table-responsive">
+												<table title="New Apartment" class="table" style="width: 90%">
+													<tr class="info">
+										
+				<td><label for="file">Upload Image for Hall: </label><input type="hidden" name="name" value="hall.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td>
+				<td><label for="file">Upload Image for Bedroom: </label><input type="hidden" name="name" value="bedroom.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td></tr>
+				<tr class="info"><td><label for="file">Upload Image for Kitchen: </label><input type="hidden" name="name" value="kitchen.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td>
+				<td><label for="file">Upload Image for bathroom: </label><input type="hidden" name="name" value="bathroom.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td></tr>
+				<tr class="info"><td></td><td></td><td></td><td><input class="btn btn-success" type="submit" value="Upload"/></td></tr>
+				 </table>
+				 </div>
+				 </div>
+			</form>
+			</div>
+			</div>
+			</div>
+			
+					
 	</section>
+	
 	<script type="text/javascript">
 	$(function () {
 		  $("#datepicker").datepicker({ 
@@ -210,253 +248,14 @@ Author URL: SSDI_08
 		});
 	</script>
 	
-	<section>
-			<div>
-
-						<div>
-							<div class="container col-sm-4" style="width: 100%">
-								<div class="panel-group" id="accordion">
-									<div class="panel panel-default">
-
-										
-										<div class="panel-heading">
-											<h4 class="panel-title">Tenant
-												Details</h4>
-										</div>
-										<!-- <div id="${id}" class="panel-collapse collapse">  -->
-										<form:form action="addNewApartment" modelAttribute="newApartment">
-										<div class="panel-body">
-											<div class="table-responsive">
-												<table class="table" style="width: 90%">
-													<tr>
-														<td>DEPOSIT AMOUNT:</td>
-														<td><form:input placeholder="deposit of room in $" path="depositAmt" type="text" id="deposit" name="deposit"/>$</td>
-														<td>RENT:</td>
-														<td><form:input placeholder="rent of room in $" type="text" id="rent" name="rent" path="rent"/>$</td>
-													</tr>
-													<tr>
-														<td>AVAILABLE FROM:</td>
-														<td><form:input placeholder="date from which apartment is available" type="text" id="from" name="from" path="date"/></td>
-														<td>UTILITIES</td>
-														<td><form:input placeholder="i.e. Internet" type="text" id="utilites" name="utilities" path="utilities"/></td>
-													</tr>
-													<tr>
-														<td>AREA</td>
-														<td><form:input placeholder="UT DRIVE" type="text" id="area" name="area" path="area"/></td>
-														<td>STREET</td>
-														<td><form:input placeholder="Graduate Lane" type="text" id="street" name="street" path="street"/></td>
-													</tr>
-													<tr>
-														<td>DOOR NUMBER</td>
-														<td><form:input placeholder="10008 G" type="text" id="doorNo" name="doorNo" path="doorNo"/></td>
-														<td>CITY</td>
-														<td><form:input placeholder="Charlotte" type="text" id="city" name="city" path="city"/></td>
-													</tr>
-													<tr>
-														<td>NUMBER OF ROOMS</td>
-														<td><form:input placeholder="number of rooms$" type="text" id="rooms" name="rooms" path="no_of_rooms"/></td>
-														<td>BATHROOM TYPE</td>
-														<td><form:select id="bathrooms" name="bathrooms" path="type_bathroom">
-																<option value="Select type of bathroom" disabled="disabled">Select type of bathroom</option>
-																<option value="Attached">Attached</option>
-																<option value="Common">Common</option>
-															</form:select>
-														</td>
-													</tr>
-													<tr>
-														<td>FLOORING</td>
-														<td><form:select id="flooring" name="flooring" class="login-box" path="flooring">
-																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
-																<option value="Wooden">Wooden</option>
-																<option value="Carpet">Carpet</option>
-															</form:select></td>
-														<td></td>
-														<td></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td></td>
-														<td>
-																
-															</td>
-														<td>
-																<button class="btn btn-primary" type="reset">Reset</button>
-																<button class="btn btn-success"type="submit">Add Details</button>
-															</td>
-													</tr>
-												</table>
-											</div>
-										</div>
-										</form:form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-					
-	</section>
 	
-	</div>
 	
-
-
-	   
-	   
 	
-						
-         
-         
-            
-	    
-	  
-	  
-	<section>
-        <div class="m_3" id="news"><span class="left_line1"> </span><h3>Feedback</h3><span class="right_line1"> </span></div>
-	</section>
+	
+		
 
 
-<div class="projects" id="projects">
-	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
-	    </div>
-	  <div class="project_top">
-	  	<div class="container">
-	  		<div class="row">
-	  			<div class="col-md-3 project_grid">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>UT Drive</h3>
-				  	<!-- <p>Project Status</p>
-				  	<i class="dating"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList?Location=UT Drive">Apartment List</a></div>
-				  </div>
-				</div>
-	  			<div class="col-md-3 project_grid">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>UT North</h3>
-				  <!-- 	<p class="blue">Project Status</p>
-				  	<i class="wedding"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
-				  </div>
-				</div>
-	  			<div class="col-md-3 project_grid">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>Ashford Greens</h3>
-				  <!-- 	<p class="green">Project Status</p>
-				  	<i class="travel"> </i>-->
-				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
-				  </div>
-				</div>
-	  			<div class="col-md-3">
-	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
-				  </div></a>
-				  <div class="project_desc">
-				  	<h3>Colonial Grand</h3>
-				  <!-- 	<p class="dark">Project Status</p>
-				  	<i class="ecommerce"> </i>-->                                       
-				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
-				  </div>
-				</div>
-	  		</div>
-	  	</div>
-	  </div>
 
-	  			  <!-- <div><ul class="news_list">
-	  			     <li class="date">
-						May<br><span class="highlight">20</span><br><span class="light_color">2014</span>
-					 </li>
-					 <li class="date_desc">
-	  			   	 	<ul class="list_img">
-	  			   	 		<li class="list_img_left">
-	  			   	 			<img src="${images}n1.jpg" class="img-responsive" alt=""/>
-	  			   	 		</li>
-	  			   	 		<li class="list_desc">
-	  			   	 		 <div class="extra">
-							   <time pubdate="" datetime="2014-03-30T14:47:59">
-								 Writter				</time> 
-								<span class="username">aliquam</span> / 
-								<a href="#" class="comment_count">Finance</a>
-							 </div>
-							 <div class="extra_bottom"><i class="audio"> </i>
-							 	<i class="video"> </i>
-							 </div>
-	  			   	 		</li>
-	  			   	 		<li class="hours">8 Hours Ago</li>
-	  			   	 		<div class="clear"> </div>
-	  			   	 	</ul>
-	  			   	 </li>
-	  			   	 <div class="clear"> </div>
-	  			  </ul>
-	  			  <ul class="news_bottom"> 	
-	  			    <li class="comment_section">
-					  <i class="comment1"> </i>
-					  <i class="comment2"> </i>
-					  <i class="comment3"> </i>
-					</li>
-					<li class="right_desc">
-	  			   	  <h4 class="m_7">New Project is very coming soon...</h4>
-	  			   	  <p class="m_8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-	  			   	  <div class="news-btn"><a href="#">Read More</a></div>
-	  			   	</li>
-	  			   	<div class="clear"> </div>
-	  			  </ul>
-	  			</div>
-	  		   </div>
-	  		   <div class="col-md-6">
-	  			<div class="news_left">
-	  			  <ul class="news_list">
-	  			     <li class="date">
-						May<br><span class="highlight">23</span><br><span class="light_color">2014</span>
-					 </li>
-					 <li class="date_desc">
-	  			   	 	<ul class="list_img">
-	  			   	 		<li class="list_img_left">
-	  			   	 			<img src="${images}n2.jpg"  class="img-responsive" alt=""/>
-	  			   	 		</li>
-	  			   	 		<li class="list_desc">
-	  			   	 		 <div class="extra">
-							   <time pubdate="" datetime="2014-03-30T14:47:59">
-								 Writter				</time> 
-								<span class="username">aliquam</span> / 
-								<a href="#" class="comment_count">Finance</a>
-							 </div>
-							 <div class="extra_bottom"><i class="audio"> </i>
-							 
-							 </div>
-	  			   	 		</li>
-	  			   	 		<li class="hours">6 Days Ago</li>
-	  			   	 		<div class="clear"> </div>
-	  			   	 	</ul>
-	  			   	 </li>
-	  			   	 <div class="clear"> </div>
-	  			  </ul>
-	  			  <ul class="news_bottom"> 	
-	  			    <li class="comment_section">
-					  <i class="comment1"> </i>
-					  <i class="comment2"> </i>
-					  <i class="comment3"> </i>
-					</li>
-					<li class="right_desc">
-	  			   	  <h4 class="m_7">New Project is very coming soon...</h4>
-	  			   	  <p class="m_8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-	  			   	  <div class="news-btn"><a href="#">Read More</a></div>
-	  			   	</li>
-	  			   	<div class="clear"> </div>
-	  			  </ul>
-	  			</div>
-	  		</div>
-	  	</div>
-	  </div>
-	 </div>-->
 	 <div class="clients" id="clients">
 	 <div class="container">
 	 	<div class="m_3"><span class="left_line1"> </span><h3>Clients</h3><span class="right_line1"> </span></div>
@@ -575,8 +374,10 @@ $(window).load(function() {
 				</div>
 			</div>
 			<div class="copy">
-			    <p>© 2016 SSDI_08</p>
+			    <p>Â© 2016 SSDI_08</p>
 		    </div>
+     </div>
+     </div>
      </div>
 	<script type="text/javascript">
 			$(document).ready(function() {
