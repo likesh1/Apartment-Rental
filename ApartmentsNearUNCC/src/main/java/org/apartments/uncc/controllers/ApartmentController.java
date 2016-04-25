@@ -72,16 +72,21 @@ public class ApartmentController {
 		System.out.println("Date is - "+newApartment.getDate()+"\nRent is - "+newApartment.getRent()+"\nflooring is "+newApartment.getFlooring());
 		int id=ownerDelegate.getNewApartmentId(newApartment,user.getUsername());
 		System.out.println("Date is - "+newApartment.getDate()+"\nRent is - "+newApartment.getRent()+"\nflooring is "+newApartment.getFlooring());
+		request.setAttribute("aptId", id);
+		request.setAttribute("successInAddApt", "Your apartment has been added succesfully!!");
 		return model;
 	}
 	
 	@RequestMapping(value="/saveImages", method= RequestMethod.POST)
-	public ModelAndView saveImages(@RequestParam("name") String[] names,
+	public ModelAndView saveImages(HttpServletRequest request, HttpServletResponse response, @RequestParam("name") String[] names,
 			@RequestParam("file") MultipartFile[] files)
 	{
 		//if (files.length != names.length)
 			//return "Mandatory information missing";
 		ModelAndView model= new ModelAndView("addNewApt");
+		HttpSession session=request.getSession();
+		String aptId=(String) session.getAttribute("aptId");
+		ownerDelegate.uploadFile(aptId,names,files);
 		String message = "";
 		for (int i = 0; i < files.length; i++) {
 			MultipartFile file = files[i];

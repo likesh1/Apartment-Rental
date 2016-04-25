@@ -5,6 +5,7 @@ package org.apartments.uncc.delegate;
 
 import org.apartments.uncc.service.ApartmentService;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Pritam
@@ -25,6 +26,12 @@ public class OwnerDelegate {
 	public int getNewApartmentId(ApartmentDetailsBean aptDetails,String email) {
 		// TODO Auto-generated method stub
 		return apartmentService.getNewApartmentId(aptDetails,email);
+	}
+
+
+	public void uploadFile(String aptId, String[] names, MultipartFile[] files) {
+		// TODO Auto-generated method stub
+		apartmentService.uploadFile(aptId,names,files);
 	}
 
 }

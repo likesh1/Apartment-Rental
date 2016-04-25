@@ -206,7 +206,7 @@ Author URL: SSDI_08
 						</div>
 					</div>
 					
-					
+			<c:if test="${aptId != null}">		
 			<div class="container col-sm-4" style="width: 100%">
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
@@ -235,6 +235,7 @@ Author URL: SSDI_08
 			</div>
 			</div>
 			</div>
+			</c:if>
 			
 					
 	</section>
