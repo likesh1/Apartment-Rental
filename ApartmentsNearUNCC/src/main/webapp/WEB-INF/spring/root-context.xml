@@ -91,11 +91,11 @@
 		<property name="questionService" ref="questionService"></property>
 	</bean>
 
-	<bean id="questionService" class="org.apartments.uncc.service.impl.ForumQuestionServiceImp">
+	<bean id="questionService" class="org.apartments.uncc.service.impl.ForumQuestionServiceImpl">
 		<property name="questionDao" ref="questionDao"></property>
 	</bean>
 
-	<bean name="questionDao" class="org.apartments.uncc.dao.impl.ForumQuestionsDaoImp">
+	<bean name="questionDao" class="org.apartments.uncc.dao.impl.ForumQuestionsDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
@@ -103,11 +103,23 @@
 		<property name="forumAnswerService" ref="forumAnswerService"></property>
 	</bean>
 
-	<bean id="forumAnswerService" class="org.apartments.uncc.service.impl.ForumAnswerServiceImp">
+	<bean id="forumAnswerService" class="org.apartments.uncc.service.impl.ForumAnswerServiceImpl">
 		<property name="answersDao" ref="answersDao"></property>
 	</bean>
 
-	<bean name="answersDao" class="org.apartments.uncc.dao.impl.ForumAnswersDaoImp">
+	<bean name="answersDao" class="org.apartments.uncc.dao.impl.ForumAnswersDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="adminDelegate" class="org.apartments.uncc.delegate.AdminDelegate">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+
+	<bean id="adminService" class="org.apartments.uncc.service.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+
+	<bean name="adminDao" class="org.apartments.uncc.dao.impl.AdminDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
