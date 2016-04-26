@@ -38,6 +38,7 @@ Author URL: SSDI_08
 					});
 				</script>
 </head>
+
 <body>
 	<div class="header">	
       <div class="container"> 
@@ -63,31 +64,15 @@ Author URL: SSDI_08
 			      <ul class="nav navbar-nav menu1">
 			      	<li class="active"><a href="#home" class="scroll"> <span> </span><i class="menu-border"></i></a></li>
 			        <li><a href="#about" class="scroll">Profile</a></li>
-			   <!-- <li><a href="#services" class='scroll'>Services</a></li>-->
 			        <li><a href="#projects" class="scroll">Locations</a></li>
 			        <li><a href="#team" class="scroll">Team</a></li>
-			   <!-- <li><a href="#news" class="scroll">News</a></li>-->
 			        <li><a href="#clients" class="scroll">Clients</a></li>
 			        <li><a href="#contact" class="scroll">Contact</a></li>
 			        <li><a href="logout.do">LogOut</a></li>
+			        <li><a href="discussionforum.do">Forum</a></li>
 			       </ul>
 			       <h4 align="right" class="scroll">Welcome ${user.fName }!!!</h4>
-			        <!-- <div class="social">	
-					   <ul>	
-						  <li class="fb"><a href="#"><span> </span></a></li>
-						  <li class="tw"><a href="#"><span> </span></a></li>
-						  <li class="linkedin"><a href="#"><span> </span></a></li>		
-						</ul>
-				    </div>
-			      <form class="navbar-form navbar-left search1" role="search">
-			        <div class="search2">
-					  <form>
-						 <input type="text" value="">
-						 <input type="submit" value="">
-					  </form>
-					</div>
-			      </form>
-			    </div><!-- /.navbar-collapse -->
+			    
 			  </div><!-- /.container-fluid -->
 			</nav>
             <div class="clear"></div>
@@ -112,7 +97,6 @@ Author URL: SSDI_08
 				   	 	<div class="slider-left">
 						    <h1>Leases<br><span class="m_2">Secured</span></h1>
 						     <p>Once you have found the perfect place for rent, we will help you secure your lease quickly and hassle-free.</p>
-						     <!-- <div class="button"><a href="#">Read More</a></div>-->
 						 </div>
 					     <div class="clear"></div>
 					  </div>
@@ -122,7 +106,6 @@ Author URL: SSDI_08
 				   		 <div class="slider-left">
 						    <h1>Together<br><span class="m_2">Enjoy your home</span></h1>
 						     <p>Home that makes you stress free</p>
-						      <!-- <div class="button"><a href="#">Read More</a></div>-->
 						 </div>
 					     <div class="clear"></div>
 					 </div>
@@ -154,34 +137,6 @@ Author URL: SSDI_08
 			  </ul>
 			</div>
 		</div>
-		<!-- <div class="services" id="services">
-			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
-			<div class="row service_grids">
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="web"> </i>
-				 <h3 class="m_4">Web Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="app"> </i>
-				 <h3 class="m_4">App Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="php"> </i>
-				 <h3 class="m_4">Php Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center">
-				 <i class="wordpress"> </i>
-				 <h3 class="m_4">Wordpress</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			</div>-->
 	    </div>
 	    <div class="projects" id="projects">
 	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>
@@ -192,7 +147,7 @@ Author URL: SSDI_08
 	  		<div class="row">
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3 name="Location" id="Location1" >UT Drive</h3>
@@ -203,34 +158,29 @@ Author URL: SSDI_08
 				</div>
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>UT North</h3>
-				  <!-- 	<p class="blue">Project Status</p>
-				  	<i class="wedding"> </i>-->
 				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}ashford.jpg" class="img-responsive" alt=""/>
+					<div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>Ashford Greens</h3>
-				  <!-- 	<p class="green">Project Status</p>
-				  	<i class="travel"> </i>-->
 				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
-				  	<h3>Colonial Grand</h3>
-				  <!-- 	<p class="dark">Project Status</p>
-				  	<i class="ecommerce"> </i>-->                                       
+				  	<h3>Colonial Grand</h3>                                       
 				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
 				  </div>
 				</div>
@@ -245,281 +195,29 @@ Author URL: SSDI_08
 			 <div class="jcarousel">
 				<ul>
 			    	<li><figure><img src="${images}Pritam.jpg" class="img-responsive" alt=""/></figure>
-			    		<h4 class="m_5"><a href="#">Pritam Borate</a></h4>
+			    		<h4 class="m_5">Pritam Borate</a></h4>
 			    		<p class="m_6">Developer</p>
-			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
+			    		
 					</li>
 					<li><figure><img src="${images}Khyati.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Khyati Savakia</a></h4>
+			        	<h4 class="m_5">Khyati Savakia</h4>
 			    		<p class="m_6">Designer</p><br></br>
-			    		<!-- div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
 			        </li>
 			    	<li><figure><img src="${images}Liku.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Likesh Pammina</a></h4>
+			        	<h4 class="m_5">Likesh Pammina</h4>
 			    		<p class="m_6">Developer</p>
-			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
+			    		
 			        </li>
 					<li><figure><img src="${images}saran.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Saranya Prakash</a></h4>
+			        	<h4 class="m_5">Saranya Prakash</h4>
 			    		<p class="m_6">Designer</p>
-			    		<!-- <div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>-->
+			    		
 			        </li>
-			    <!-- 	<li><figure><img src="${images}t1.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t2.jpg" class="img-responsive" alt=""/></figure>
-			        <h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-			    	<li><figure><img src="${images}t3.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t4.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-			    	<li><figure><img src="${images}t1.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t2.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-			    	<li><figure><img src="${images}t3.jpg" class="img-responsive" alt=""/></figure>
-			        <h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>
-					<li><figure><img src="${images}t4.jpg" class="img-responsive" alt=""/></figure>
-			        	<h4 class="m_5"><a href="#">Lorem Ipsum</a></h4>
-			    		<p class="m_6">Ceo Founder</p>
-			    		<div class="project-btn"><a href="#">Look at me</a></div>
-			    		<div class="social_networks">
-						  <i class="facebook"> </i>
-						  <i class="twitter"> </i>
-						  <i class="linked_in"> </i>
-						  <i class="skype"> </i>
-						  <i class="google"> </i>
-						  <i class="be"> </i>
-						  <div class="clear"> </div>
-						</div>
-			        </li>-->
+			    
 			    </ul>
          </div>
-	<!-- <div class="sliderControl">
-		<div class="control">
-		 <a href="#" class="jcarousel-control-prev"></a>
-		 <a href="#" class="jcarousel-control-next"></a>
-		</div>
-		<div class="jcarousel-pagination"></div>
-		</div>
-		</div>
-		<script src="${js}jquery.touchSwipe.min.js"></script>
-		<script src="${js}app.js"></script>
-		<script src="${js}jcarousel.js"></script>
-        <div class="m_3" id="news"><span class="left_line1"> </span><h3>News</h3><span class="right_line1"> </span></div>
-	 </div>
 	</div>
-	  <div class="project_top">
-	  	<div class="container">
-	  	  <div class="row news" >
-	  		 <div class="col-md-6">
-	  		 	<div class="news_left">
-	  			  <ul class="news_list">
-	  			     <li class="date">
-						May<br><span class="highlight">20</span><br><span class="light_color">2014</span>
-					 </li>
-					 <li class="date_desc">
-	  			   	 	<ul class="list_img">
-	  			   	 		<li class="list_img_left">
-	  			   	 			<img src="${images}n1.jpg" class="img-responsive" alt=""/>
-	  			   	 		</li>
-	  			   	 		<li class="list_desc">
-	  			   	 		 <div class="extra">
-							   <time pubdate="" datetime="2014-03-30T14:47:59">
-								 Writter				</time> 
-								<span class="username">aliquam</span> / 
-								<a href="#" class="comment_count">Finance</a>
-							 </div>
-							 <div class="extra_bottom"><i class="audio"> </i>
-							 	<i class="video"> </i>
-							 </div>
-	  			   	 		</li>
-	  			   	 		<li class="hours">8 Hours Ago</li>
-	  			   	 		<div class="clear"> </div>
-	  			   	 	</ul>
-	  			   	 </li>
-	  			   	 <div class="clear"> </div>
-	  			  </ul>
-	  			  <ul class="news_bottom"> 	
-	  			    <li class="comment_section">
-					  <i class="comment1"> </i>
-					  <i class="comment2"> </i>
-					  <i class="comment3"> </i>
-					</li>
-					<li class="right_desc">
-	  			   	  <h4 class="m_7">New Project is very coming soon...</h4>
-	  			   	  <p class="m_8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-	  			   	  <div class="news-btn"><a href="#">Read More</a></div>
-	  			   	</li>
-	  			   	<div class="clear"> </div>
-	  			  </ul>
-	  			</div>
-	  		   </div>
-	  		   <div class="col-md-6">
-	  			<div class="news_left">
-	  			  <ul class="news_list">
-	  			     <li class="date">
-						May<br><span class="highlight">23</span><br><span class="light_color">2014</span>
-					 </li>
-					 <li class="date_desc">
-	  			   	 	<ul class="list_img">
-	  			   	 		<li class="list_img_left">
-	  			   	 			<img src="${images}n2.jpg"  class="img-responsive" alt=""/>
-	  			   	 		</li>
-	  			   	 		<li class="list_desc">
-	  			   	 		 <div class="extra">
-							   <time pubdate="" datetime="2014-03-30T14:47:59">
-								 Writter				</time> 
-								<span class="username">aliquam</span> / 
-								<a href="#" class="comment_count">Finance</a>
-							 </div>
-							 <div class="extra_bottom"><i class="audio"> </i>
-							 
-							 </div>
-	  			   	 		</li>
-	  			   	 		<li class="hours">6 Days Ago</li>
-	  			   	 		<div class="clear"> </div>
-	  			   	 	</ul>
-	  			   	 </li>
-	  			   	 <div class="clear"> </div>
-	  			  </ul>
-	  			  <ul class="news_bottom"> 	
-	  			    <li class="comment_section">
-					  <i class="comment1"> </i>
-					  <i class="comment2"> </i>
-					  <i class="comment3"> </i>
-					</li>
-					<li class="right_desc">
-	  			   	  <h4 class="m_7">New Project is very coming soon...</h4>
-	  			   	  <p class="m_8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-	  			   	  <div class="news-btn"><a href="#">Read More</a></div>
-	  			   	</li>
-	  			   	<div class="clear"> </div>
-	  			  </ul>
-	  			</div>
-	  		</div>
-	  	</div>
-	  </div>
-	 </div>-->
+	</div>
 	 <div class="clients" id="clients">
 	 <div class="container">
 	 	<div class="m_3"><span class="left_line1"> </span><h3>Clients</h3><span class="right_line1"> </span></div>
@@ -569,35 +267,7 @@ $(window).load(function() {
 </div>
 </div>
 </div>
-	<div class="footer">
-		<div class="container">
-			 <!-- <div class="footer-logo">
-				<a href="index.html"><img src="${images}logo.png" alt=""/><br><span class="m_1">Software Development</span></a>
-			 </div>
-			<div class="social_footer">
-			  <ul>
-				<li><a href=""> <i class="f-fb"> </i> </a></li>
-				<li><a href=""><i class="f-tw"> </i> </a></li>
-				<li><a href=""><i class="f-in"> </i> </a></li>
-				<li><a href=""><i class="f-skype"> </i> </a></li>
-				<li><a href=""><i class="f-google"> </i> </a></li>
-				<li><a href=""><i class="f-be"> </i> </a></li>
-				<div class="clear"> </div>
-			 </ul>
-			</div>
-			<ul class="newsletter">
-				<h3>Newsletter</h3>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</p>
-			  <li class="footer-search">
-				<input type="text" value="">
-				<input type="submit" value="">
-		      </li>
-			</ul>
-			<div class="clear"> </div>
-			<div class="m_12"><span class="left_line2"> </span><h4>Froyo Software Development Inc.</h4><span class="right_line2"> </span></div>
-		  </div>
-		</div>-->
-	    <div class="footer_bottom" id="contact">
+<div class="footer_bottom" id="contact">
 		  <div class="container">
 			<div class="row">
 				<div class="col-md-3 footer_grid">
@@ -631,8 +301,7 @@ $(window).load(function() {
 					<div class="address">
 					  <h4>Saranya Prakash</h4>
 				      <p class="m_13">9527C, UT Drive,Charlotte,North Carolina,USA,</p>
-					  <p><span class="phno">Phone</span>&nbsp;&nbsp;&nbsp;+(00) 222 777 444</p
-					  ><!--<p><span class="phno">Fax</span>&nbsp;&nbsp;&nbsp;+(000) 000 00 00 0</p>-->
+					  <p><span class="phno">Phone</span>&nbsp;&nbsp;&nbsp;+(00) 222 777 444</p>
 				 	  <p><span class="phno">Email</span>&nbsp;&nbsp;&nbsp;<span class="email">sprakas2@uncc.edu</span></p>
 				   	</div>
 				</div>

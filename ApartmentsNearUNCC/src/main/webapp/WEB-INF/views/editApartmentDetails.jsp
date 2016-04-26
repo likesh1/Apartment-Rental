@@ -123,7 +123,7 @@ Author URL: SSDI_08
 												Details</h4>
 										</div>
 										<!-- <div id="${id}" class="panel-collapse collapse">  -->
-										<form:form action="addNewApartment" modelAttribute="aptDetails">
+										<form:form action="updateApt" modelAttribute="aptDetails">
 										<div class="panel-body">
 											<div class="table-responsive">
 												<table title="New Apartment" class="table" style="width: 90%">
@@ -264,7 +264,7 @@ Author URL: SSDI_08
 													</tr>
 													
 													<tr class="info">
-														<td><input type="hidden" id="aptId" name="tenId" value="${tenants.tenantId }"/></td>
+														<td><input type="hidden" id="tenId" name="tenId" value="${tenants.tenantId }"/></td>
 														<td></td>
 														<td></td>
 														<td><button class="btn btn-primary" type="reset">Reset</button>
@@ -298,17 +298,8 @@ Author URL: SSDI_08
 	</section>
 	
 	</div>
-</div>
+
 	
-	
-	<script type="text/javascript">
-	$(function () {
-		  $("#datepicker").datepicker({ 
-		        autoclose: true, 
-		        todayHighlight: true
-		  }).datepicker('update', new Date());;
-		});
-	</script>
 	
 	
 	
@@ -575,7 +566,7 @@ $(window).load(function() {
 		
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
    </div>
-
+   </div>
 </body>
 
 </html>

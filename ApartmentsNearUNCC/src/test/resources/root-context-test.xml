@@ -87,4 +87,29 @@
 	    <property name="from" value="customerservice_offcampusliving@apts.com"/>
 	    <property name="subject" value="Welcome to off campus living!!"/>
 	</bean>
+	
+	<bean id="forumQuestionDelegate" class="org.apartments.uncc.delegate.ForumQuestionDelegate">
+		<property name="questionService" ref="questionService"></property>
+	</bean>
+
+	<bean id="questionService" class="org.apartments.uncc.service.impl.ForumQuestionServiceImpl">
+		<property name="questionDao" ref="questionDao"></property>
+	</bean>
+
+	<bean name="questionDao" class="org.apartments.uncc.dao.impl.ForumQuestionsDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="forumAnswerDelegate" class="org.apartments.uncc.delegate.ForumAnswerDelegate">
+		<property name="forumAnswerService" ref="forumAnswerService"></property>
+	</bean>
+
+	<bean id="forumAnswerService" class="org.apartments.uncc.service.impl.ForumAnswerServiceImpl">
+		<property name="answersDao" ref="answersDao"></property>
+	</bean>
+
+	<bean name="answersDao" class="org.apartments.uncc.dao.impl.ForumAnswersDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 </beans>
