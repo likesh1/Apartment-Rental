@@ -71,7 +71,7 @@ Author URL: SSDI_08
 			        <li><a href="#contact" class="scroll">Contact</a></li>
 			        <li><a href="logout.do">LogOut</a></li>
 			       </ul>
-			       <h4 align="right" class="scroll">Welecome ${user.fName }!!!</h6>
+			       <h4 align="right" class="scroll">Welecome ${user.fName }!!!</h4>
 			        <!-- <div class="social">	
 					   <ul>	
 						  <li class="fb"><a href="#"><span> </span></a></li>
@@ -86,7 +86,7 @@ Author URL: SSDI_08
 						 <input type="submit" value="">
 					  </form>
 					</div>
-			      </form>
+			      </form>-->
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
@@ -197,10 +197,10 @@ Author URL: SSDI_08
 					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
-				  	<h3 name="name" id="name" >${apartments.doorNo}</h3>
+				  	<h3 id="name" >${apartments.doorNo}</h3>
 				  	<!-- <p>Project Status</p>
 				  	<i class="dating"> </i>-->
-				  	 <div class="project-btn"><a href="${myAptDetails}">Apartment Details</a></div>
+				  	 <div class="project-btn"><a href="${myAptDetails}">Update Details</a></div>
 				  </div>
 				</div>
 	  			</c:forEach>
@@ -208,7 +208,7 @@ Author URL: SSDI_08
 	  			
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${uploadedImages}8/22/hall.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>Add New</h3>
@@ -403,10 +403,10 @@ Author URL: SSDI_08
 		 <a href="#" class="jcarousel-control-prev"></a>
 		 <a href="#" class="jcarousel-control-next"></a>
 		</div>
-		<div class="jcarousel-pagination"></div>
+		<div class="jcarousel-pagination"></div>-->
 		</div>
 		</div>
-		<script src="${js}jquery.touchSwipe.min.js"></script>
+		<!-- <script src="${js}jquery.touchSwipe.min.js"></script>
 		<script src="${js}app.js"></script>
 		<script src="${js}jcarousel.js"></script>
         <div class="m_3" id="news"><span class="left_line1"> </span><h3>News</h3><span class="right_line1"> </span></div>
@@ -579,8 +579,8 @@ $(window).load(function() {
 			</ul>
 			<div class="clear"> </div>
 			<div class="m_12"><span class="left_line2"> </span><h4>Froyo Software Development Inc.</h4><span class="right_line2"> </span></div>
-		  </div>
-		</div>-->
+		  --></div>
+		</div>
 	    <div class="footer_bottom" id="contact">
 		  <div class="container">
 			<div class="row">
