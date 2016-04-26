@@ -4,12 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-	
 	<bean id="imageDao" class="org.apartments.uncc.dao.impl.ImageDaoImpl"> 
 	  <property name="dataSource" ref="dataSource" />
 	 </bean>	
-	 	
+	
 	<bean id="registrationDelegate" class="org.apartments.uncc.delegate.RegistrationDelegate">
 		<property name="userService" ref="userService"></property>
 	</bean>
@@ -35,7 +33,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/SSDI_08_test" />
+		<property name="url" value="jdbc:mysql://localhost:3306/SSDI_08_test?autoReconnect=true&amp;useSSL=false" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -49,15 +47,28 @@
 	<bean id="apartmentListDelegate" class="org.apartments.uncc.delegate.ApartmentListDelegate">
 		<property name="apartmentService" ref="apartmentService"></property>
 	</bean>
+	
+	<bean id="ownerDelegate" class="org.apartments.uncc.delegate.OwnerDelegate">
+		<property name="apartmentService" ref="apartmentService"></property>
+	</bean>
 
 	<bean id="apartmentService" class="org.apartments.uncc.service.impl.ApartmentServiceImpl">
 		<property name="apartmentDao" ref="apartmentDao"></property>
+		<property name="fileUploader" ref="fileUploader"></property>
+		<property name="filePath" ref="filePath"></property>
 	</bean>
 
 	<bean name="apartmentDao" class="org.apartments.uncc.dao.impl.ApartmentDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<bean name="fileUploader" class="org.apartments.uncc.utilities.impl.FileUpload">
+		<property name="filePath" ref="filePath"></property>
+	</bean>
+	
+	<bean name="filePath" class="org.apartments.uncc.utilities.impl.FilePathLocator">
+		<property name="apartmentDao" ref="apartmentDao"></property>
+	</bean>
 	
 	<bean name="apartmentDetailsDelegate" class="org.apartments.uncc.delegate.ApartmentDetailsDelegate">
 		<property name="apartmentService" ref="apartmentService"></property>
@@ -88,6 +99,7 @@
 	    <property name="subject" value="Welcome to off campus living!!"/>
 	</bean>
 	
+		
 	<bean id="forumQuestionDelegate" class="org.apartments.uncc.delegate.ForumQuestionDelegate">
 		<property name="questionService" ref="questionService"></property>
 	</bean>
@@ -109,6 +121,18 @@
 	</bean>
 
 	<bean name="answersDao" class="org.apartments.uncc.dao.impl.ForumAnswersDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="adminDelegate" class="org.apartments.uncc.delegate.AdminDelegate">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+
+	<bean id="adminService" class="org.apartments.uncc.service.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+
+	<bean name="adminDao" class="org.apartments.uncc.dao.impl.AdminDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	

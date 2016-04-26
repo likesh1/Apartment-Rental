@@ -59,6 +59,8 @@ public class ApartmentController {
 		ModelAndView model= new ModelAndView("addNewApt");
 		ApartmentDetailsBean aptDetails=new ApartmentDetailsBean();
 		request.setAttribute("newApartment", aptDetails);
+		TenantBean tenant=new TenantBean();
+		request.setAttribute("newTenant", tenant);
 		return model;
 		
 	}
@@ -93,7 +95,7 @@ public class ApartmentController {
 		ModelAndView model= new ModelAndView("addNewApt");
 		HttpSession session=request.getSession();
 		System.out.println("--aptId is -- "+session.getAttribute("aptId"));
-		String aptId=(String) session.getAttribute("aptId");
+		String aptId=((Integer) session.getAttribute("aptId")).toString();
 		ownerDelegate.uploadFile(aptId,names,files);
 		ApartmentDetailsBean aptDetails=new ApartmentDetailsBean();
 		request.setAttribute("newApartment", aptDetails);

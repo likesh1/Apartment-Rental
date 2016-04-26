@@ -266,13 +266,13 @@ Author URL: SSDI_08
 												<table title="New Apartment" class="table" style="width: 90%">
 													<tr class="info">
 														<td><label for="deposit">First Name</label></td>
-														<td><form:input class="form-control" placeholder="First Name" path="tfirstName" type="text" id="fName" name="fName"/></td>
+														<td><form:input class="form-control" placeholder="First Name" required="required" path="tfirstName" type="text" id="fName" name="fName"/></td>
 														<td><label for="rent">Last Name</label></td>
-														<td><form:input class="form-control" placeholder="rent of room in $" type="text" id="lName" name="lName" path="tlastName"/></td>
+														<td><form:input class="form-control" placeholder="Last Name" required="required" type="text" id="lName" name="lName" path="tlastName"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="email">Email</label></td>
-														<td><form:input class="form-control" placeholder="number of rooms$" type="email" id="email" name="email" path="tEmail"/></td>
+														<td><form:input class="form-control" placeholder="abc@gmail.com" type="email" id="email" name="email" path="tEmail" required="required"/></td>
 		
 														<td><label for="tgender">Gender</label></td>
 														<td><form:select class="form-control" id="tgender" name="tgender" path="tgender">
@@ -285,9 +285,9 @@ Author URL: SSDI_08
 													</tr>
 													<tr class="info">
 														<td><label for="age">Age</label></td>
-														<td><form:input class="form-control" placeholder="UT DRIVE" type="text" id="age" name="age" path="tage"/></td>
+														<td><form:input class="form-control" placeholder="23" type="text" id="age" name="age" required="required" path="tage"/></td>
 														<td><label for="Nationality">Nationality</label></td>
-														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="Nationality" name="Nationality" path="Nationality"/>
+														<td><form:input class="form-control" placeholder="Indian" type="text" id="Nationality" name="Nationality" required="required" path="nationality"/>
 														</td>
 													</tr>
 													

@@ -83,7 +83,7 @@ public class TenantBean {
 		return nationality;
 	}
 	public void setNationality(String nationality) {
-		nationality = nationality;
+		this.nationality = nationality;
 	}
 	public String getVisa_status() {
 		return Visa_status;
