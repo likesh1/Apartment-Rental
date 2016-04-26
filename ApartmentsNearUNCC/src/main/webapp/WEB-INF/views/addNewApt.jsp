@@ -206,7 +206,8 @@ Author URL: SSDI_08
 						</div>
 					</div>
 					
-			<c:if test="${aptId != null}">		
+			<c:if test="${aptId != null}">	
+			<!-- Add Images Container -->	
 			<div class="container col-sm-4" style="width: 100%">
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
@@ -232,9 +233,94 @@ Author URL: SSDI_08
 				 </div>
 				 </div>
 			</form>
+			<c:if test="${saveImageSuccess != null}">
+													<div class="alert alert-success">
+													    <strong>Success!</strong> ${saveImageSuccess }
+													  </div>
+												</c:if> 
+										<c:if test="${saveImageError != null}">
+													<div class="alert alert-danger">
+													    <strong>Error!</strong> ${saveImageError }
+													  </div>
+												</c:if> 
 			</div>
 			</div>
 			</div>
+			<!-- Tenant Details -->
+			<div>
+
+						<div>
+							<div class="container col-sm-4" style="width: 100%">
+								<div class="panel-group" id="accordion">
+									<div class="panel panel-default">
+
+										
+										<div class="panel-heading">
+											<h4 class="panel-title">TENANT
+												Details</h4>
+										</div>
+										<!-- <div id="${id}" class="panel-collapse collapse">  -->
+										<form:form action="addNewTenant" modelAttribute="newTenant">
+										<div class="panel-body">
+											<div class="table-responsive">
+												<table title="New Apartment" class="table" style="width: 90%">
+													<tr class="info">
+														<td><label for="deposit">First Name</label></td>
+														<td><form:input class="form-control" placeholder="First Name" path="tfirstName" type="text" id="fName" name="fName"/></td>
+														<td><label for="rent">Last Name</label></td>
+														<td><form:input class="form-control" placeholder="rent of room in $" type="text" id="lName" name="lName" path="tlastName"/></td>
+													</tr>
+													<tr class="info">
+														<td><label for="email">Email</label></td>
+														<td><form:input class="form-control" placeholder="number of rooms$" type="email" id="email" name="email" path="tEmail"/></td>
+		
+														<td><label for="tgender">Gender</label></td>
+														<td><form:select class="form-control" id="tgender" name="tgender" path="tgender">
+																<option value="Select Gender" disabled="disabled">Select Gender</option>
+																<option value="Male">Male</option>
+																<option value="Female">Female</option>
+															</form:select>
+														
+														</td>
+													</tr>
+													<tr class="info">
+														<td><label for="age">Age</label></td>
+														<td><form:input class="form-control" placeholder="UT DRIVE" type="text" id="age" name="age" path="tage"/></td>
+														<td><label for="Nationality">Nationality</label></td>
+														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="Nationality" name="Nationality" path="Nationality"/>
+														</td>
+													</tr>
+													
+													<tr class="info">
+														<td></td>
+														<td></td>
+														<td></td>
+														<td><button class="btn btn-primary" type="reset">Reset</button>
+																<button class="btn btn-success" type="submit">Add Tenant</button>
+															</td>
+													</tr>
+												</table>
+												
+											</div>
+										</div>
+										</form:form>
+										<c:if test="${successInAddTenant != null}">
+													<div class="alert alert-success">
+													    <strong>Success!</strong> ${successInAddTenant }
+													  </div>
+												</c:if> 
+										<c:if test="${errorInAddApt != null}">
+													<div class="alert alert-danger">
+													    <strong>Error!</strong> ${errorInAddApt }
+													  </div>
+												</c:if> 
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+			
 			</c:if>
 			
 					

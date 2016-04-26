@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
+import org.apartments.uncc.viewBeans.TenantBean;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -20,5 +21,6 @@ public interface ApartmentService {
 	List<ApartmentDetailsBean> getMyApartments(String emailId);
 	int getNewApartmentId(ApartmentDetailsBean aptDetails,String email);
 	void uploadFile(String aptId, String[] names, MultipartFile[] files);
+	void addTenant(String aptId, TenantBean newTenant);
 	
 }

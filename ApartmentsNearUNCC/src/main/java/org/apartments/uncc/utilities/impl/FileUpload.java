@@ -63,6 +63,7 @@ public class FileUpload implements IFileUploader {
 				message = message + "You successfully uploaded file=" + name
 						+ "<br />";
 			} catch (Exception e) {
+				System.out.println(e.getMessage());
 				//return "You failed to upload " + name + " => " + e.getMessage();
 			}
 		}

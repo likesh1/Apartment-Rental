@@ -14,6 +14,7 @@ Author URL: SSDI_08
 	<spring:url value="/resources/css/style1.css" var="style1CSS" />
 	<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
 	<spring:url value="/resources/images/" var="images"/>
+	<spring:url value="/resources/" var="uploadedImages"/>
 	<spring:url value="/resources/javascripts/" var="js"/>
 	<link href="${bootstrapCSS}" rel='stylesheet' />
 	<link href="${style1CSS}" rel='stylesheet' />
@@ -207,7 +208,7 @@ Author URL: SSDI_08
 	  			
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${uploadedImages}8/22/hall.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>Add New</h3>

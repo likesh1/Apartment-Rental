@@ -11,6 +11,7 @@ import org.apartments.uncc.dao.UserDao;
 import org.apartments.uncc.service.ApartmentService;
 import org.apartments.uncc.utilities.IFileUploader;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
+import org.apartments.uncc.viewBeans.TenantBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -80,6 +81,13 @@ public class ApartmentServiceImpl implements ApartmentService {
 	public void uploadFile(String aptId, String[] names, MultipartFile[] files) {
 		// TODO Auto-generated method stub
 		fileUploader.uploadFile(aptId, names, files);
+	}
+
+
+	@Override
+	public void addTenant(String aptId, TenantBean newTenant) {
+		// TODO Auto-generated method stub
+		apartmentDao.addTenant(aptId,newTenant);
 	}
 
 }
