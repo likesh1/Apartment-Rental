@@ -222,16 +222,13 @@ Author URL: SSDI_08
 			        <div class="panel panel-default">
 				        <c:forEach items="${myTenants}" var="tenants">
 				        	<c:set var="id" value="${tenants.tfirstName}"></c:set>
-				        	<!-- <c:set var="apt_id" value="${tenants.tlastName}"></c:set> -->
 				        	<c:set var="href">#${id }</c:set>
-				            <!--<c:set var="apartmentDetailshref">apartmentDetails?id=${apt_id }</c:set>-->
-				
-							            <div class="panel-heading">
-							                <h4 class="panel-title">
-							                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">${tenants.tfirstName} ${ tenants.tlastName}</a>
-							                </h4>
-							            </div>
-							            <div id="${id}" class="panel-collapse collapse">
+							 <div class="panel-heading">
+				                <h4 class="panel-title">
+				                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">${tenants.tfirstName} ${ tenants.tlastName}</a>
+				                </h4>
+				            </div>
+				            <div id="${id}" class="panel-collapse collapse">
 										<form action="updateTenant" method="POST">
 										<div class="panel-body">
 											<div class="table-responsive">
@@ -240,7 +237,7 @@ Author URL: SSDI_08
 														<td><label for="deposit">First Name</label></td>
 														<td><input class="form-control" placeholder="First Name" type="text" id="fName" name="fName" value="${tenants.tfirstName }"/></td>
 														<td><label for="rent">Last Name</label></td>
-														<td><input class="form-control" placeholder="Last Name" type="text" id="lName" name="lName" value="${tenants.tfirstName }"/></td>
+														<td><input class="form-control" placeholder="Last Name" type="text" id="lName" name="lName" value="${tenants.tlastName }"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="email">Email</label></td>
@@ -258,13 +255,12 @@ Author URL: SSDI_08
 													<tr class="info">
 														<td><label for="age">Age</label></td>
 														<td><input class="form-control" placeholder="Age" type="text" id="age" name="age" value="${tenants.tage }"/></td>
-														<td><label for="Nationality">Nationality</label></td>
-														<td><input class="form-control" placeholder="Indian" type="text" id="Nationality" name="Nationality" value="${tenants.Nationality }"/>
-														</td>
+														<td><label for="nation">Nationality</label></td>
+														<td><input class="form-control" placeholder="nation" type="text" id="nation" name="nation" value="${tenants.nationality }"/></td>
+														
 													</tr>
-													
 													<tr class="info">
-														<td><input type="hidden" id="tenId" name="tenId" value="${tenants.tenantId }"/></td>
+														<td></td>
 														<td></td>
 														<td></td>
 														<td><button class="btn btn-primary" type="reset">Reset</button>
@@ -276,23 +272,12 @@ Author URL: SSDI_08
 											</div>
 										</div>
 										</form>
-										<c:if test="${successInAddTenant != null}">
-													<div class="alert alert-success">
-													    <strong>Success!</strong> ${successInAddTenant }
-													  </div>
-												</c:if> 
-										<c:if test="${errorInAddApt != null}">
-													<div class="alert alert-danger">
-													    <strong>Error!</strong> ${errorInAddApt }
-													  </div>
-												</c:if> 
-									</div>
+										</div>
 									</c:forEach>
 								</div>
 							</div>
 						</div>
 					</div>
-		
 			
 					
 	</section>

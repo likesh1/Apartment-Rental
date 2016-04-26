@@ -19,7 +19,7 @@ public class TenantBean {
 	private int tage;
 	private Date tBOD;
 	private String Eating_pref;
-	private String Nationality;
+	private String nationality;
 	private String Visa_status;
 	private String degree;
 	private String major;
@@ -80,10 +80,10 @@ public class TenantBean {
 		Eating_pref = eating_pref;
 	}
 	public String getNationality() {
-		return Nationality;
+		return nationality;
 	}
 	public void setNationality(String nationality) {
-		Nationality = nationality;
+		nationality = nationality;
 	}
 	public String getVisa_status() {
 		return Visa_status;
