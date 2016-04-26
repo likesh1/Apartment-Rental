@@ -65,30 +65,14 @@ Author URL: SSDI_08
 			      <ul class="nav navbar-nav menu1">
 			      	<li class="active"><a href="#home" class="scroll"> <span> </span><i class="menu-border"></i></a></li>
 			        <li><a href="#about" class="scroll">Details</a></li>
-			   <!-- <li><a href="#services" class='scroll'>Services</a></li>-->
 			        <li><a href="#projects" class="scroll">Locations</a></li>
-			        <!-- <li><a href="#team" class="scroll">Team</a></li>-->
-			  <!--  <li><a href="#news" class="scroll">Reviews</a></li>-->
 			        <li><a href="#clients" class="scroll">Clients</a></li>
 			        <li><a href="#contact" class="scroll">Contact</a></li>
 			        <li><a href="#">My Profile</a></li>
+			        <li><a href="logout.do">LogOut</a></li>
+			        <li><a href="discussionforum.do">Forum</a></li>
 			       </ul>
-			        <!-- <div class="social">	
-					   <ul>	
-						  <li class="fb"><a href="#"><span> </span></a></li>
-						  <li class="tw"><a href="#"><span> </span></a></li>
-						  <li class="linkedin"><a href="#"><span> </span></a></li>		
-						</ul>
-				    </div>
-			      <form class="navbar-form navbar-left search1" role="search">
-			        <div class="search2">
-					  <form>
-						 <input type="text" value="">
-						 <input type="submit" value="">
-					  </form>
-					</div>
-			      </form>
-			    </div><!-- /.navbar-collapse -->
+			        
 			  </div><!-- /.container-fluid -->
 			</nav>
             <div class="clear"></div>
@@ -109,23 +93,7 @@ Author URL: SSDI_08
 					 </div>
 					</article>
 					</c:forEach>
-				   <!-- <article style="position: relative; width: 100%; opacity: 1;"> 
-				   	 <div class="banner-wrap">
-				   	 	<div class="slider-left">
-						    <img src="${images}utr2.jpg" alt=""/>
-						 </div>
-					     <div class="clear"></div>
-					  </div>
-				   </article>
-				   <article style="position: absolute; width: 100%; opacity: 0;">
-				   	<div class="banner-wrap">
-				   		 <div class="slider-left">
-						    <img src="${images}utr3.jpg" alt=""/>
-						 </div>
-					     <div class="clear"></div>
-					 </div>
-				   </article> -->
-				 </div>
+				  </div>
 				<a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
                 <ul class="wmuSliderPagination">
                 	<li><a href="#" class="">0</a></li>
@@ -208,10 +176,10 @@ Author URL: SSDI_08
             </div>
         </div>
     </div>
+ </div>
+ </div>
   </div>
     </section>
-			
-		</div> 		
 	  	     
 		<!-- The Modal--> 
 <div id="myModal" class="modal">
@@ -282,24 +250,9 @@ Author URL: SSDI_08
 						
          
          
-            
-	    
-	  
-	  
-	<!-- <div class="sliderControl">
-		<div class="control">
-		 <a href="#" class="jcarousel-control-prev"></a>
-		 <a href="#" class="jcarousel-control-next"></a>
-		</div>
-		<div class="jcarousel-pagination"></div>
-		</div>
-		</div>
-		<script src="${js}jquery.touchSwipe.min.js"></script>
-		<script src="${js}app.js"></script>
-		<script src="${js}jcarousel.js"></script>-->
+ 
         <div class="m_3" id="news"><span class="left_line1"> </span><h3>Feedback</h3><span class="right_line1"> </span></div>
 	 </div>
-	</div>
 	  <div class="project_top">
 	  	<div class="container">
 	  	  <table><tr><td><div>
@@ -384,45 +337,38 @@ Author URL: SSDI_08
 	  		<div class="row">
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>UT Drive</h3>
-				  	<!-- <p>Project Status</p>
-				  	<i class="dating"> </i>-->
 				  	 <div class="project-btn"><a href="apartmentList?Location=UT Drive">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}UTNorth.jpg" class="img-responsive" alt=""/>
+					<div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>UT North</h3>
-				  <!-- 	<p class="blue">Project Status</p>
-				  	<i class="wedding"> </i>-->
 				  	 <div class="project-btn"><a href="apartmentList?Location=UT North">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}ashford.jpg" class="img-responsive" alt=""/><div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>Ashford Greens</h3>
-				  <!-- 	<p class="green">Project Status</p>
-				  	<i class="travel"> </i>-->
 				  	 <div class="project-btn"><a href="apartmentList?Location=Ashford">Apartment List</a></div>
 				  </div>
 				</div>
 	  			<div class="col-md-3">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}CG1.jpg" class="img-responsive" alt=""/><div class="b-wrapper">
 				  </div></a>
 				  <div class="project_desc">
-				  	<h3>Colonial Grand</h3>
-				  <!-- 	<p class="dark">Project Status</p>
-				  	<i class="ecommerce"> </i>-->                                       
+				  	<h3>Colonial Grand</h3>                                      
 				  	 <div class="project-btn"><a href="apartmentList?Location=Colonial">Apartment List</a></div>
 				  </div>
 				</div>
@@ -430,93 +376,6 @@ Author URL: SSDI_08
 	  	</div>
 	  </div>
 
-	  			  <!-- <div><ul class="news_list">
-	  			     <li class="date">
-						May<br><span class="highlight">20</span><br><span class="light_color">2014</span>
-					 </li>
-					 <li class="date_desc">
-	  			   	 	<ul class="list_img">
-	  			   	 		<li class="list_img_left">
-	  			   	 			<img src="${images}n1.jpg" class="img-responsive" alt=""/>
-	  			   	 		</li>
-	  			   	 		<li class="list_desc">
-	  			   	 		 <div class="extra">
-							   <time pubdate="" datetime="2014-03-30T14:47:59">
-								 Writter				</time> 
-								<span class="username">aliquam</span> / 
-								<a href="#" class="comment_count">Finance</a>
-							 </div>
-							 <div class="extra_bottom"><i class="audio"> </i>
-							 	<i class="video"> </i>
-							 </div>
-	  			   	 		</li>
-	  			   	 		<li class="hours">8 Hours Ago</li>
-	  			   	 		<div class="clear"> </div>
-	  			   	 	</ul>
-	  			   	 </li>
-	  			   	 <div class="clear"> </div>
-	  			  </ul>
-	  			  <ul class="news_bottom"> 	
-	  			    <li class="comment_section">
-					  <i class="comment1"> </i>
-					  <i class="comment2"> </i>
-					  <i class="comment3"> </i>
-					</li>
-					<li class="right_desc">
-	  			   	  <h4 class="m_7">New Project is very coming soon...</h4>
-	  			   	  <p class="m_8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-	  			   	  <div class="news-btn"><a href="#">Read More</a></div>
-	  			   	</li>
-	  			   	<div class="clear"> </div>
-	  			  </ul>
-	  			</div>
-	  		   </div>
-	  		   <div class="col-md-6">
-	  			<div class="news_left">
-	  			  <ul class="news_list">
-	  			     <li class="date">
-						May<br><span class="highlight">23</span><br><span class="light_color">2014</span>
-					 </li>
-					 <li class="date_desc">
-	  			   	 	<ul class="list_img">
-	  			   	 		<li class="list_img_left">
-	  			   	 			<img src="${images}n2.jpg"  class="img-responsive" alt=""/>
-	  			   	 		</li>
-	  			   	 		<li class="list_desc">
-	  			   	 		 <div class="extra">
-							   <time pubdate="" datetime="2014-03-30T14:47:59">
-								 Writter				</time> 
-								<span class="username">aliquam</span> / 
-								<a href="#" class="comment_count">Finance</a>
-							 </div>
-							 <div class="extra_bottom"><i class="audio"> </i>
-							 
-							 </div>
-	  			   	 		</li>
-	  			   	 		<li class="hours">6 Days Ago</li>
-	  			   	 		<div class="clear"> </div>
-	  			   	 	</ul>
-	  			   	 </li>
-	  			   	 <div class="clear"> </div>
-	  			  </ul>
-	  			  <ul class="news_bottom"> 	
-	  			    <li class="comment_section">
-					  <i class="comment1"> </i>
-					  <i class="comment2"> </i>
-					  <i class="comment3"> </i>
-					</li>
-					<li class="right_desc">
-	  			   	  <h4 class="m_7">New Project is very coming soon...</h4>
-	  			   	  <p class="m_8">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-	  			   	  <div class="news-btn"><a href="#">Read More</a></div>
-	  			   	</li>
-	  			   	<div class="clear"> </div>
-	  			  </ul>
-	  			</div>
-	  		</div>
-	  	</div>
-	  </div>
-	 </div>-->
 	 <div class="clients" id="clients">
 	 <div class="container">
 	 	<div class="m_3"><span class="left_line1"> </span><h3>Clients</h3><span class="right_line1"> </span></div>
@@ -565,35 +424,7 @@ $(window).load(function() {
 <script type="text/javascript" src="${js}jquery.flexisel.js"></script>
 </div>
 </div>
-</div>
-	<div class="footer">
-		<div class="container">
-			 <!-- <div class="footer-logo">
-				<a href="index.html"><img src="${images}logo.png" alt=""/><br><span class="m_1">Software Development</span></a>
-			 </div>
-			<div class="social_footer">
-			  <ul>
-				<li><a href=""> <i class="f-fb"> </i> </a></li>
-				<li><a href=""><i class="f-tw"> </i> </a></li>
-				<li><a href=""><i class="f-in"> </i> </a></li>
-				<li><a href=""><i class="f-skype"> </i> </a></li>
-				<li><a href=""><i class="f-google"> </i> </a></li>
-				<li><a href=""><i class="f-be"> </i> </a></li>
-				<div class="clear"> </div>
-			 </ul>
-			</div>
-			<ul class="newsletter">
-				<h3>Newsletter</h3>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.</p>
-			  <li class="footer-search">
-				<input type="text" value="">
-				<input type="submit" value="">
-		      </li>
-			</ul>
-			<div class="clear"> </div>
-			<div class="m_12"><span class="left_line2"> </span><h4>Froyo Software Development Inc.</h4><span class="right_line2"> </span></div>
-		  </div>
-		</div>-->
+	
 	    <div class="footer_bottom" id="contact">
 		  <div class="container">
 			<div class="row">

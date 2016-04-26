@@ -8,6 +8,7 @@ public class ApartmentDetailsBean {
 	private int depositAmt;
 	private int rent;
 	private Date availablityFrom;
+	private String date;
 	private String utilities;
 	private String area;
 	private String street;
@@ -96,5 +97,11 @@ public class ApartmentDetailsBean {
 	}
 	public void setFlooring(String flooring) {
 		this.flooring = flooring;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 }
