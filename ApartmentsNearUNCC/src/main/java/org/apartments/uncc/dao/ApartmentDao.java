@@ -20,4 +20,6 @@ public interface ApartmentDao {
 	public int getNewApartmentId(ApartmentDetailsBean aptDetails,String email);
 	public int getOwnerId(int aptId);
 	public void addTenant(String aptId, TenantBean newTenant);
+	public List<TenantBean> getTenants(int aptId);
+	public void updateTenant(int aptId, TenantBean tenant);
 }

@@ -6,6 +6,7 @@ package org.apartments.uncc.controllers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
-@SessionAttributes({"aptId"})
+@SessionAttributes({"aptId","aptDetails","myTenants","imagePath"})
 public class ApartmentController {
 	private static final Logger logger = LoggerFactory.getLogger(ApartmentController.class);
 	@Autowired
@@ -92,7 +93,7 @@ public class ApartmentController {
 		ModelAndView model= new ModelAndView("addNewApt");
 		HttpSession session=request.getSession();
 		System.out.println("--aptId is -- "+session.getAttribute("aptId"));
-		String aptId=((Integer) session.getAttribute("aptId")).toString();
+		String aptId=(String) session.getAttribute("aptId");
 		ownerDelegate.uploadFile(aptId,names,files);
 		ApartmentDetailsBean aptDetails=new ApartmentDetailsBean();
 		request.setAttribute("newApartment", aptDetails);
@@ -122,6 +123,77 @@ public class ApartmentController {
 		return model;
 	}
 	
-	//@RequestMapping()
+	
+	@RequestMapping(value="/myAptDetails", method=RequestMethod.GET)
+	public ModelAndView apartmentDetails(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="id", required=false) String id)
+	{
+		ModelAndView model= new ModelAndView("editApartmentDetails");
+		HttpSession session=request.getSession();
+		@SuppressWarnings("unchecked")
+		List<ApartmentDetailsBean> myApartments=(List<ApartmentDetailsBean>) session.getAttribute("myApartments");
+		ApartmentDetailsBean aptBean=new ApartmentDetailsBean();
+		System.out.println("my apt id is "+id+myApartments);
+		aptBean.setApartmentId(Integer.parseInt(id));
+		int index=myApartments.indexOf(aptBean);
+		aptBean=myApartments.get(index);
+		System.out.println("Availability Date is - "+aptBean.getAvailablityFrom().toString());
+		aptBean.setDate(aptBean.getAvailablityFrom().toString());
+		request.setAttribute("aptDetails",aptBean);
+		session.setAttribute("aptDetails", aptBean);
+		String imagePath=ownerDelegate.getImagePath(Integer.parseInt(id));
+		List<TenantBean> tenants=ownerDelegate.getTenants(Integer.parseInt(id));
+		session.setAttribute("myTenants", tenants);
+		session.setAttribute("imagePath", imagePath);
+		session.setAttribute("aptId", id);
+		logger.info("path is "+imagePath);
+		return model;
+	}
+	
+	@RequestMapping(value="/saveImage", method= RequestMethod.POST)
+	public ModelAndView saveImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("name") String[] names,
+			@RequestParam("file") MultipartFile[] files)
+	{
+		//if (files.length != names.length)
+			//return "Mandatory information missing";
+		ModelAndView model= new ModelAndView("editApartmentDetails");
+		HttpSession session=request.getSession();
+		System.out.println("--aptId is -- "+session.getAttribute("aptId"));
+		String aptId=(String) session.getAttribute("aptId");
+		ownerDelegate.uploadFile(aptId,names,files);
+		ApartmentDetailsBean aptDetails=(ApartmentDetailsBean) session.getAttribute("aptDetails");
+		request.setAttribute("newApartment", aptDetails);
+		//TenantBean tenant=(TenantBean) 
+		//request.setAttribute("newApartment", newApartment);
+		//request.setAttribute("aptDetails", tenant);
+		request.setAttribute("saveImageSuccess", "Images Uploaded Successfully!!");
+		//return message;
+		return model;
+	}
+	
+	@RequestMapping(value="/updateTenant", method=RequestMethod.POST)
+	public ModelAndView updateTenants(HttpServletRequest request, HttpServletResponse response)
+	{
+		ModelAndView model= new ModelAndView("editApartmentDetails");
+		HttpSession session=request.getSession();
+		System.out.println("--aptId is -- "+session.getAttribute("aptId"));
+		String aptId=(String) session.getAttribute("aptId");
+		TenantBean tenantUpdated=new TenantBean();
+		tenantUpdated.setTage(Integer.parseInt(request.getParameter("age")));
+		tenantUpdated.setNationality(request.getParameter("Nationality"));
+		tenantUpdated.settEmail(request.getParameter("email"));
+		tenantUpdated.setTgender(request.getParameter("tgender"));
+		tenantUpdated.setTfirstName(request.getParameter("fName"));
+		tenantUpdated.setTlastName(request.getParameter("lName"));
+		ownerDelegate.updateTenant(Integer.parseInt(request.getParameter("tenId")),tenantUpdated);
+		ApartmentDetailsBean aptDetails=(ApartmentDetailsBean) session.getAttribute("aptDetails");
+		request.setAttribute("newApartment", aptDetails);
+		//TenantBean tenant=(TenantBean) 
+		//request.setAttribute("newApartment", newApartment);
+		//request.setAttribute("aptDetails", tenant);
+		request.setAttribute("updateTenantSuccess", "Tenant Uploaded Successfully!!");
+		//return message;
+		return model;
+	}
 	
 }

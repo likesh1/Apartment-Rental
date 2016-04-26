@@ -55,6 +55,7 @@
 	<bean id="apartmentService" class="org.apartments.uncc.service.impl.ApartmentServiceImpl">
 		<property name="apartmentDao" ref="apartmentDao"></property>
 		<property name="fileUploader" ref="fileUploader"></property>
+		<property name="filePath" ref="filePath"></property>
 	</bean>
 
 	<bean name="apartmentDao" class="org.apartments.uncc.dao.impl.ApartmentDaoImpl">

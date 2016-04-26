@@ -11,4 +11,6 @@ public interface IFilePath {
 
 	String getFileUploadPath(String aptId);
 
+	String getImagePath(int aptId);
+
 }

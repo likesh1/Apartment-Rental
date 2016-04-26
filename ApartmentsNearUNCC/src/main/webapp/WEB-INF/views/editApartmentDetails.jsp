@@ -23,6 +23,7 @@ Author URL: SSDI_08
 	<spring:url value="/resources/javascripts/bootstrap-datepicker.js" var="datepickerJS" />
 	<spring:url value="/resources/javascripts/bootstrap.min.js" var="bootstrapJS" />
 	<spring:url value="/resources/images/" var="images"/>
+	<spring:url value="/resources/" var="uploadedImages"/>
 	<spring:url value="/resources/javascripts/" var="js"/>
 	<link href="${bootstrapCSS}" rel='stylesheet' />
 	<link href="${style1CSS}" rel='stylesheet' />
@@ -122,7 +123,7 @@ Author URL: SSDI_08
 												Details</h4>
 										</div>
 										<!-- <div id="${id}" class="panel-collapse collapse">  -->
-										<form:form action="addNewApartment" modelAttribute="newApartment">
+										<form:form action="addNewApartment" modelAttribute="aptDetails">
 										<div class="panel-body">
 											<div class="table-responsive">
 												<table title="New Apartment" class="table" style="width: 90%">
@@ -154,28 +155,26 @@ Author URL: SSDI_08
 													<tr class="info">
 														<td><label for="flooring">FLOORING</label></td>
 														<td><form:select id="flooring" name="flooring" class="form-control" path="flooring">
-																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
-																<option value="Wooden">Wooden</option>
-																<option value="Carpet">Carpet</option>
+																<form:option value="Select type of flooring" disabled="disabled">Select type of flooring</form:option>
+																<form:option value="Wooden">Wooden</form:option>
+																<form:option value="Carpet">Carpet</form:option>
 															</form:select></td>
 														<td><label for="bathrooms">BATHROOM TYPE</label></td>
 														<td><form:select class="form-control" id="bathrooms" name="bathrooms" path="type_bathroom">
-																<option value="Select type of bathroom" disabled="disabled">Select type of bathroom</option>
-																<option value="Attached">Attached</option>
-																<option value="Common">Common</option>
+																<form:option value="None">Select type of bathroom</form:option>
+																<form:option value="Attached">Attached</form:option>
+																<form:option value="Common">Common</form:option>
 															</form:select>
 														</td>
 													</tr>
-													<tr class="info">
+													<!-- <tr class="info">
 														
 														<td><label for="date">AVAILABLE FROM:</label></td>
-														<td><div id="datepicker" class="input-group date" data-date-format="mm/dd/yyyy">
-															    <form:input class="form-control" type="text" id="date" path="date"/>
-															    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-															</div></td>
+														<td><form:input class="form-control" type="date" id="date" path="availablityFrom"/>
+														</td>
 														<td></td>
 														<td></td>
-													</tr>
+													</tr> -->
 													<tr class="info">
 														<td></td>
 														<td></td>
@@ -189,12 +188,12 @@ Author URL: SSDI_08
 											</div>
 										</div>
 										</form:form>
-										<c:if test="${successInAddApt != null}">
+										<c:if test="${aptUpdate != null}">
 													<div class="alert alert-success">
-													    <strong>Success!</strong> ${successInAddApt }
+													    <strong>Success!</strong> ${aptUpdate }
 													  </div>
 												</c:if> 
-										<c:if test="${errorInAddApt != null}">
+										<c:if test="${error != null}">
 													<div class="alert alert-danger">
 													    <strong>Error!</strong> ${errorInAddApt }
 													  </div>
@@ -206,104 +205,77 @@ Author URL: SSDI_08
 						</div>
 					</div>
 					
-			<c:if test="${aptId != null}">	
+					
+					<!-- Images to display -->
+			
+
+			
 			<!-- Add Images Container -->	
-			<div class="container col-sm-4" style="width: 100%">
-				<div class="panel-group" id="accordion">
-					<div class="panel panel-default">
-
-						
-						<div class="panel-heading">
-							<h4 class="panel-title">Upload Images</h4>
-						</div>
-						
-		
-			<form method="post" enctype="multipart/form-data" action="saveImages">
-			<div class="panel-body">
-											<div class="table-responsive">
-												<table title="New Apartment" class="table" style="width: 90%">
-													<tr class="info">
-										
-				<td><label for="file">Upload Image for Hall: </label><input type="hidden" name="name" value="hall.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td>
-				<td><label for="file">Upload Image for Bedroom: </label><input type="hidden" name="name" value="bedroom.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td></tr>
-				<tr class="info"><td><label for="file">Upload Image for Kitchen: </label><input type="hidden" name="name" value="kitchen.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td>
-				<td><label for="file">Upload Image for bathroom: </label><input type="hidden" name="name" value="bathroom.jpg"/></td><td><input type="file" name="file" class="form-control"/> </td></tr>
-				<tr class="info"><td></td><td></td><td></td><td><input class="btn btn-success" type="submit" value="Upload"/></td></tr>
-				 </table>
-				 </div>
-				 </div>
-			</form>
-			<c:if test="${saveImageSuccess != null}">
-													<div class="alert alert-success">
-													    <strong>Success!</strong> ${saveImageSuccess }
-													  </div>
-												</c:if> 
-										<c:if test="${saveImageError != null}">
-													<div class="alert alert-danger">
-													    <strong>Error!</strong> ${saveImageError }
-													  </div>
-												</c:if> 
-			</div>
-			</div>
-			</div>
+			
+			
+			
+	
 			<!-- Tenant Details -->
-			<div>
-
-						<div>
-							<div class="container col-sm-4" style="width: 100%">
-								<div class="panel-group" id="accordion">
-									<div class="panel panel-default">
-
-										
-										<div class="panel-heading">
-											<h4 class="panel-title">TENANT
-												Details</h4>
-										</div>
-										<!-- <div id="${id}" class="panel-collapse collapse">  -->
-										<form:form action="addNewTenant" modelAttribute="newTenant">
+			<div  class="project_top">
+				<div class="container col-sm-4" style="width: 100%">
+				  	<div class="panel-group" id="accordion">
+			        <div class="panel panel-default">
+				        <c:forEach items="${myTenants}" var="tenants">
+				        	<c:set var="id" value="${tenants.tfirstName}"></c:set>
+				        	<!-- <c:set var="apt_id" value="${tenants.tlastName}"></c:set> -->
+				        	<c:set var="href">#${id }</c:set>
+				            <!--<c:set var="apartmentDetailshref">apartmentDetails?id=${apt_id }</c:set>-->
+				
+							            <div class="panel-heading">
+							                <h4 class="panel-title">
+							                    <a data-toggle="collapse" data-parent="#accordion" href="${href}">${tenants.tfirstName} ${ tenants.tlastName}</a>
+							                </h4>
+							            </div>
+							            <div id="${id}" class="panel-collapse collapse">
+										<form action="updateTenant" method="POST">
 										<div class="panel-body">
 											<div class="table-responsive">
 												<table title="New Apartment" class="table" style="width: 90%">
 													<tr class="info">
 														<td><label for="deposit">First Name</label></td>
-														<td><form:input class="form-control" placeholder="First Name" path="tfirstName" type="text" id="fName" name="fName"/></td>
+														<td><input class="form-control" placeholder="First Name" type="text" id="fName" name="fName" value="${tenants.tfirstName }"/></td>
 														<td><label for="rent">Last Name</label></td>
-														<td><form:input class="form-control" placeholder="rent of room in $" type="text" id="lName" name="lName" path="tlastName"/></td>
+														<td><input class="form-control" placeholder="Last Name" type="text" id="lName" name="lName" value="${tenants.tfirstName }"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="email">Email</label></td>
-														<td><form:input class="form-control" placeholder="number of rooms$" type="email" id="email" name="email" path="tEmail"/></td>
+														<td><input class="form-control" placeholder="abc@test.com" type="email" id="email" name="email" value="${tenants.tEmail }"/></td>
 		
 														<td><label for="tgender">Gender</label></td>
-														<td><form:select class="form-control" id="tgender" name="tgender" path="tgender">
+														<td><select class="form-control" id="tgender" name="tgender">
 																<option value="Select Gender" disabled="disabled">Select Gender</option>
 																<option value="Male">Male</option>
 																<option value="Female">Female</option>
-															</form:select>
+															</select>
 														
 														</td>
 													</tr>
 													<tr class="info">
 														<td><label for="age">Age</label></td>
-														<td><form:input class="form-control" placeholder="UT DRIVE" type="text" id="age" name="age" path="tage"/></td>
+														<td><input class="form-control" placeholder="Age" type="text" id="age" name="age" value="${tenants.tage }"/></td>
 														<td><label for="Nationality">Nationality</label></td>
-														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="Nationality" name="Nationality" path="Nationality"/>
+														<td><input class="form-control" placeholder="Indian" type="text" id="Nationality" name="Nationality" value="${tenants.Nationality }"/>
 														</td>
 													</tr>
 													
 													<tr class="info">
-														<td></td>
+														<td><input type="hidden" id="aptId" name="tenId" value="${tenants.tenantId }"/></td>
 														<td></td>
 														<td></td>
 														<td><button class="btn btn-primary" type="reset">Reset</button>
-																<button class="btn btn-success" type="submit">Add Tenant</button>
+																<button class="btn btn-success" type="submit">Update Details</button>
 															</td>
 													</tr>
 												</table>
 												
 											</div>
 										</div>
-										</form:form>
+										</form>
 										<c:if test="${successInAddTenant != null}">
 													<div class="alert alert-success">
 													    <strong>Success!</strong> ${successInAddTenant }
@@ -315,16 +287,19 @@ Author URL: SSDI_08
 													  </div>
 												</c:if> 
 									</div>
-
+									</c:forEach>
 								</div>
 							</div>
 						</div>
 					</div>
-			
-			</c:if>
+		
 			
 					
 	</section>
+	
+	</div>
+</div>
+	
 	
 	<script type="text/javascript">
 	$(function () {
@@ -337,6 +312,115 @@ Author URL: SSDI_08
 	
 	
 	
+	<div>
+				<div class="container">
+					<div class="row">
+							<div class="col-md-3 project_grid">
+								<a href="#" class="b-link-stripe b-animate-go  thickbox"> <img
+									src="${uploadedImages}${imagePath }hall.jpg" class="img-responsive" alt="" />
+								<div class="b-wrapper">
+										<h2 class="b-animate b-from-left    b-delay03 ">
+											<img src="${images}heart.png" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+												src="${images}link.png" alt="" />
+										</h2>
+									</div></a>
+								<div class="project_desc">
+									<h3 id="name">Hall</h3>
+									<!-- <p>Project Status</p>
+				  	<i class="dating"> </i>-->
+									<div class="project-btn">
+										<form method="POST" action="saveImage" enctype="multipart/form-data">
+									        <label for="file">Upload Image for Hall: </label><input type="hidden" name="name" value="hall.jpg"/><br/>
+									        <input type="file" name="file" class="form-control"/> <br/>
+									        <input class="btn btn-success" type="submit" value="Upload"/>
+									       <!-- <a href="${myAptDetails}">Update Details</a> --> 
+									    </form>
+									</div>
+									<c:if test="${saveImageSuccess != null}">
+										<div class="alert alert-success">
+										    <strong>Success!</strong> ${saveImageSuccess }
+										  </div>
+									</c:if> 
+								</div>
+							</div>
+							<div class="col-md-3 project_grid">
+								<a href="#" class="b-link-stripe b-animate-go  thickbox"> <img
+									src="${uploadedImages}${imagePath}kitchen.jpg" class="img-responsive" alt="" />
+								<div class="b-wrapper">
+										<h2 class="b-animate b-from-left    b-delay03 ">
+											<img src="${images}heart.png" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+												src="${images}link.png" alt="" />
+										</h2>
+									</div></a>
+								<div class="project_desc">
+									<h3 id="name">Kitchen</h3>
+									<!-- <p>Project Status</p>
+				  	<i class="dating"> </i>-->
+									<div class="project-btn">
+										<form method="POST" action="saveImage" enctype="multipart/form-data">
+									        <label for="file">Upload Image for Kitchen: </label><input type="hidden" name="name" value="kitchen.jpg"/><br/>
+									        <input type="file" name="file" class="form-control"/> <br/>
+									        <input class="btn btn-success" type="submit" value="Upload"/>
+									       <!-- <a href="${myAptDetails}">Update Details</a> --> 
+									    </form>
+										
+									</div>
+								</div>
+							</div>
+							
+
+
+						<div class="col-md-3 project_grid">
+							<a href="#" class="b-link-stripe b-animate-go  thickbox"> <img
+								src="${uploadedImages}${imagePath }bedroom.jpg" class="img-responsive" alt="" />
+							<div class="b-wrapper">
+									<h2 class="b-animate b-from-left    b-delay03 ">
+										<img src="${images}heart.png" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+											src="${images}link.png" alt="" />
+									</h2>
+								</div></a>
+							<div class="project_desc">
+								<h3>Bedroom</h3>
+								<!-- 	<p class="blue">Project Status</p>
+				  	<i class="wedding"> </i>-->
+								<div class="project-btn">
+									<form method="POST" action="saveImage" enctype="multipart/form-data">
+									        <label for="file">Upload Image for Bedroom: </label><input type="hidden" name="name" value="bedroom.jpg"/><br/>
+									        <input type="file" name="file" class="form-control"/> <br/>
+									        <input class="btn btn-success" type="submit" value="Upload"/>
+									       <!-- <a href="${myAptDetails}">Update Details</a> --> 
+									    </form>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-3 project_grid">
+								<a href="#" class="b-link-stripe b-animate-go  thickbox"> <img
+									src="${uploadedImages}${imagePath }bathroom.jpg" class="img-responsive" alt="" />
+								<div class="b-wrapper">
+										<h2 class="b-animate b-from-left    b-delay03 ">
+											<img src="${images}heart.png" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+												src="${images}link.png" alt="" />
+										</h2>
+									</div></a>
+								<div class="project_desc">
+									<h3 id="name">Bathroom</h3>
+									<!-- <p>Project Status</p>
+				  	<i class="dating"> </i>-->
+									<div class="project-btn">
+										<form method="POST" action="saveImage" enctype="multipart/form-data">
+									        <label for="file">Upload Image for Bathroom: </label><input type="hidden" name="name" value="bathroom.jpg"/><br/>
+									        <input type="file" name="file" class="form-control"/> <br/>
+									        <input class="btn btn-success" type="submit" value="Upload"/>
+									       <!-- <a href="${myAptDetails}">Update Details</a> --> 
+									    </form>
+									</div>
+								</div>
+							</div>
+
+					</div>
+				</div>
+			</div>
 	
 	
 		
@@ -390,8 +474,7 @@ $(window).load(function() {
 </script>
 <script type="text/javascript" src="${js}jquery.flexisel.js"></script>
 </div>
-</div>
-</div>
+
 	<div class="footer">
 		<div class="container">
 			 <!-- <div class="footer-logo">
@@ -420,6 +503,9 @@ $(window).load(function() {
 			<div class="m_12"><span class="left_line2"> </span><h4>Froyo Software Development Inc.</h4><span class="right_line2"> </span></div>
 		  </div>
 		</div>-->
+		
+		
+		
 	    <div class="footer_bottom" id="contact">
 		  <div class="container">
 			<div class="row">
@@ -486,58 +572,7 @@ $(window).load(function() {
 			
 		</script>
 		<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
-		<script type="text/javascript">
-			// Get the modal
-			var modal = document.getElementById('myModal');
-			
-			// Get the button that opens the modal
-			var lnkOwner = document.getElementById("mailOwner");
-			var lnkTenant = document.getElementById("mailTenant");
-			
-			// Get the <span> element that closes the modal
-			var span = document.getElementsByClassName("close")[0];
-			
-			
-			
-			// When the user clicks the button, open the modal 
-			lnkOwner.onclick = function() {
-			    modal.style.display = "block";
-			};
-			if(lnkTenant!=null){
-				lnkTenant.onclick = function() {
-				    modal.style.display = "block";
-				}
-			};
-			
-			
-			// When the user clicks on <span> (x), close the modal
-			span.onclick = function() {
-			    modal.style.display = "none";
-			}
-			
-			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
-			    if (event.target == modal) {
-			        modal.style.display = "none";
-			    }
-			}
-			
-			$(".modal-content").animate({top: "300px"});
-			$(".modal-content").animate({opacity:"30"});
-			$(".modal-content").css({position: "relative",margin: "auto",padding: "0",border: "1px solid #888",width: "80%"});
-			
-			$(".modal").css({position: "fixed",display: "none"});
-			$(".modal").css({
-				backgroundColor: "rgb(0,0,0)",
-				backgroundColor: "rgba(0,0,0,0.4)"});
-			$(function(){
-				$(".info_link").click(function(){
-					
-					$("#to").val($(this).text());
-				});
-			});
-
-</script>
+		
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
    </div>
 

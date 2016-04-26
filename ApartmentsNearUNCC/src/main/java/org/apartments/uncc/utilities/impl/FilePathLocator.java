@@ -33,5 +33,12 @@ public class FilePathLocator implements IFilePath {
 		
 		//return null;
 	}
+	@Override
+	public String getImagePath(int aptId) {
+		// TODO Auto-generated method stub
+		int ownerId=apartmentDao.getOwnerId(aptId);
+		//String rootPath = System.getProperty("catalina.home");
+		 return ownerId+File.separator+aptId+File.separator;
+	}
 
 }

@@ -396,4 +396,36 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		}
 	}
 
+	@Override
+	public List<TenantBean> getTenants(int aptId) {
+		// TODO Auto-generated method stub
+		String query = "Select * from Tenant where apartmentId=?";
+		 List<TenantBean> tenants=getTenantDetails(query, aptId);
+		return tenants;
+	}
+
+	@Override
+	public void updateTenant(int aptId,TenantBean tenant) {
+		// TODO Auto-generated method stub
+		String query = "update Tenant set tfirstName=?,tlastName=?,tEmail=?,tgender=?,tage=?,Nationality=? where tenantId=?"
+				+ "values (?,?,?,?,?,?,?)";
+		ResultSet rs=null;
+		PreparedStatement pstmt;
+		try {
+			pstmt = dataSource.getConnection().prepareStatement(query);
+			pstmt.setString(1, tenant.getTfirstName());
+			pstmt.setString(2, tenant.getTlastName());
+			pstmt.setString(4, tenant.getTgender());
+			pstmt.setString(3, tenant.gettEmail());
+			pstmt.setInt(5, tenant.getTage());
+			pstmt.setString(6, tenant.getNationality());
+			pstmt.setInt(7, aptId);
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

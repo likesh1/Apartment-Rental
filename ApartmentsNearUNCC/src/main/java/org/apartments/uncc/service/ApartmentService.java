@@ -22,5 +22,8 @@ public interface ApartmentService {
 	int getNewApartmentId(ApartmentDetailsBean aptDetails,String email);
 	void uploadFile(String aptId, String[] names, MultipartFile[] files);
 	void addTenant(String aptId, TenantBean newTenant);
+	String getImagePath(int aptId);
+	List<TenantBean> getTenants(int aptId);
+	void updateTenant(int aptId, TenantBean tenantUpdated);
 	
 }

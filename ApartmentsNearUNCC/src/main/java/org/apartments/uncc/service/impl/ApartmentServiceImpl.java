@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apartments.uncc.dao.ApartmentDao;
 import org.apartments.uncc.dao.UserDao;
 import org.apartments.uncc.service.ApartmentService;
+import org.apartments.uncc.utilities.IFilePath;
 import org.apartments.uncc.utilities.IFileUploader;
 import org.apartments.uncc.viewBeans.ApartmentDetailsBean;
 import org.apartments.uncc.viewBeans.TenantBean;
@@ -27,8 +28,19 @@ public class ApartmentServiceImpl implements ApartmentService {
 	
 	private ApartmentDao apartmentDao;
 	private IFileUploader fileUploader;
+	private IFilePath filePath;
 	
 	
+	public IFilePath getFilePath() {
+		return filePath;
+	}
+
+
+	public void setFilePath(IFilePath filePath) {
+		this.filePath = filePath;
+	}
+
+
 	public IFileUploader getFileUploader() {
 		return fileUploader;
 	}
@@ -88,6 +100,27 @@ public class ApartmentServiceImpl implements ApartmentService {
 	public void addTenant(String aptId, TenantBean newTenant) {
 		// TODO Auto-generated method stub
 		apartmentDao.addTenant(aptId,newTenant);
+	}
+
+
+	@Override
+	public String getImagePath(int aptId) {
+		// TODO Auto-generated method stub
+		return filePath.getImagePath(aptId);
+	}
+
+
+	@Override
+	public List<TenantBean> getTenants(int aptId) {
+		// TODO Auto-generated method stub
+		return apartmentDao.getTenants(aptId);
+	}
+
+
+	@Override
+	public void updateTenant(int aptId,TenantBean tenant) {
+		// TODO Auto-generated method stub
+		apartmentDao.updateTenant(aptId,tenant);
 	}
 
 }
