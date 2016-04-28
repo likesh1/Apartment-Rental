@@ -260,7 +260,7 @@ Author URL: SSDI_08
 														
 													</tr>
 													<tr class="info">
-														<td></td>
+														<td><INPUT type="hidden" id="tenId" name="tenId" value="${tenants.tenantId }"/></td>
 														<td></td>
 														<td></td>
 														<td><button class="btn btn-primary" type="reset">Reset</button>

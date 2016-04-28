@@ -407,8 +407,7 @@ public class ApartmentDaoImpl implements ApartmentDao{
 	@Override
 	public void updateTenant(int aptId,TenantBean tenant) {
 		// TODO Auto-generated method stub
-		String query = "update Tenant set tfirstName=?,tlastName=?,tEmail=?,tgender=?,tage=?,Nationality=? where tenantId=?"
-				+ "values (?,?,?,?,?,?,?)";
+		String query = "update Tenant set tfirstName=?,tlastName=?,tEmail=?,tgender=?,tage=?,Nationality=? where tenantId=?";
 		ResultSet rs=null;
 		PreparedStatement pstmt;
 		try {

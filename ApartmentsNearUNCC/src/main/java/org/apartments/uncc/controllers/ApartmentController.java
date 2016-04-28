@@ -180,6 +180,7 @@ public class ApartmentController {
 		HttpSession session=request.getSession();
 		System.out.println("--aptId is -- "+session.getAttribute("aptId"));
 		String aptId=(String) session.getAttribute("aptId");
+		System.out.println("Age is --"+request.getParameter("age"));
 		TenantBean tenantUpdated=new TenantBean();
 		tenantUpdated.setTage(Integer.parseInt(request.getParameter("age")));
 		tenantUpdated.setNationality(request.getParameter("Nationality"));
@@ -187,7 +188,13 @@ public class ApartmentController {
 		tenantUpdated.setTgender(request.getParameter("tgender"));
 		tenantUpdated.setTfirstName(request.getParameter("fName"));
 		tenantUpdated.setTlastName(request.getParameter("lName"));
+		tenantUpdated.setTenantId(Integer.parseInt(request.getParameter("tenId")));
 		ownerDelegate.updateTenant(Integer.parseInt(request.getParameter("tenId")),tenantUpdated);
+		List<TenantBean> tenants=(List<TenantBean>) session.getAttribute("myTenants");
+		int index=tenants.indexOf(tenantUpdated);
+		tenants.remove(index);
+		tenants.add(index, tenantUpdated);
+		session.setAttribute("myTenants", tenants);
 		ApartmentDetailsBean aptDetails=(ApartmentDetailsBean) session.getAttribute("aptDetails");
 		request.setAttribute("newApartment", aptDetails);
 		//TenantBean tenant=(TenantBean) 
