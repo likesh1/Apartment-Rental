@@ -179,9 +179,9 @@ li.linkedin a span {
 	overflow: hidden;
 }
 .wmuSlider .wmuSliderWrapper article img {
-	max-width: 100%;
-	width: auto;
-	height: auto;
+	
+	width: 250%;
+	height: 250%;
 	display:block;
 }
 /* Default Skin */

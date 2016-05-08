@@ -86,8 +86,8 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		apartmentDetails.put("OwnerDetails", getOwnerDetails(query, id));
 		query = "Select rating,comments from Feedback where apartmentId=?";
 		apartmentDetails.put("ReviewAndRatings", getReviewComments(query, id));
-		query = "select photo from aptImages where apartmentId=?";
-		apartmentDetails.put("images", getImages(query, id));
+		/*query = "select photo from aptImages where apartmentId=?";
+		apartmentDetails.put("images", getImages(query, id));*/
 		
 		return apartmentDetails;
 	}

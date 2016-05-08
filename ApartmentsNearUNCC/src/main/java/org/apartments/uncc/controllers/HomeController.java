@@ -16,6 +16,7 @@ import org.apartments.uncc.delegate.ApartmentDetailsDelegate;
 import org.apartments.uncc.delegate.ApartmentListDelegate;
 import org.apartments.uncc.delegate.LoginDelegate;
 import org.apartments.uncc.delegate.MailDelegate;
+import org.apartments.uncc.delegate.OwnerDelegate;
 import org.apartments.uncc.delegate.RegistrationDelegate;
 import org.apartments.uncc.exceptions.InvalidCredentialsException;
 import org.apartments.uncc.exceptions.InvalidEmailIdException;
@@ -42,7 +43,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({"user","apartmentDetails","ownerDetails","tenantDetails","reviews","imageList","myApartments"})
+@SessionAttributes({"user","apartmentDetails","ownerDetails","tenantDetails","reviews","imageList","myApartments","imagePath"})
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -63,6 +64,8 @@ public class HomeController {
 	private SendEmailUtilityImpl sendEmailUtilityImpl;
 	@Autowired
 	private MailDelegate mailDelegate;
+	@Autowired
+	private OwnerDelegate ownerDelegate;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -86,7 +89,7 @@ public class HomeController {
 	{
 		
 		ModelAndView model= null;
-		
+		System.out.println("User - "+loginBean.getUsername()+" and password is "+loginBean.getPassword());
 			UserDetailsBean validUser;
 			try {
 				validUser = loginDelegate.isValidUser(loginBean);
@@ -236,13 +239,14 @@ public class HomeController {
 	 MailBean mailBean=new MailBean();
 	 Map apartment=apartmentDetailsDelegate.getApartmentDetails(id);
 	 System.out.println("The apartment details"+apartment);
-	
+	 String imagePath=ownerDelegate.getImagePath(Integer.parseInt(id));
 	 ModelAndView model = new ModelAndView("apartmentDetails");
 	 model.addObject("apartmentDetails", apartment.get("ApartmentDetails"));
 	 model.addObject("ownerDetails", apartment.get("OwnerDetails"));
 	 model.addObject("tenantDetails", apartment.get("TenantDetails"));
 	 model.addObject("reviews", apartment.get("ReviewAndRatings"));
-	 model.addObject("imageList",apartment.get("images"));
+	 //model.addObject("imageList",apartment.get("images"));
+	 model.addObject("imagePath",imagePath);
 	 model.addObject("MailBean", mailBean);
 
 

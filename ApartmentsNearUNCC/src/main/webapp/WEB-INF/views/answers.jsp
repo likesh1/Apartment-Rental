@@ -105,7 +105,7 @@ Author URL: SSDI_08
          	<br>
          	<form:form name="AddAnswer" method="post" onsubmit="return validateReply(this);" action="addanswer.do" modelAttribute="answerbean">
 				   	
-				   	<form:textarea  id="reply" name="reply" path="reply" rows="5" cols="150" />
+				   	<form:textarea  id="reply" name="reply" path="reply" rows="5" cols="120" />
 				   	<br>
 				   	<label id="ErrorMessage">${questionErrorMessage}</label><br/>
 				   <button class="btn btn-primary" type="submit" id="Reply" style="background-color:#1f161f">Post your Reply</button>				 

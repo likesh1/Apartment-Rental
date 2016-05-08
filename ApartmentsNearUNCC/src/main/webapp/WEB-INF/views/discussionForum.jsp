@@ -111,7 +111,7 @@ Author URL: SSDI_08
 			<div class="table-responsive">
 				   	<table style="width:100%">
 				   	<tr>
-				   	<td><form:textarea  id="question" name="question" path="description" rows="5" cols="150" />
+				   	<td><form:textarea  id="question" name="question" path="description" rows="5" cols="120" />
 				   	</td>
 				   	</tr>
 				   	<tr>

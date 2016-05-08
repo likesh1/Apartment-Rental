@@ -182,7 +182,7 @@ Author URL: SSDI_08
 						        <td></td>
 						        <td></td>
 						        <td></td>
-						        <td><div class="project-btn"><a href="${apartmentDetailshref }">Apartment List</a></div></td>
+						        <td><div class="project-btn"><a href="${apartmentDetailshref }">Apartment Details</a></div></td>
 						      </tr>					
 						  </table>
 						  </div>

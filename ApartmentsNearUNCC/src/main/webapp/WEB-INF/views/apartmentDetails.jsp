@@ -16,6 +16,7 @@ Author URL: SSDI_08
 	<spring:url value="/resources/javascripts/validate.js" var="validateJS" />
 	<spring:url value="/resources/images/" var="images"/>
 	<spring:url value="/resources/javascripts/" var="js"/>
+	<spring:url value="/resources/" var="uploadedImages"/>
 	<link href="${bootstrapCSS}" rel='stylesheet' />
 	<link href="${style1CSS}" rel='stylesheet' />
 	<link href="${RatingCSS}" rel='stylesheet' />
@@ -99,32 +100,40 @@ Author URL: SSDI_08
 	<div class="index-banner" id="home">
        	   <div class="wmuSlider example1">
 			   <div class="wmuSliderWrapper">
-			   <c:forEach items="${imageList}" var="image">
-				   <article style="position: absolute; width: 100%; opacity: 0;"> 
+			   
+				   <article style="position: absolute; width: 200%; opacity: 0;"> 
 				   	<div class="banner-wrap">
 				   		 <div class="slider-left">
-						    <img src="${images}/apartmentImages/${image}.jpg" alt=""/>
+						    <img src="${uploadedImages}${imagePath }hall.jpg" alt=""/>
 						 </div>
 					     <div class="clear"></div>
 					 </div>
 					</article>
-					</c:forEach>
-				   <!-- <article style="position: relative; width: 100%; opacity: 1;"> 
+				    <article style="position: absolute; width: 100%; opacity: 1;"> 
 				   	 <div class="banner-wrap">
 				   	 	<div class="slider-left">
-						    <img src="${images}utr2.jpg" alt=""/>
+						    <img src="${uploadedImages}${imagePath }kitchen.jpg" alt=""/>
 						 </div>
 					     <div class="clear"></div>
 					  </div>
 				   </article>
-				   <article style="position: absolute; width: 100%; opacity: 0;">
+				   <article style="position: absolute; width: 200%; opacity: 0;">
 				   	<div class="banner-wrap">
 				   		 <div class="slider-left">
-						    <img src="${images}utr3.jpg" alt=""/>
+						    <img src="${uploadedImages}${imagePath }bedroom.jpg" alt=""/>
 						 </div>
 					     <div class="clear"></div>
 					 </div>
-				   </article> -->
+				   </article>
+				   
+				   <article style="position: absolute; width: 200%; opacity: 1;">
+				   	<div class="banner-wrap">
+				   		 <div class="slider-left">
+						    <img src="${uploadedImages}${imagePath }bathroom.jpg" alt=""/>
+						 </div>
+					     <div class="clear"></div>
+					 </div>
+				   </article>
 				 </div>
 				<a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
                 <ul class="wmuSliderPagination">
