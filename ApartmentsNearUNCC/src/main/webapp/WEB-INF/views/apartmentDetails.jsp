@@ -252,7 +252,7 @@ Author URL: SSDI_08
 </div>
 	
 	   
-	    <div class="team" id="team">
+	    <div class="team" id="contactDetails">
 	  	<div class="container">
 	  	  <div class="m_3"><span class="left_line1"> </span><h3>Contact Details</h3><span class="right_line1"> </span></div>
 		    <div class="horizontalSlider">
@@ -666,14 +666,14 @@ $(window).load(function() {
 			
 			
 		</script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
 		<script type="text/javascript">
 			// Get the modal
 			var modal = document.getElementById('myModal');
 			
 			// Get the button that opens the modal
 			var lnkOwner = document.getElementById("mailOwner");
-			var lnkTenant = document.getElementById("mailTenant");
+			var lnkTenant = document.getElementsByClassName("info_link");
 			
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("close")[0];
@@ -684,11 +684,14 @@ $(window).load(function() {
 			lnkOwner.onclick = function() {
 			    modal.style.display = "block";
 			};
-			if(lnkTenant!=null){
-				lnkTenant.onclick = function() {
-				    modal.style.display = "block";
+			for(var i=0;i<lnkTenant.length;i++)
+				{
+					if(lnkTenant[i]!=null){
+						lnkTenant[i].onclick = function() {
+						    modal.style.display = "block";
+						}
+					};
 				}
-			};
 			
 			
 			// When the user clicks on <span> (x), close the modal
