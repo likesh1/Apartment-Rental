@@ -123,54 +123,54 @@ Author URL: SSDI_08
 												Details</h4>
 										</div>
 										<!-- <div id="${id}" class="panel-collapse collapse">  -->
-										<form:form action="updateApt" modelAttribute="aptDetails">
+										<form action="updateApt" method="POST">
 										<div class="panel-body">
 											<div class="table-responsive">
 												<table title="New Apartment" class="table" style="width: 90%">
 													<tr class="info">
 														<td><label for="deposit">DEPOSIT AMOUNT: </label></td>
-														<td><form:input class="form-control" placeholder="deposit of room in $" path="depositAmt" type="text" id="deposit" name="deposit"/></td>
+														<td><input class="form-control" placeholder="deposit of room in $" value="${aptDetails.depositAmt }" type="text" id="deposit" name="deposit"/></td>
 														<td><label for="rent">RENT:</label></td>
-														<td><form:input class="form-control" placeholder="rent of room in $" type="text" id="rent" name="rent" path="rent"/></td>
+														<td><input class="form-control" placeholder="rent of room in $" type="text" id="rent" name="rent" value="${aptDetails.rent }"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="rooms">NUMBER OF ROOMS</label></td>
-														<td><form:input class="form-control" placeholder="number of rooms$" type="number" min="1" max="5" id="rooms" name="rooms" path="no_of_rooms"/></td>
+														<td><input class="form-control" placeholder="number of rooms$" type="number" min="1" max="5" id="rooms" name="rooms" value="${aptDetails.no_of_rooms }"/></td>
 		
 														<td><label for="utilities">UTILITIES</label></td>
-														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="utilites" name="utilities" path="utilities"/></td>
+														<td><input class="form-control" placeholder="i.e. Internet" type="text" id="utilities" name="utilities" value="${aptDetails.utilities }"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="area">AREA</label></td>
-														<td><form:input class="form-control" placeholder="UT DRIVE" type="text" id="area" name="area" path="area"/></td>
+														<td><input class="form-control" placeholder="UT DRIVE" type="text" id="area" name="area" value="${aptDetails.area }"/></td>
 														<td><label for="street">STREET</label></td>
-														<td><form:input class="form-control" placeholder="Graduate Lane" type="text" id="street" name="street" path="street"/></td>
+														<td><input class="form-control" placeholder="Graduate Lane" type="text" id="street" name="street" value="${aptDetails.street }"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="doorNo">DOOR NUMBER</label></td>
-														<td><form:input class="form-control" placeholder="10008 G" type="text" id="doorNo" name="doorNo" path="doorNo"/></td>
+														<td><input class="form-control" placeholder="10008 G" type="text" id="doorNo" name="doorNo" value="${aptDetails.doorNo }"/></td>
 														<td><label for="city">CITY</label></td>
-														<td><form:input class="form-control" placeholder="Charlotte" type="text" id="city" name="city" path="city"/></td>
+														<td><input class="form-control" placeholder="Charlotte" type="text" id="city" name="city" value="${aptDetails.city }"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="flooring">FLOORING</label></td>
-														<td><form:select id="flooring" name="flooring" class="form-control" path="flooring">
-																<form:option value="Select type of flooring" disabled="disabled">Select type of flooring</form:option>
-																<form:option value="Wooden">Wooden</form:option>
-																<form:option value="Carpet">Carpet</form:option>
-															</form:select></td>
+														<td><select id="flooring" name="flooring" class="form-control">
+																<option value="Select type of flooring" disabled="disabled">Select type of flooring</option>
+																<option value="Wooden" ${aptDetails.flooring=='Wooden' ? 'selected' : ''}>Wooden</option>
+																<option value="Carpet" ${aptDetails.flooring=='Carpet' ? 'selected' : ''}>Carpet</option>
+															</select></td>
 														<td><label for="bathrooms">BATHROOM TYPE</label></td>
-														<td><form:select class="form-control" id="bathrooms" name="bathrooms" path="type_bathroom">
-																<form:option value="None">Select type of bathroom</form:option>
-																<form:option value="Attached">Attached</form:option>
-																<form:option value="Common">Common</form:option>
-															</form:select>
+														<td><select class="form-control" id="bathrooms" name="bathrooms">
+																<option value="None">Select type of bathroom</option>
+																<option value="Attached" ${aptDetails.type_bathroom=='Attached' ? 'selected' : ''}>Attached</option>
+																<option value="Common" ${aptDetails.type_bathroom=='Common' ? 'selected' : ''}>Common</option>
+															</select>
 														</td>
 													</tr>
 													<!-- <tr class="info">
 														
 														<td><label for="date">AVAILABLE FROM:</label></td>
-														<td><form:input class="form-control" type="date" id="date" path="availablityFrom"/>
+														<td><input class="form-control" type="date" id="date" />
 														</td>
 														<td></td>
 														<td></td>
@@ -187,10 +187,10 @@ Author URL: SSDI_08
 												
 											</div>
 										</div>
-										</form:form>
-										<c:if test="${aptUpdate != null}">
+										</form>
+										<c:if test="${updateApartmentSuccess != null}">
 													<div class="alert alert-success">
-													    <strong>Success!</strong> ${aptUpdate }
+													    <strong>Success!</strong> ${updateApartmentSuccess }
 													  </div>
 												</c:if> 
 										<c:if test="${error != null}">
@@ -246,8 +246,8 @@ Author URL: SSDI_08
 														<td><label for="tgender">Gender</label></td>
 														<td><select class="form-control" id="tgender" name="tgender">
 																<option value="Select Gender" disabled="disabled">Select Gender</option>
-																<option value="Male">Male</option>
-																<option value="Female">Female</option>
+																<option value="Male" ${tenants.tgender=='Male' ? 'selected' : ''}>Male</option>
+																<option value="Female" ${tenants.tgender=='Female' ? 'selected' : ''}>Female</option>
 															</select>
 														
 														</td>

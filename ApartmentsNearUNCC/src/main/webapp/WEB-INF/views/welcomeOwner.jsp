@@ -142,47 +142,7 @@ Author URL: SSDI_08
       </div>
 	</div>
     <div class="main">	
-	  <div class="container">
-	   <div class="about" id="about">
-			<div class="row about-top">
-			  <ul class="about-top">
-			  	<li><h2>List your Rentals with us</h2></li>
-			  	<li><p style="color:#6E6E6E;">Put your property in front of millions of students looking for apartments near UNCC.!
-<br></br>Post your rental in minutes. </p></li>
-			  	<li class="last"><div class="about-btn"><a href="http://localhost:8080/uncc">Register</a></div></li>
-			  	<div class="clear"></div>
-			  </ul>
-			</div>
-		</div>
-		<!-- <div class="services" id="services">
-			<div class="m_3"><span class="left_line1"> </span><h3>Services</h3><span class="right_line1"> </span></div>
-			<div class="row service_grids">
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="web"> </i>
-				 <h3 class="m_4">Web Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="app"> </i>
-				 <h3 class="m_4">App Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center service_grid1">
-				 <i class="php"> </i>
-				 <h3 class="m_4">Php Development</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			  <div class="col-md-3 text-center">
-				 <i class="wordpress"> </i>
-				 <h3 class="m_4">Wordpress</h3>
-				 <p class="m_5">Lorem ipsum dolor sit consectetuer adipiscing elit, sed diam.</p>
-				 <div class="service-btn"><a href="#">Read More</a></div>
-			  </div>
-			</div>-->
-	    </div>
+	  
 	    <div class="projects" id="projects">
 	    	<div class="m_3"><span class="left_line1"> </span><h3>My Apartments</h3><span class="right_line1"> </span></div>
 	    </div>
@@ -208,7 +168,7 @@ Author URL: SSDI_08
 	  			
 	  			<div class="col-md-3 project_grid">
 	  			  <a href="#" class="b-link-stripe b-animate-go  thickbox">
-					<img src="${images}UT1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
+					<img src="${images}addNew.png" class="img-responsive" alt=""/><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="${images}heart.png" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${images}link.png" alt=""/></h2>
 				  </div></a>
 				  <div class="project_desc">
 				  	<h3>Add New</h3>

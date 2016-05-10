@@ -427,4 +427,32 @@ public class ApartmentDaoImpl implements ApartmentDao{
 		}
 	}
 
+	@Override
+	public void updateApartment(ApartmentDetailsBean aptUpdated) {
+		// TODO Auto-generated method stub
+		String query = "update Apartments set depositAmt=?,rent=?,utilities=?,area=?,street=?,city=?,doorNo=?,no_of_rooms=?,type_bathroom=?,flooring=? where apartmentId=?";
+		ResultSet rs=null;
+		PreparedStatement pstmt;
+		try {
+			pstmt = dataSource.getConnection().prepareStatement(query);
+			pstmt.setInt(1, aptUpdated.getDepositAmt());
+			pstmt.setInt(2, aptUpdated.getRent());
+			//pstmt.setDate(4, aptUpdated);
+			pstmt.setString(3, aptUpdated.getUtilities());
+			pstmt.setString(4, aptUpdated.getArea());
+			pstmt.setString(5, aptUpdated.getStreet());
+			pstmt.setString(7, aptUpdated.getDoorNo());
+			pstmt.setString(6, aptUpdated.getCity());
+			pstmt.setInt(8, aptUpdated.getno_of_rooms());
+			pstmt.setString(9, aptUpdated.getType_bathroom());
+			pstmt.setString(10, aptUpdated.getFlooring());
+			pstmt.setInt(11, aptUpdated.getApartmentId());
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -22,4 +22,5 @@ public interface ApartmentDao {
 	public void addTenant(String aptId, TenantBean newTenant);
 	public List<TenantBean> getTenants(int aptId);
 	public void updateTenant(int aptId, TenantBean tenant);
+	public void updateApartment(ApartmentDetailsBean aptUpdated);
 }

@@ -25,5 +25,6 @@ public interface ApartmentService {
 	String getImagePath(int aptId);
 	List<TenantBean> getTenants(int aptId);
 	void updateTenant(int aptId, TenantBean tenantUpdated);
+	void updateApartment(ApartmentDetailsBean aptUpdated);
 	
 }

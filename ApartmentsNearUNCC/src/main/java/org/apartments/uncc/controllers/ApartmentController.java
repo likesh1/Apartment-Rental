@@ -141,7 +141,7 @@ public class ApartmentController {
 		aptBean=myApartments.get(index);
 		System.out.println("Availability Date is - "+aptBean.getAvailablityFrom().toString());
 		aptBean.setDate(aptBean.getAvailablityFrom().toString());
-		request.setAttribute("aptDetails",aptBean);
+		//request.setAttribute("aptDetails",aptBean);
 		session.setAttribute("aptDetails", aptBean);
 		String imagePath=ownerDelegate.getImagePath(Integer.parseInt(id));
 		List<TenantBean> tenants=ownerDelegate.getTenants(Integer.parseInt(id));
@@ -183,7 +183,7 @@ public class ApartmentController {
 		System.out.println("Age is --"+request.getParameter("age"));
 		TenantBean tenantUpdated=new TenantBean();
 		tenantUpdated.setTage(Integer.parseInt(request.getParameter("age")));
-		tenantUpdated.setNationality(request.getParameter("Nationality"));
+		tenantUpdated.setNationality(request.getParameter("nation"));
 		tenantUpdated.settEmail(request.getParameter("email"));
 		tenantUpdated.setTgender(request.getParameter("tgender"));
 		tenantUpdated.setTfirstName(request.getParameter("fName"));
@@ -201,6 +201,47 @@ public class ApartmentController {
 		//request.setAttribute("newApartment", newApartment);
 		//request.setAttribute("aptDetails", tenant);
 		request.setAttribute("updateTenantSuccess", "Tenant Uploaded Successfully!!");
+		//return message;
+		return model;
+	}
+	
+	@RequestMapping(value="/updateApt", method=RequestMethod.POST)
+	public ModelAndView updateApartment(HttpServletRequest request, HttpServletResponse response)
+	{
+		ModelAndView model= new ModelAndView("editApartmentDetails");
+		HttpSession session=request.getSession();
+		System.out.println("--aptId is -- "+session.getAttribute("aptId"));
+		String aptId=(String) session.getAttribute("aptId");
+		System.out.println("Age is --"+request.getParameter("age"));
+		ApartmentDetailsBean aptUpdated=new ApartmentDetailsBean();
+		aptUpdated.setApartmentId(Integer.parseInt(aptId));
+		aptUpdated.setDepositAmt(Integer.parseInt(request.getParameter("deposit")));
+		aptUpdated.setRent(Integer.parseInt(request.getParameter("rent")));
+		aptUpdated.setno_of_rooms(Integer.parseInt(request.getParameter("rooms")));
+		aptUpdated.setUtilities(request.getParameter("utilities"));
+		aptUpdated.setArea(request.getParameter("area"));
+		aptUpdated.setStreet(request.getParameter("street"));
+		aptUpdated.setDoorNo(request.getParameter("doorNo"));
+		aptUpdated.setCity(request.getParameter("city"));
+		aptUpdated.setFlooring(request.getParameter("flooring"));
+		aptUpdated.setType_bathroom(request.getParameter("bathrooms"));
+		ownerDelegate.updateApartment(aptUpdated);
+		//List<TenantBean> tenants=(List<TenantBean>) session.getAttribute("myTenants");
+		//int index=tenants.indexOf(aptUpdated);
+		//tenants.remove(index);
+		//tenants.add(index, aptUpdated);
+		System.out.println("Updated rent is -"+aptUpdated.getRent());
+		//session.removeAttribute("aptDetails");
+		model.addObject("aptDetails", aptUpdated);
+		session.setAttribute("aptDetails", aptUpdated);
+		//request.setAttribute("aptDetails", aptUpdated);
+		//ApartmentDetailsBean aptDetails=(ApartmentDetailsBean) session.getAttribute("aptDetails");
+		//request.setAttribute("newApartment", aptDetails);
+		//ownerDelegate.getNewApartmentId(newApartment,user.getUsername());
+		//TenantBean tenant=(TenantBean) 
+		//request.setAttribute("newApartment", newApartment);
+		//request.setAttribute("aptDetails", tenant);
+		request.setAttribute("updateApartmentSuccess", "Apartment Details updated Successfully!!");
 		//return message;
 		return model;
 	}

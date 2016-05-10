@@ -123,4 +123,11 @@ public class ApartmentServiceImpl implements ApartmentService {
 		apartmentDao.updateTenant(aptId,tenant);
 	}
 
+
+	@Override
+	public void updateApartment(ApartmentDetailsBean aptUpdated) {
+		// TODO Auto-generated method stub
+		apartmentDao.updateApartment(aptUpdated);
+	}
+
 }

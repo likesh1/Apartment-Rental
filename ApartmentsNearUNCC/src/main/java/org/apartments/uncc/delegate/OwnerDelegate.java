@@ -61,4 +61,10 @@ public class OwnerDelegate {
 		apartmentService.updateTenant(aptId,tenantUpdated);
 	}
 
+
+	public void updateApartment(ApartmentDetailsBean aptUpdated) {
+		// TODO Auto-generated method stub
+		apartmentService.updateApartment(aptUpdated);
+	}
+
 }
