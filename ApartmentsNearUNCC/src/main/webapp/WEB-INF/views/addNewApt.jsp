@@ -137,7 +137,7 @@ Author URL: SSDI_08
 														<td><form:input class="form-control" placeholder="number of rooms$" type="number" min="1" max="5" id="rooms" name="rooms" path="no_of_rooms"/></td>
 		
 														<td><label for="utilities">UTILITIES</label></td>
-														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="utilites" name="utilities" path="utilities"/></td>
+														<td><form:input class="form-control" placeholder="i.e. Internet" type="text" id="utilities" name="utilities" path="utilities"/></td>
 													</tr>
 													<tr class="info">
 														<td><label for="area">AREA</label></td>

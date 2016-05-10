@@ -348,7 +348,7 @@ Author URL: SSDI_08
 
 						<div class="col-md-3 project_grid">
 							<a href="#" class="b-link-stripe b-animate-go  thickbox"> <img
-								src="${uploadedImages}${imagePath }bedroom.jpg" class="img-responsive" alt="" />
+								src="${uploadedImages}${imagePath }bedroom.jpg" class="img-responsive" alt="" onerror="reloadImage(this);" id="bedroom"/>
 							<div class="b-wrapper">
 									<h2 class="b-animate b-from-left    b-delay03 ">
 										<img src="${images}heart.png" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
@@ -547,6 +547,17 @@ $(window).load(function() {
 			
 			
 		</script>
+		<script type="text/javascript">
+			function reloadImage(pThis) {
+			    // To prevent this from being executed over and over
+			    pThis.onerror = null; 
+			 
+			    // Refresh the src attribute, which should make the
+			    // browsers reload the iamge.
+			    pThis.src = pThis.src;
+			}
+		</script>
+		
 		<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
 		
         <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>

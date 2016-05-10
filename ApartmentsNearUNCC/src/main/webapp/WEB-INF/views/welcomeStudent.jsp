@@ -68,8 +68,8 @@ Author URL: SSDI_08
 			        <li><a href="#team" class="scroll">Team</a></li>
 			        <li><a href="#clients" class="scroll">Clients</a></li>
 			        <li><a href="#contact" class="scroll">Contact</a></li>
-			        <li><a href="logout.do">LogOut</a></li>
 			        <li><a href="discussionforum.do">Forum</a></li>
+			        <li><a href="logout.do">LogOut</a></li>
 			       </ul>
 			       <h4 align="right" class="scroll">Welcome ${user.fName }!!!</h4>
 			    
@@ -124,7 +124,7 @@ Author URL: SSDI_08
    		     </script> 	           	      
       </div>
 	</div>
-    <div class="main">	
+    <!--<div class="main">	
 	  <div class="container">
 	   <div class="about" id="about">
 			<div class="row about-top">
@@ -136,7 +136,7 @@ Author URL: SSDI_08
 			  	<div class="clear"></div>
 			  </ul>
 			</div>
-		</div>
+		</div>-->
 	    </div>
 	    <div class="projects" id="projects">
 	    	<div class="m_3"><span class="left_line1"> </span><h3>Locations</h3><span class="right_line1"> </span></div>

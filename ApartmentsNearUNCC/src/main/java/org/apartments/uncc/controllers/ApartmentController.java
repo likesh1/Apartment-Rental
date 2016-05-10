@@ -142,12 +142,16 @@ public class ApartmentController {
 		System.out.println("Availability Date is - "+aptBean.getAvailablityFrom().toString());
 		aptBean.setDate(aptBean.getAvailablityFrom().toString());
 		//request.setAttribute("aptDetails",aptBean);
-		session.setAttribute("aptDetails", aptBean);
+		model.addObject("aptDetails", aptBean);
+		//session.setAttribute("aptDetails", aptBean);
 		String imagePath=ownerDelegate.getImagePath(Integer.parseInt(id));
 		List<TenantBean> tenants=ownerDelegate.getTenants(Integer.parseInt(id));
-		session.setAttribute("myTenants", tenants);
-		session.setAttribute("imagePath", imagePath);
-		session.setAttribute("aptId", id);
+		model.addObject("myTenants", tenants);
+		model.addObject("imagePath", imagePath);
+		model.addObject("aptId", id);
+		//session.setAttribute("myTenants", tenants);
+		//session.setAttribute("imagePath", imagePath);
+		//session.setAttribute("aptId", id);
 		logger.info("path is "+imagePath);
 		return model;
 	}
@@ -194,7 +198,8 @@ public class ApartmentController {
 		int index=tenants.indexOf(tenantUpdated);
 		tenants.remove(index);
 		tenants.add(index, tenantUpdated);
-		session.setAttribute("myTenants", tenants);
+		model.addObject("myTenants", tenants);
+		//session.setAttribute("myTenants", tenants);
 		ApartmentDetailsBean aptDetails=(ApartmentDetailsBean) session.getAttribute("aptDetails");
 		request.setAttribute("newApartment", aptDetails);
 		//TenantBean tenant=(TenantBean) 
@@ -233,7 +238,7 @@ public class ApartmentController {
 		System.out.println("Updated rent is -"+aptUpdated.getRent());
 		//session.removeAttribute("aptDetails");
 		model.addObject("aptDetails", aptUpdated);
-		session.setAttribute("aptDetails", aptUpdated);
+		//session.setAttribute("aptDetails", aptUpdated);
 		//request.setAttribute("aptDetails", aptUpdated);
 		//ApartmentDetailsBean aptDetails=(ApartmentDetailsBean) session.getAttribute("aptDetails");
 		//request.setAttribute("newApartment", aptDetails);

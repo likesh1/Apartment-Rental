@@ -72,7 +72,8 @@ Author URL: SSDI_08
 			  <!--  <li><a href="#news" class="scroll">Reviews</a></li>-->
 			        <li><a href="#clients" class="scroll">Clients</a></li>
 			        <li><a href="#contact" class="scroll">Contact</a></li>
-			        <li><a href="#">My Profile</a></li>
+			        <li><a href="discussionforum.do">Forum</a></li>
+			        <li><a href="logout.do">LogOut</a></li>
 			       </ul>
 			        <!-- <div class="social">	
 					   <ul>	

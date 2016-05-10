@@ -438,4 +438,25 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value="/welcome", method = RequestMethod.GET)
+	public ModelAndView welcomeHome(HttpServletRequest request, HttpServletResponse response)
+	{
+		
+		ModelAndView model= null;
+		//System.out.println("User - "+loginBean.getUsername()+" and password is "+loginBean.getPassword());
+			UserDetailsBean validUser;
+			HttpSession session=request.getSession();
+			validUser=(UserDetailsBean) session.getAttribute("user");
+		if(validUser.getUserRole().equals("student"))
+			model = new ModelAndView("welcomeStudent");
+		else
+		{	
+			model = new ModelAndView("welcomeOwner");
+			List<ApartmentDetailsBean> myApartments= apartmentListDelegate.getMyApartments(validUser.getUsername());
+			model.addObject("myApartments",myApartments);
+		}
+		return model;
+		
+	}
+	
 }

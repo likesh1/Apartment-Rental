@@ -62,14 +62,15 @@ Author URL: SSDI_08
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav menu1">
 			      	<li class="active"><a href="#home" class="scroll"> <span> </span><i class="menu-border"></i></a></li>
-			        <li><a href="#about" class="scroll">Register</a></li>
+			        <li><a href="#about" class="scroll">About</a></li>
 			   <!-- <li><a href="#services" class='scroll'>Services</a></li>-->
 			        <li><a href="#projects" class="scroll">Locations</a></li>
 			        <li><a href="#team" class="scroll">Team</a></li>
 			   <!-- <li><a href="#news" class="scroll">News</a></li>-->
 			        <li><a href="#clients" class="scroll">Clients</a></li>
 			        <li><a href="#contact" class="scroll">Contact</a></li>
-			        <li><a href="http://localhost:8080/uncc">Login</a></li>
+			        <li><a href="discussionforum.do">Forum</a></li>
+			        <li><a href="logout.do">LogOut</a></li>
 			       </ul>
 			        <!-- <div class="social">	
 					   <ul>	
